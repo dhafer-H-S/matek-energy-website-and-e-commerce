@@ -5,6 +5,7 @@ import path from "node:path";
 import { getCurrentUser } from "@/lib/auth/session";
 import { db } from "@/lib/db";
 import { media } from "@/lib/db/schema";
+import { blobToken } from "@/lib/blob";
 
 export async function POST(req: NextRequest) {
   const user = await getCurrentUser();
@@ -20,13 +21,15 @@ export async function POST(req: NextRequest) {
 
   const isVideo = file.type.startsWith("video/");
   const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "-");
+  const token = blobToken();
 
   try {
     let url: string;
-    if (process.env.BLOB_READ_WRITE_TOKEN) {
+    if (token) {
       const blob = await put(`uploads/${safeName}`, file, {
         access: "public",
         addRandomSuffix: true,
+        token,
       });
       url = blob.url;
     } else {
