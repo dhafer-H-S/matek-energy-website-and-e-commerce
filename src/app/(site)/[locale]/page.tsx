@@ -73,7 +73,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <>
       <JsonLd data={[
         faqSchema(faq),
-        itemListSchema(locale, "Product categories", cats.map((c) => ({ name: c.name, path: `/categories/${c.slug}` }))),
+        itemListSchema(locale, tc("seoCategoriesTitle"), cats.map((c) => ({ name: c.name, path: `/categories/${c.slug}` }))),
       ]} />
       <HeroSlider banners={hero} />
 

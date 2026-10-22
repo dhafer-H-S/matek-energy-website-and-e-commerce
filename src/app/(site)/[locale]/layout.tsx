@@ -43,6 +43,8 @@ export async function generateMetadata({
   const tagline = t("tagline");
   const description = t("seoDescription");
   const title = `${brand} — ${tagline}`;
+  const keywords = t.raw("seoKeywords") as string[];
+  const otherLocale = locales.find((l) => l !== locale);
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -56,7 +58,7 @@ export async function generateMetadata({
     creator: brand,
     publisher: brand,
     category: "energy",
-    keywords: ["solar panels", "air conditioning", "water heaters", "heating systems", "electrical equipment", "Northern Cyprus", "Kyrenia", "Matek Energy"],
+    keywords,
     formatDetection: { email: false, address: false, telephone: false },
     alternates: {
       canonical: `${SITE_URL}/${locale}`,
@@ -79,7 +81,8 @@ export async function generateMetadata({
       title,
       description,
       url: `${SITE_URL}/${locale}`,
-      locale,
+      locale: locale === "tr" ? "tr_TR" : "en_US",
+      alternateLocale: otherLocale ? [otherLocale === "tr" ? "tr_TR" : "en_US"] : [],
       images: [
         {
           url: media("socialPreview"),
@@ -111,10 +114,12 @@ export default async function LocaleLayout({
   }
   setRequestLocale(locale);
 
-  const [messages, settings] = await Promise.all([
+  const [messages, settings, tCommon] = await Promise.all([
     getMessages(),
     getSettings(locale),
+    getTranslations({ locale, namespace: "common" }),
   ]);
+  const orgDescription = tCommon("seoOrgDescription");
 
   return (
     <html
@@ -124,7 +129,7 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col bg-background text-foreground antialiased">
-        <JsonLd data={[organizationSchema(settings), websiteSchema()]} />
+        <JsonLd data={[organizationSchema(settings, orgDescription), websiteSchema(orgDescription)]} />
         <NextIntlClientProvider messages={messages} locale={locale}>
           <CartProvider>
             <Navbar locale={locale} />

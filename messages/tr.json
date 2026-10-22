@@ -8,9 +8,6 @@
     "aboutStory": "/seed/pexels/30285845.jpg",
     "productInstallation": "/seed/pexels/8853504.jpg"
   },
-
-
-  
   "common": {
     "emailDelayed": "Talebiniz kaydedildi. E-posta bildirimi teyit edilemedi; ekibimiz bilgilerinizi yönetim panelinde görebilir. Lütfen tekrar göndermeyin.",
     "brand": "Matek Energy",
@@ -33,7 +30,27 @@
     "service": "Hizmet",
     "backHome": "Ana sayfaya dön",
     "notFoundTitle": "Sayfa bulunamadı",
-    "notFoundText": "Aradığınız sayfa mevcut değil veya taşınmış."
+    "notFoundText": "Aradığınız sayfa mevcut değil veya taşınmış.",
+    "seoKeywords": [
+      "güneş paneli",
+      "güneş enerjisi",
+      "klima",
+      "ısı pompası",
+      "su ısıtıcı",
+      "ısıtma sistemleri",
+      "havalandırma",
+      "hidronik",
+      "elektrik ekipmanları",
+      "yenilenebilir enerji",
+      "enerji sistemleri",
+      "Kuzey Kıbrıs",
+      "Girne",
+      "Lefkoşa",
+      "Gazimağusa",
+      "Matek Energy"
+    ],
+    "seoOrgDescription": "Kuzey Kıbrıs'ta yenilenebilir enerji, ısıtma, soğutma, sıcak su ve elektrik sistemleri — ürünler ve profesyonel kurulum hizmetleri.",
+    "seoCategoriesTitle": "Ürün kategorileri"
   },
   "nav": {
     "home": "Ana sayfa",
@@ -72,17 +89,38 @@
     "serviceProcessTitle": "İlk sorunuzdan çalışan bir sisteme kadar tek ekip",
     "serviceProcessText": "Ekipman satın almak işin yalnızca bir parçasıdır. Ürün seçimi, mühendislik, kurulum ve satış sonrası desteği birleştirerek her aşamada kiminle iletişime geçeceğinizi bilmenizi sağlıyoruz.",
     "serviceSteps": [
-      { "title": "İhtiyacınızı anlatın", "text": "Hizmet talebinizi çevrimiçi iletin veya WhatsApp'tan yazın. Konumunuzu, mülk tipini ve iyileştirmek istediğiniz konuları paylaşın." },
-      { "title": "Keşif ve planlama", "text": "Gereksinimlerinizi değerlendirir; keşif, uygun ekipman ve iş kapsamını görüşürüz. Onayınız için size özel teklif hazırlanır." },
-      { "title": "Tedarik ve kurulum", "text": "Ekibimiz kararlaştırılan ekipmanı ve kurulumu koordine eder, teslimden önce sisteminizi test edip devreye alır." },
-      { "title": "Kesintisiz kullanım", "text": "Kullanım desteği, servis ve bakım seçeneklerini sorun. Desteğe veya yenilemeye ihtiyaç duyduğunuzda iletişim noktanız olmaya devam ederiz." }
+      {
+        "title": "İhtiyacınızı anlatın",
+        "text": "Hizmet talebinizi çevrimiçi iletin veya WhatsApp'tan yazın. Konumunuzu, mülk tipini ve iyileştirmek istediğiniz konuları paylaşın."
+      },
+      {
+        "title": "Keşif ve planlama",
+        "text": "Gereksinimlerinizi değerlendirir; keşif, uygun ekipman ve iş kapsamını görüşürüz. Onayınız için size özel teklif hazırlanır."
+      },
+      {
+        "title": "Tedarik ve kurulum",
+        "text": "Ekibimiz kararlaştırılan ekipmanı ve kurulumu koordine eder, teslimden önce sisteminizi test edip devreye alır."
+      },
+      {
+        "title": "Kesintisiz kullanım",
+        "text": "Kullanım desteği, servis ve bakım seçeneklerini sorun. Desteğe veya yenilemeye ihtiyaç duyduğunuzda iletişim noktanız olmaya devam ederiz."
+      }
     ],
     "serviceSupportTitle": "Standart bir paket değil, mülkünüze uygun çözüm",
     "serviceSupportText": "Tek bir klimadan birbiriyle uyumlu enerji sistemlerine kadar, doğru ürün ve profesyonel hizmet birleşimini Matek Energy ile planlayın.",
     "serviceAudiences": [
-      { "title": "Evler ve daireler", "text": "Doğru kapasitede klima, güvenilir sıcak su, ısıtma ve güvenli elektrik tesisatı ile günlük yaşamınızı konforlu hale getirin. Tek bir odadan başlayın veya kapsamlı bir yenileme planlayın." },
-      { "title": "Villalar ve yeni yapılar", "text": "Güneş enerjisi, ısıtma, soğutma ve hidronik sistemleri tek planda buluşturun. İnşaat, tadilat veya mevcut bir mülkün iyileştirilmesi için kurulum ihtiyaçlarını baştan görüşün." },
-      { "title": "İşletmeler ve endüstriyel tesisler", "text": "Ticari HVAC, elektrik panoları, pompalar ve planlı bakımı operasyonel ihtiyaçlarınıza göre görüşün. Yeni kurulum, yenileme veya düzenli servis için değerlendirme talep edin." }
+      {
+        "title": "Evler ve daireler",
+        "text": "Doğru kapasitede klima, güvenilir sıcak su, ısıtma ve güvenli elektrik tesisatı ile günlük yaşamınızı konforlu hale getirin. Tek bir odadan başlayın veya kapsamlı bir yenileme planlayın."
+      },
+      {
+        "title": "Villalar ve yeni yapılar",
+        "text": "Güneş enerjisi, ısıtma, soğutma ve hidronik sistemleri tek planda buluşturun. İnşaat, tadilat veya mevcut bir mülkün iyileştirilmesi için kurulum ihtiyaçlarını baştan görüşün."
+      },
+      {
+        "title": "İşletmeler ve endüstriyel tesisler",
+        "text": "Ticari HVAC, elektrik panoları, pompalar ve planlı bakımı operasyonel ihtiyaçlarınıza göre görüşün. Yeni kurulum, yenileme veya düzenli servis için değerlendirme talep edin."
+      }
     ],
     "benefitsEyebrow": "Neden Matek",
     "benefitsTitle": "Enerji tasarrufu sağlayan avantajlar",
@@ -306,7 +344,12 @@
     "introEyebrow": "Matek sahada",
     "introTitle": "Bir enerji fikrinden çalışan bir sisteme.",
     "introText": "Matek Energy portföyündeki güneş enerjisi, soğutma, ısıtma ve havalandırma uygulamalarını inceleyin. Orijinal proje fotoğrafları çalışmalarımıza yakından bakmanızı ve kendi mülkünüzün ihtiyaçlarını konuşmanızı sağlar.",
-    "types": { "Solar": "Güneş enerjisi", "HVAC": "Havalandırma ve HVAC", "Cooling": "Soğutma", "Heating": "Isıtma" },
+    "types": {
+      "Solar": "Güneş enerjisi",
+      "HVAC": "Havalandırma ve HVAC",
+      "Cooling": "Soğutma",
+      "Heating": "Isıtma"
+    },
     "filterLabel": "Projeleri sistem türüne göre filtrele",
     "allTypes": "Tüm projeler",
     "featured": "Yakından bakın",
@@ -332,9 +375,18 @@
     "discussProject": "Benzer bir projeyi görüşün",
     "moreProjects": "Portföyümüzden diğer projeler",
     "planningSteps": [
-      { "title": "Başlangıç noktasını paylaşın", "text": "Mülkün türünü, konumunu, mevcut ekipmanı ve neleri iyileştirmek istediğinizi anlatın." },
-      { "title": "Sahayı ve seçenekleri değerlendirin", "text": "Saha değerlendirmesi gerekli kapasiteyi, uygulama kısıtlarını ve uygun sistem düzenini belirlemeye yardımcı olur." },
-      { "title": "İşe başlamadan kapsamı netleştirin", "text": "Devam etmeden önce ekipmanı, kurulum gereksinimlerini, teklifi ve takvimi ekibimizle görüşün." }
+      {
+        "title": "Başlangıç noktasını paylaşın",
+        "text": "Mülkün türünü, konumunu, mevcut ekipmanı ve neleri iyileştirmek istediğinizi anlatın."
+      },
+      {
+        "title": "Sahayı ve seçenekleri değerlendirin",
+        "text": "Saha değerlendirmesi gerekli kapasiteyi, uygulama kısıtlarını ve uygun sistem düzenini belirlemeye yardımcı olur."
+      },
+      {
+        "title": "İşe başlamadan kapsamı netleştirin",
+        "text": "Devam etmeden önce ekipmanı, kurulum gereksinimlerini, teklifi ve takvimi ekibimizle görüşün."
+      }
     ]
   },
   "editorial": {
@@ -393,9 +445,18 @@
     "audienceTitle": "Farklı yapılar. Bütüncül bir yaklaşım.",
     "audienceText": "Bir aile evi, yeni bir villa ve bir işletme enerjiyi aynı şekilde kullanmaz. Mekânın nasıl kullanıldığını anlayarak günlük ihtiyaçlara uygun sistemi planlarız.",
     "audiences": [
-      { "title": "Evler ve daireler", "text": "Yaşam alanları için soğutma, güvenilir sıcak su, ısıtma ve güneş enerjisi seçenekleri. Mevcut tesisatı, kullanılabilir alanı ve hanenizin enerji kullanımını dikkate alırız." },
-      { "title": "Villalar ve yeni yapılar", "text": "Güneş enerjisi, ısıtma, soğutma ve sıcak suyu birbirinden bağımsız alımlar yerine birlikte planlayın. Erken planlama ekipmanı, borulamayı, elektrik ihtiyaçlarını ve erişimi koordine etmeye yardımcı olur." },
-      { "title": "Ticari ve endüstriyel alanlar", "text": "Havalandırma, iklimlendirme, elektrik sistemleri ve bakımı işletmenizin çalışma düzenine göre görüşün. Ekipman seçimi talebi, erişimi, servis ihtiyaçlarını ve iş sürekliliğini dikkate almalıdır." }
+      {
+        "title": "Evler ve daireler",
+        "text": "Yaşam alanları için soğutma, güvenilir sıcak su, ısıtma ve güneş enerjisi seçenekleri. Mevcut tesisatı, kullanılabilir alanı ve hanenizin enerji kullanımını dikkate alırız."
+      },
+      {
+        "title": "Villalar ve yeni yapılar",
+        "text": "Güneş enerjisi, ısıtma, soğutma ve sıcak suyu birbirinden bağımsız alımlar yerine birlikte planlayın. Erken planlama ekipmanı, borulamayı, elektrik ihtiyaçlarını ve erişimi koordine etmeye yardımcı olur."
+      },
+      {
+        "title": "Ticari ve endüstriyel alanlar",
+        "text": "Havalandırma, iklimlendirme, elektrik sistemleri ve bakımı işletmenizin çalışma düzenine göre görüşün. Ekipman seçimi talebi, erişimi, servis ihtiyaçlarını ve iş sürekliliğini dikkate almalıdır."
+      }
     ],
     "servicesLabel": "Neler yapıyoruz?",
     "servicesTitle": "Ekipmandan fazlası. Sistemin bütünü için destek.",
@@ -409,18 +470,39 @@
     "commitmentTitle": "Yalnızca hızlı değil, bilinçli kararlar verin.",
     "commitmentText": "Misyonumuz; verimli, güvenli ve sürdürülebilir ısıtma, soğutma, sıcak su ve güneş enerjisi çözümleriyle müşterilerin enerji maliyetlerini azaltmasına ve konforunu artırmasına yardımcı olmaktır. Başlangıç noktası mülkünüz için neyin uygun olduğunu anlamaktır.",
     "commitments": [
-      { "title": "Mülkü esas alan danışmanlık", "text": "Kapasite, yerleşim, kullanım alışkanlıkları ve mevcut tesisat önemlidir. Tek bir ürünün herkese uygun olduğunu varsaymak yerine bu etkenleri görüşürüz." },
-      { "title": "Net bir iş kapsamı", "text": "Ekipman tedariki, kurulum, devreye alma ve bakım projenin farklı bölümleridir. İşi onaylamadan önce teklifin neleri içerdiğini netleştirmemizi isteyin." },
-      { "title": "Ürün seçiminin ötesinde destek", "text": "Kullanım, servis ve gelecekteki bakım hakkında bizimle görüşün. Ürün garantileri ve hizmet koşulları ekipmana ve anlaşılan kapsama bağlıdır." }
+      {
+        "title": "Mülkü esas alan danışmanlık",
+        "text": "Kapasite, yerleşim, kullanım alışkanlıkları ve mevcut tesisat önemlidir. Tek bir ürünün herkese uygun olduğunu varsaymak yerine bu etkenleri görüşürüz."
+      },
+      {
+        "title": "Net bir iş kapsamı",
+        "text": "Ekipman tedariki, kurulum, devreye alma ve bakım projenin farklı bölümleridir. İşi onaylamadan önce teklifin neleri içerdiğini netleştirmemizi isteyin."
+      },
+      {
+        "title": "Ürün seçiminin ötesinde destek",
+        "text": "Kullanım, servis ve gelecekteki bakım hakkında bizimle görüşün. Ürün garantileri ve hizmet koşulları ekipmana ve anlaşılan kapsama bağlıdır."
+      }
     ],
     "projectsTitle": "Şirketimizin çalışmalarını yakından görün.",
     "projectsCta": "Projelerimizi inceleyin",
     "faqTitle": "Matek Energy'yi tanıyın",
     "faqs": [
-      { "q": "Ürün tedariki ve sistem kurulumu yapıyor musunuz?", "a": "Evet. Mağazamız ekipman ve bileşenleri, hizmet sayfalarımız ise kurulum ve teknik işleri bir araya getirir. Belirli bir ürün için uyumluluğu, kurulum uygunluğunu ve kapsamı teyit etmek üzere bize ulaşın." },
-      { "q": "Hangi sisteme ihtiyacım olduğuna karar vermeme yardımcı olur musunuz?", "a": "Mülkünüzü, mevcut ekipmanı, kullanımınızı ve hedeflerinizi anlatın. Bir sistem önermeden önce sonraki adımları ve saha değerlendirmesine ihtiyaç olup olmadığını görüşebiliriz." },
-      { "q": "Tadilat veya yeni yapı projesini görüşebilir miyim?", "a": "Evet. Erken görüşmeler ısıtma, soğutma, sıcak su, güneş enerjisi ve elektrik ihtiyaçlarının koordinasyonuna yardımcı olur. Varsa planları, fotoğrafları ve alanın kullanım amacını paylaşın." },
-      { "q": "Nasıl fiyat alabilirim?", "a": "Hizmet talep formunu kullanın, danışmanlık randevusu alın veya WhatsApp'tan bize ulaşın. Hizmet sayfalarındaki başlangıç fiyatları yalnızca göstergedir; nihai kapsam, ekipman ve fiyat teklifinizde teyit edilir." }
+      {
+        "q": "Ürün tedariki ve sistem kurulumu yapıyor musunuz?",
+        "a": "Evet. Mağazamız ekipman ve bileşenleri, hizmet sayfalarımız ise kurulum ve teknik işleri bir araya getirir. Belirli bir ürün için uyumluluğu, kurulum uygunluğunu ve kapsamı teyit etmek üzere bize ulaşın."
+      },
+      {
+        "q": "Hangi sisteme ihtiyacım olduğuna karar vermeme yardımcı olur musunuz?",
+        "a": "Mülkünüzü, mevcut ekipmanı, kullanımınızı ve hedeflerinizi anlatın. Bir sistem önermeden önce sonraki adımları ve saha değerlendirmesine ihtiyaç olup olmadığını görüşebiliriz."
+      },
+      {
+        "q": "Tadilat veya yeni yapı projesini görüşebilir miyim?",
+        "a": "Evet. Erken görüşmeler ısıtma, soğutma, sıcak su, güneş enerjisi ve elektrik ihtiyaçlarının koordinasyonuna yardımcı olur. Varsa planları, fotoğrafları ve alanın kullanım amacını paylaşın."
+      },
+      {
+        "q": "Nasıl fiyat alabilirim?",
+        "a": "Hizmet talep formunu kullanın, danışmanlık randevusu alın veya WhatsApp'tan bize ulaşın. Hizmet sayfalarındaki başlangıç fiyatları yalnızca göstergedir; nihai kapsam, ekipman ve fiyat teklifinizde teyit edilir."
+      }
     ]
   },
   "contact": {
@@ -473,9 +555,21 @@
     "adviceTitle": "İyi kararlar doğru sorularla başlar.",
     "adviceText": "Rehberlerimiz ekipman seçiminin ve enerji kullanımının arkasındaki etkenleri açıklar. Her bina farklıdır: bunları başlangıç noktası olarak kullanın, satın alma veya kurulum öncesinde ayrıntıları ekibimizle görüşün.",
     "topics": [
-      { "title": "Güneş enerjisi ve tüketim", "text": "Öz tüketimi, işletme maliyetlerini ve güneş enerjisi teklifinde sorulacak soruları anlayın.", "query": "güneş" },
-      { "title": "Isıtma ve soğutma", "text": "Konforu, ekipman boyutlandırmasını ve verimli günlük kullanımı keşfedin.", "query": "klima" },
-      { "title": "Tüm pratik rehberler", "text": "Ekipman seçiminden sonraki projenizin planlanmasına kadar tüm yazıları inceleyin.", "query": "" }
+      {
+        "title": "Güneş enerjisi ve tüketim",
+        "text": "Öz tüketimi, işletme maliyetlerini ve güneş enerjisi teklifinde sorulacak soruları anlayın.",
+        "query": "güneş"
+      },
+      {
+        "title": "Isıtma ve soğutma",
+        "text": "Konforu, ekipman boyutlandırmasını ve verimli günlük kullanımı keşfedin.",
+        "query": "klima"
+      },
+      {
+        "title": "Tüm pratik rehberler",
+        "text": "Ekipman seçiminden sonraki projenizin planlanmasına kadar tüm yazıları inceleyin.",
+        "query": ""
+      }
     ],
     "practicalEyebrow": "Uygulamaya geçin",
     "prepareTitle": "Kurulum ekibiyle görüşmeden önce",

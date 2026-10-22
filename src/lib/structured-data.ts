@@ -4,8 +4,6 @@ import type { SiteSettings } from "@/lib/queries/settings";
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
 
 export const BRAND_NAME = "Matek Energy";
-const BRAND_DESCRIPTION =
-  "Renewable energy, heating, cooling, hot water and electrical systems — products and professional installation services in Northern Cyprus.";
 const LOGO_URL = `${SITE_URL}/brand/logo.png`;
 
 type Json = Record<string, unknown>;
@@ -26,7 +24,7 @@ function telDigits(value: string | null | undefined): string | undefined {
 export const ORG_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 
-export function organizationSchema(settings: SiteSettings): Json {
+export function organizationSchema(settings: SiteSettings, description: string): Json {
   const sameAs = Object.values(settings.social ?? {}).filter(
     (v): v is string => typeof v === "string" && v.length > 0,
   );
@@ -35,7 +33,7 @@ export function organizationSchema(settings: SiteSettings): Json {
     "@type": ["Organization", "LocalBusiness", "Store"],
     "@id": ORG_ID,
     name: BRAND_NAME,
-    description: BRAND_DESCRIPTION,
+    description,
     url: SITE_URL,
     logo: { "@type": "ImageObject", url: LOGO_URL },
     image: LOGO_URL,
@@ -59,14 +57,14 @@ export function organizationSchema(settings: SiteSettings): Json {
   };
 }
 
-export function websiteSchema(): Json {
+export function websiteSchema(description: string): Json {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": WEBSITE_ID,
     url: SITE_URL,
     name: BRAND_NAME,
-    description: BRAND_DESCRIPTION,
+    description,
     publisher: { "@id": ORG_ID },
     inLanguage: locales,
     potentialAction: {
