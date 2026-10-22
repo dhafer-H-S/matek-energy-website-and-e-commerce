@@ -1,0 +1,368 @@
+{
+  "common": {
+    "brand": "Matek Energy",
+    "tagline": "Energy systems that simply work",
+    "seoDescription": "Matek Energy — solar, heating, cooling, hot water and electrical solutions in Northern Cyprus. Shop quality energy equipment online or request a free system assessment.",
+    "readMore": "Read more",
+    "learnMore": "Learn more",
+    "viewAll": "View all",
+    "getQuote": "Request a quote",
+    "contactUs": "Contact us",
+    "bookAppointment": "Book appointment",
+    "send": "Send message",
+    "sending": "Sending…",
+    "sent": "Thank you! We will get back to you shortly.",
+    "error": "Something went wrong. Please try again.",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "service": "Service",
+    "backHome": "Back to home",
+    "notFoundTitle": "Page not found",
+    "notFoundText": "The page you are looking for does not exist or has moved."
+  },
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "allProducts": "All products",
+    "categories": "Categories",
+    "services": "Services",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact",
+    "blog": "Blog",
+    "team": "Team",
+    "appointment": "Appointment",
+    "cart": "Cart",
+    "searchPlaceholder": "Search products…",
+    "menu": "Menu",
+    "close": "Close",
+    "language": "Language",
+    "freeShipping": "Professional installation available across Northern Cyprus",
+    "hours": "Mon – Fri 8:00 – 18:00 · Sunday 8:00 – 14:00",
+    "allServices": "All services",
+    "servicesMenu": "Our services"
+  },
+  "home": {
+    "shopByCategory": "Shop by category",
+    "shopByCategoryText": "Everything you need for energy, comfort and power — in one place.",
+    "featured": "Featured products",
+    "featuredText": "Hand-picked equipment from trusted international brands.",
+    "newArrivals": "New arrivals",
+    "onSale": "Special offers",
+    "servicesEyebrow": "What we do",
+    "servicesTitle": "Professional installation & engineering services",
+    "servicesText": "From the first consultation to commissioning, our engineers design and install systems tailored to your property.",
+    "benefitsEyebrow": "Why Matek",
+    "benefitsTitle": "Benefits to save energy",
+    "benefits": [
+      {
+        "title": "Eco friendly",
+        "text": "Reduce your carbon footprint with clean renewable systems that cut energy waste."
+      },
+      {
+        "title": "Easy installation",
+        "text": "Our certified technicians handle design, supply and installation with minimal disruption."
+      },
+      {
+        "title": "Low maintenance",
+        "text": "Durable, high-quality equipment that keeps running with very little upkeep."
+      },
+      {
+        "title": "Affordable price",
+        "text": "Competitive pricing and efficient systems that pay back through lower bills."
+      }
+    ],
+    "aboutEyebrow": "About Matek Energy",
+    "aboutTitle": "Specialists in heating, cooling, hot water and solar systems",
+    "aboutText": "MATEK ENERGY combines engineering expertise with reliable brands to deliver energy systems that simply work — for homes, villas and businesses.",
+    "aboutPoints": [
+      "Experienced team of engineers and technicians",
+      "Tailor-made solutions for every property",
+      "Partnerships with trusted international brands",
+      "Support from first consultation to operation"
+    ],
+    "statsCustomers": "Happy customers",
+    "statsInstallations": "Completed installations",
+    "statsYears": "Years of engineering experience",
+    "ctaTitle": "Power your home with modern and efficient solar solutions",
+    "ctaText": "Certified solar specialists and 24/7 customer support, ready to help with your next project.",
+    "faqEyebrow": "FAQ",
+    "faqTitle": "Questions about solar energy",
+    "faq": [
+      {
+        "q": "What is solar energy?",
+        "a": "Solar energy is power captured from sunlight and converted into electricity by photovoltaic panels. It is clean, renewable and cuts your electricity bills."
+      },
+      {
+        "q": "How much energy do solar panels generate?",
+        "a": "Depending on system size, orientation and usage, a well-designed system can cover anywhere from 60% to 100% of a household's electricity needs."
+      },
+      {
+        "q": "Do solar panels work on cloudy days?",
+        "a": "Yes. Panels still produce electricity under cloud cover, only at a reduced output. Battery storage can balance production and consumption."
+      },
+      {
+        "q": "How long do solar panels last?",
+        "a": "Quality panels typically last 25–30 years and are covered by long performance warranties."
+      }
+    ],
+    "projectsEyebrow": "Our work",
+    "projectsTitle": "Recent projects",
+    "projectsText": "A selection of installations delivered by the Matek team.",
+    "testimonialTitle": "Highest rated energy company",
+    "testimonialText": "Customers trust Matek for honest advice, neat installations and responsive after-sales support.",
+    "bannerCta": "Shop now"
+  },
+  "shop": {
+    "title": "Shop",
+    "subtitle": "Energy and electrical equipment for your home and business",
+    "results": "{count} products",
+    "noResults": "No products found.",
+    "sortBy": "Sort by",
+    "sortNewest": "Newest",
+    "sortPriceAsc": "Price: low to high",
+    "sortPriceDesc": "Price: high to low",
+    "sortName": "Name",
+    "searchResults": "Results for “{query}”",
+    "addToCart": "Add to cart",
+    "added": "Added",
+    "inStock": "In stock",
+    "outOfStock": "Out of stock",
+    "quoteOnly": "Price on request",
+    "requestQuote": "Request a quote",
+    "new": "New",
+    "sale": "Sale",
+    "sku": "SKU",
+    "brand": "Brand",
+    "category": "Category",
+    "description": "Description",
+    "specifications": "Specifications",
+    "related": "You may also like",
+    "quantity": "Quantity",
+    "buyWhatsapp": "Ask on WhatsApp",
+    "emptyCategory": "There are no products in this category yet.",
+    "youSave": "You save",
+    "save": "Save",
+    "trustWarranty": "Manufacturer warranty",
+    "trustInstall": "Professional installation",
+    "trustDelivery": "Fast delivery in Northern Cyprus",
+    "trustPay": "Pay on delivery or by bank transfer",
+    "installTitle": "Want it installed by our engineers?",
+    "installText": "Book a free site survey and get a fixed-price installation quote. Our certified team handles everything from supply to commissioning.",
+    "installCta": "Book free site survey",
+    "callUs": "Call us",
+    "askExpert": "Ask an expert on WhatsApp",
+    "totalFor": "Total",
+    "highlights": "Key features",
+    "whyTitle": "Why buy from Matek Energy",
+    "why1Title": "Genuine products",
+    "why1Text": "Branded equipment from trusted manufacturers, with warranty.",
+    "why2Title": "Expert engineering team",
+    "why2Text": "Advice before you buy and support long after installation.",
+    "why3Title": "Easy ordering",
+    "why3Text": "Order online, by WhatsApp or phone. We confirm and deliver fast.",
+    "howTitle": "How ordering works",
+    "how1": "Add to cart or order via WhatsApp",
+    "how2": "We confirm your order and delivery time",
+    "how3": "Receive it and pay on delivery or by bank transfer",
+    "orderNow": "Order now",
+    "stickyAdd": "Add to cart",
+    "availability": "Availability",
+    "freeShippingNote": "Delivery & installation available across Northern Cyprus"
+  },
+  "cart": {
+    "title": "Shopping cart",
+    "empty": "Your cart is empty.",
+    "continue": "Continue shopping",
+    "product": "Product",
+    "price": "Price",
+    "total": "Total",
+    "remove": "Remove",
+    "subtotal": "Subtotal",
+    "mixedNote": "Your cart contains products priced in different currencies. Totals are shown per currency.",
+    "checkout": "Proceed to checkout",
+    "clear": "Clear cart"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "details": "Your details",
+    "fullName": "Full name",
+    "phone": "Phone number",
+    "email": "Email (optional)",
+    "city": "City",
+    "address": "Delivery address",
+    "notes": "Order notes (optional)",
+    "payment": "Payment method",
+    "cod": "Cash on delivery",
+    "codText": "Pay in cash when your order is delivered or installed.",
+    "bank": "Bank transfer (IBAN)",
+    "bankText": "Transfer the total to our bank account. We start processing once the payment is received.",
+    "bankDetails": "Bank details",
+    "bankName": "Bank",
+    "accountHolder": "Account holder",
+    "iban": "IBAN",
+    "bankPending": "Bank details will be sent to you when we confirm your order.",
+    "summary": "Order summary",
+    "placeOrder": "Place order",
+    "orderWhatsapp": "Order via WhatsApp",
+    "whatsappHint": "We will open WhatsApp with your order summary ready to send.",
+    "placing": "Placing order…",
+    "required": "Please fill in your name, phone number and address.",
+    "failed": "We could not place your order. Please try again.",
+    "successTitle": "Thank you for your order!",
+    "successText": "Your order has been received. Our team will contact you shortly to confirm it.",
+    "orderNumber": "Order number",
+    "transferNote": "Please transfer the total to the bank account below and mention your order number.",
+    "whatsappAgain": "Send order on WhatsApp"
+  },
+  "services": {
+    "title": "Our services",
+    "subtitle": "Engineering, installation and maintenance for energy systems",
+    "otherServices": "Other services",
+    "requestService": "Request this service",
+    "highlights": [
+      {
+        "title": "Request a free system assessment",
+        "text": "Tell us about your property and energy needs and we will recommend the right system."
+      },
+      {
+        "title": "Site evaluation & system design",
+        "text": "Our engineers visit, measure and design a solution tailored to your building."
+      },
+      {
+        "title": "Installation & maintenance",
+        "text": "Professional installation, commissioning and long-term maintenance support."
+      }
+    ],
+    "from": "From",
+    "quoteOnly": "Free quote",
+    "duration": "Typical duration",
+    "included": "What's included",
+    "process": "How it works",
+    "faqTitle": "Frequently asked questions",
+    "relatedProducts": "Shop related products",
+    "gallery": "Our work",
+    "bookTitle": "Book this service",
+    "bookSubtitle": "Leave your details - we reply within a few hours.",
+    "preferredDate": "Preferred date (optional)",
+    "bookCta": "Request this service",
+    "bookNote": "Free, no obligation. We confirm by phone or WhatsApp.",
+    "whatsappCta": "Order on WhatsApp",
+    "callCta": "Call now",
+    "ctaTitle": "Ready to get started?",
+    "ctaText": "Tell us what you need and our engineers will prepare a fixed-price offer.",
+    "viewAll": "View all services",
+    "orderService": "Get a quote",
+    "freeSurvey": "Free site survey",
+    "certified": "Certified engineers",
+    "warranty": "Workmanship warranty",
+    "fastResponse": "Reply within hours",
+    "bookingSent": "Thank you! Your request was received - we will contact you shortly.",
+    "waMessage": "Hello Matek Energy, I would like to request this service:"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Installations delivered by Matek Energy",
+    "gallery": "Project gallery",
+    "back": "All projects"
+  },
+  "about": {
+    "title": "About Matek Energy",
+    "subtitle": "Engineering expertise and reliable brands behind every system",
+    "tabs": [
+      {
+        "title": "Our approach",
+        "text": "We start with your property, your consumption and your goals. Every system is designed around real needs, supplied from trusted manufacturers and installed to a high standard — so it performs reliably for years."
+      },
+      {
+        "title": "Our mission",
+        "text": "To make efficient, clean and affordable energy accessible to every home and business in Northern Cyprus, with honest advice and dependable service."
+      },
+      {
+        "title": "Why clients choose us",
+        "text": "Turn-key solar and energy solutions, financial efficiency through lower running costs, certified specialists and responsive after-sales support."
+      }
+    ],
+    "howTitle": "How it works",
+    "steps": [
+      {
+        "title": "Register for work",
+        "text": "Contact us or book an appointment and describe your project."
+      },
+      {
+        "title": "Inspect & analyze",
+        "text": "We visit the site, analyse your needs and prepare a proposal."
+      },
+      {
+        "title": "Work processing",
+        "text": "Our technicians install and commission the system."
+      },
+      {
+        "title": "Handover clients",
+        "text": "We hand over the finished system and keep supporting you."
+      }
+    ],
+    "founder": "10 years of founder's experience",
+    "established": "3 years since establishment"
+  },
+  "contact": {
+    "title": "Contact us",
+    "subtitle": "Tell us about your project — we usually reply within one business day.",
+    "address": "Address",
+    "hours": "Opening hours",
+    "callUs": "Call us",
+    "writeUs": "Email us"
+  },
+  "appointment": {
+    "title": "Book an appointment",
+    "subtitle": "Choose a service and we will confirm a suitable time.",
+    "selectService": "Select a service",
+    "submit": "Request appointment",
+    "items": [
+      "Consultation",
+      "Solar Panel Installation",
+      "Air Conditioning Installation",
+      "Water Heater Installation",
+      "Heating System Installation",
+      "Solar System Repair",
+      "Solar System Maintenance",
+      "Inverter & Electrical Setup",
+      "Energy Storage Systems",
+      "Maintenance & Diagnostics",
+      "Custom Solar Solutions"
+    ]
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "News, guides and tips on energy systems",
+    "empty": "No articles yet.",
+    "related": "Related articles",
+    "share": "Share"
+  },
+  "team": {
+    "title": "Our team",
+    "subtitle": "The engineers and technicians behind Matek Energy"
+  },
+  "footer": {
+    "about": "Specialists in heating, cooling, hot water and renewable energy systems.",
+    "shop": "Shop",
+    "company": "Company",
+    "contact": "Contact",
+    "privacy": "Privacy policy",
+    "terms": "Terms & conditions",
+    "rights": "All rights reserved.",
+    "paymentTitle": "Payment options",
+    "payments": "Cash on delivery · Bank transfer"
+  },
+  "legal": {
+    "privacyTitle": "Privacy policy",
+    "privacyBody": "We collect only the information you give us when you place an order, book an appointment or contact us (such as your name, phone number, email and address). We use it to process your request, deliver products and services and contact you about them. We do not sell your personal data. You can ask us to access, correct or delete your data at any time by contacting us.",
+    "termsTitle": "Terms & conditions",
+    "termsBody": "Orders placed through this website are confirmed by our team by phone or WhatsApp. Prices are shown in the currency set for each product and may change without notice. Availability, delivery and installation schedules are confirmed at the time of order confirmation. Payment is made by cash on delivery or bank transfer. For any questions about warranty and returns, please contact us."
+  },
+  "admin": {
+    "placeholder": "Admin"
+  }
+}

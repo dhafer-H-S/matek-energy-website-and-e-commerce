@@ -1,0 +1,368 @@
+{
+  "common": {
+    "brand": "Matek Energy",
+    "tagline": "Gerçekten çalışan enerji sistemleri",
+    "seoDescription": "Matek Energy — Kuzey Kıbrıs'ta güneş enerjisi, ısıtma, soğutma, sıcak su ve elektrik çözümleri. Kaliteli enerji ekipmanlarını online satın alın veya ücretsiz sistem analizi isteyin.",
+    "readMore": "Devamını oku",
+    "learnMore": "Daha fazla bilgi",
+    "viewAll": "Tümünü gör",
+    "getQuote": "Teklif iste",
+    "contactUs": "Bize ulaşın",
+    "bookAppointment": "Randevu al",
+    "send": "Mesaj gönder",
+    "sending": "Gönderiliyor…",
+    "sent": "Teşekkürler! En kısa sürede size dönüş yapacağız.",
+    "error": "Bir sorun oluştu. Lütfen tekrar deneyin.",
+    "name": "Ad soyad",
+    "email": "E-posta",
+    "phone": "Telefon",
+    "message": "Mesaj",
+    "service": "Hizmet",
+    "backHome": "Ana sayfaya dön",
+    "notFoundTitle": "Sayfa bulunamadı",
+    "notFoundText": "Aradığınız sayfa mevcut değil veya taşınmış."
+  },
+  "nav": {
+    "home": "Ana sayfa",
+    "shop": "Mağaza",
+    "allProducts": "Tüm ürünler",
+    "categories": "Kategoriler",
+    "services": "Hizmetler",
+    "projects": "Projeler",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "blog": "Blog",
+    "team": "Ekibimiz",
+    "appointment": "Randevu",
+    "cart": "Sepet",
+    "searchPlaceholder": "Ürün ara…",
+    "menu": "Menü",
+    "close": "Kapat",
+    "language": "Dil",
+    "freeShipping": "Kuzey Kıbrıs genelinde profesyonel kurulum hizmeti",
+    "hours": "Pzt – Cum 8:00 – 18:00 · Pazar 8:00 – 14:00",
+    "allServices": "Tüm hizmetler",
+    "servicesMenu": "Hizmetlerimiz"
+  },
+  "home": {
+    "shopByCategory": "Kategoriye göre alışveriş",
+    "shopByCategoryText": "Enerji, konfor ve güç için ihtiyacınız olan her şey tek yerde.",
+    "featured": "Öne çıkan ürünler",
+    "featuredText": "Güvenilir uluslararası markalardan seçilmiş ekipmanlar.",
+    "newArrivals": "Yeni ürünler",
+    "onSale": "Özel fırsatlar",
+    "servicesEyebrow": "Ne yapıyoruz",
+    "servicesTitle": "Profesyonel kurulum ve mühendislik hizmetleri",
+    "servicesText": "İlk görüşmeden devreye almaya kadar mühendislerimiz mülkünüze uygun sistemler tasarlar ve kurar.",
+    "benefitsEyebrow": "Neden Matek",
+    "benefitsTitle": "Enerji tasarrufu sağlayan avantajlar",
+    "benefits": [
+      {
+        "title": "Çevre dostu",
+        "text": "Enerji israfını azaltan temiz yenilenebilir sistemlerle karbon ayak izinizi düşürün."
+      },
+      {
+        "title": "Kolay kurulum",
+        "text": "Sertifikalı teknisyenlerimiz tasarım, tedarik ve kurulumu en az aksaklıkla yapar."
+      },
+      {
+        "title": "Düşük bakım",
+        "text": "Çok az bakımla yıllarca çalışan, dayanıklı ve kaliteli ekipmanlar."
+      },
+      {
+        "title": "Uygun fiyat",
+        "text": "Rekabetçi fiyatlar ve faturalarınızı düşüren verimli sistemler."
+      }
+    ],
+    "aboutEyebrow": "Matek Energy hakkında",
+    "aboutTitle": "Isıtma, soğutma, sıcak su ve güneş enerjisi sistemlerinde uzman",
+    "aboutText": "MATEK ENERGY, mühendislik uzmanlığını güvenilir markalarla birleştirerek evler, villalar ve işletmeler için gerçekten çalışan enerji sistemleri sunar.",
+    "aboutPoints": [
+      "Deneyimli mühendis ve teknisyen kadrosu",
+      "Her mülke özel çözümler",
+      "Güvenilir uluslararası markalarla iş ortaklığı",
+      "İlk görüşmeden işletmeye kadar destek"
+    ],
+    "statsCustomers": "Mutlu müşteri",
+    "statsInstallations": "Tamamlanan kurulum",
+    "statsYears": "Yıllık mühendislik deneyimi",
+    "ctaTitle": "Evinizi modern ve verimli güneş enerjisi çözümleriyle güçlendirin",
+    "ctaText": "Sertifikalı güneş enerjisi uzmanları ve 7/24 müşteri desteği bir sonraki projeniz için hazır.",
+    "faqEyebrow": "SSS",
+    "faqTitle": "Güneş enerjisi hakkında sorular",
+    "faq": [
+      {
+        "q": "Güneş enerjisi nedir?",
+        "a": "Güneş enerjisi, güneş ışığının fotovoltaik paneller aracılığıyla elektriğe dönüştürülmesidir. Temiz, yenilenebilir ve elektrik faturalarınızı düşürür."
+      },
+      {
+        "q": "Güneş panelleri ne kadar enerji üretir?",
+        "a": "Sistem boyutuna, yönüne ve kullanıma bağlı olarak iyi tasarlanmış bir sistem bir hanenin elektrik ihtiyacının %60'ından %100'üne kadarını karşılayabilir."
+      },
+      {
+        "q": "Güneş panelleri bulutlu havada çalışır mı?",
+        "a": "Evet. Paneller bulutlu havada da elektrik üretir, ancak üretim azalır. Batarya depolama üretim ve tüketimi dengeleyebilir."
+      },
+      {
+        "q": "Güneş panellerinin ömrü ne kadardır?",
+        "a": "Kaliteli paneller genellikle 25–30 yıl dayanır ve uzun performans garantisiyle gelir."
+      }
+    ],
+    "projectsEyebrow": "Çalışmalarımız",
+    "projectsTitle": "Son projeler",
+    "projectsText": "Matek ekibi tarafından tamamlanan kurulumlardan bir seçki.",
+    "testimonialTitle": "En yüksek puanlı enerji şirketi",
+    "testimonialText": "Müşteriler dürüst tavsiye, düzenli kurulum ve hızlı satış sonrası destek için Matek'e güvenir.",
+    "bannerCta": "Alışverişe başla"
+  },
+  "shop": {
+    "title": "Mağaza",
+    "subtitle": "Eviniz ve işletmeniz için enerji ve elektrik ekipmanları",
+    "results": "{count} ürün",
+    "noResults": "Ürün bulunamadı.",
+    "sortBy": "Sırala",
+    "sortNewest": "En yeni",
+    "sortPriceAsc": "Fiyat: düşükten yükseğe",
+    "sortPriceDesc": "Fiyat: yüksekten düşüğe",
+    "sortName": "İsim",
+    "searchResults": "“{query}” için sonuçlar",
+    "addToCart": "Sepete ekle",
+    "added": "Eklendi",
+    "inStock": "Stokta",
+    "outOfStock": "Stokta yok",
+    "quoteOnly": "Fiyat için iletişime geçin",
+    "requestQuote": "Teklif iste",
+    "new": "Yeni",
+    "sale": "İndirim",
+    "sku": "Stok kodu",
+    "brand": "Marka",
+    "category": "Kategori",
+    "description": "Açıklama",
+    "specifications": "Teknik özellikler",
+    "related": "Bunlar da ilginizi çekebilir",
+    "quantity": "Adet",
+    "buyWhatsapp": "WhatsApp'tan sor",
+    "emptyCategory": "Bu kategoride henüz ürün yok.",
+    "youSave": "Kazancınız",
+    "save": "Tasarruf",
+    "trustWarranty": "Üretici garantisi",
+    "trustInstall": "Profesyonel kurulum",
+    "trustDelivery": "KKTC genelinde hızlı teslimat",
+    "trustPay": "Kapıda ödeme veya banka havalesi",
+    "installTitle": "Kurulumu mühendislerimiz yapsın ister misiniz?",
+    "installText": "Ücretsiz keşif randevusu alın, sabit fiyatlı kurulum teklifi alın. Sertifikalı ekibimiz tedarikten devreye almaya kadar her şeyi yapar.",
+    "installCta": "Ücretsiz keşif randevusu al",
+    "callUs": "Bizi arayın",
+    "askExpert": "WhatsApp'ta uzmana sorun",
+    "totalFor": "Toplam",
+    "highlights": "Öne çıkan özellikler",
+    "whyTitle": "Neden Matek Energy?",
+    "why1Title": "Orijinal ürünler",
+    "why1Text": "Güvenilir üreticilerden garantili markalı ekipmanlar.",
+    "why2Title": "Uzman mühendis kadrosu",
+    "why2Text": "Satın almadan önce danışmanlık, kurulumdan sonra da destek.",
+    "why3Title": "Kolay sipariş",
+    "why3Text": "Online, WhatsApp veya telefonla sipariş verin. Hızlıca onaylayıp teslim ederiz.",
+    "howTitle": "Sipariş nasıl çalışır?",
+    "how1": "Sepete ekleyin veya WhatsApp'tan sipariş verin",
+    "how2": "Siparişinizi ve teslimat zamanını onaylarız",
+    "how3": "Teslim alın, kapıda veya havale ile ödeyin",
+    "orderNow": "Hemen sipariş ver",
+    "stickyAdd": "Sepete ekle",
+    "availability": "Stok durumu",
+    "freeShippingNote": "KKTC genelinde teslimat ve kurulum mevcuttur"
+  },
+  "cart": {
+    "title": "Alışveriş sepeti",
+    "empty": "Sepetiniz boş.",
+    "continue": "Alışverişe devam et",
+    "product": "Ürün",
+    "price": "Fiyat",
+    "total": "Toplam",
+    "remove": "Kaldır",
+    "subtotal": "Ara toplam",
+    "mixedNote": "Sepetinizde farklı para birimlerinde ürünler var. Toplamlar para birimine göre gösterilir.",
+    "checkout": "Ödemeye geç",
+    "clear": "Sepeti temizle"
+  },
+  "checkout": {
+    "title": "Ödeme",
+    "details": "Bilgileriniz",
+    "fullName": "Ad soyad",
+    "phone": "Telefon numarası",
+    "email": "E-posta (isteğe bağlı)",
+    "city": "Şehir",
+    "address": "Teslimat adresi",
+    "notes": "Sipariş notu (isteğe bağlı)",
+    "payment": "Ödeme yöntemi",
+    "cod": "Kapıda ödeme",
+    "codText": "Siparişiniz teslim edildiğinde veya kurulduğunda nakit ödeyin.",
+    "bank": "Banka havalesi (IBAN)",
+    "bankText": "Toplam tutarı banka hesabımıza havale edin. Ödeme alındıktan sonra siparişinizi hazırlarız.",
+    "bankDetails": "Banka bilgileri",
+    "bankName": "Banka",
+    "accountHolder": "Hesap sahibi",
+    "iban": "IBAN",
+    "bankPending": "Siparişinizi onayladığımızda banka bilgileri size iletilecektir.",
+    "summary": "Sipariş özeti",
+    "placeOrder": "Siparişi ver",
+    "orderWhatsapp": "WhatsApp ile sipariş ver",
+    "whatsappHint": "Sipariş özetiniz hazır olarak WhatsApp açılacaktır.",
+    "placing": "Sipariş veriliyor…",
+    "required": "Lütfen adınızı, telefon numaranızı ve adresinizi girin.",
+    "failed": "Siparişiniz oluşturulamadı. Lütfen tekrar deneyin.",
+    "successTitle": "Siparişiniz için teşekkürler!",
+    "successText": "Siparişiniz alındı. Ekibimiz onaylamak için kısa süre içinde sizinle iletişime geçecek.",
+    "orderNumber": "Sipariş numarası",
+    "transferNote": "Lütfen toplam tutarı aşağıdaki hesaba sipariş numaranızı belirterek havale edin.",
+    "whatsappAgain": "Siparişi WhatsApp'tan gönder"
+  },
+  "services": {
+    "title": "Hizmetlerimiz",
+    "subtitle": "Enerji sistemleri için mühendislik, kurulum ve bakım",
+    "otherServices": "Diğer hizmetler",
+    "requestService": "Bu hizmeti talep et",
+    "highlights": [
+      {
+        "title": "Ücretsiz sistem analizi isteyin",
+        "text": "Mülkünüzü ve enerji ihtiyaçlarınızı anlatın, size doğru sistemi önerelim."
+      },
+      {
+        "title": "Saha keşfi ve sistem tasarımı",
+        "text": "Mühendislerimiz yerinde ölçüm yapar ve binanıza özel çözüm tasarlar."
+      },
+      {
+        "title": "Kurulum ve bakım",
+        "text": "Profesyonel kurulum, devreye alma ve uzun vadeli bakım desteği."
+      }
+    ],
+    "from": "Başlangıç",
+    "quoteOnly": "Ücretsiz teklif",
+    "duration": "Tahmini süre",
+    "included": "Neler dahil",
+    "process": "Nasıl çalışır",
+    "faqTitle": "Sık sorulan sorular",
+    "relatedProducts": "İlgili ürünleri inceleyin",
+    "gallery": "Çalışmalarımız",
+    "bookTitle": "Bu hizmeti talep edin",
+    "bookSubtitle": "Bilgilerinizi bırakın, birkaç saat içinde dönüş yapalım.",
+    "preferredDate": "Tercih edilen tarih (opsiyonel)",
+    "bookCta": "Hizmeti talep et",
+    "bookNote": "Ücretsiz ve taahhütsüz. Telefon veya WhatsApp ile onaylarız.",
+    "whatsappCta": "WhatsApp'tan sipariş ver",
+    "callCta": "Hemen ara",
+    "ctaTitle": "Başlamaya hazır mısınız?",
+    "ctaText": "İhtiyacınızı anlatın, mühendislerimiz sabit fiyatlı teklif hazırlasın.",
+    "viewAll": "Tüm hizmetleri gör",
+    "orderService": "Teklif al",
+    "freeSurvey": "Ücretsiz keşif",
+    "certified": "Sertifikalı mühendisler",
+    "warranty": "İşçilik garantisi",
+    "fastResponse": "Saatler içinde dönüş",
+    "bookingSent": "Teşekkürler! Talebiniz alındı, kısa sürede sizinle iletişime geçeceğiz.",
+    "waMessage": "Merhaba Matek Energy, şu hizmeti talep etmek istiyorum:"
+  },
+  "projects": {
+    "title": "Projeler",
+    "subtitle": "Matek Energy tarafından tamamlanan kurulumlar",
+    "gallery": "Proje galerisi",
+    "back": "Tüm projeler"
+  },
+  "about": {
+    "title": "Matek Energy hakkında",
+    "subtitle": "Her sistemin arkasında mühendislik uzmanlığı ve güvenilir markalar",
+    "tabs": [
+      {
+        "title": "Yaklaşımımız",
+        "text": "Mülkünüzden, tüketiminizden ve hedeflerinizden yola çıkarız. Her sistem gerçek ihtiyaçlara göre tasarlanır, güvenilir üreticilerden temin edilir ve yüksek standartta kurulur."
+      },
+      {
+        "title": "Misyonumuz",
+        "text": "Dürüst tavsiye ve güvenilir hizmetle Kuzey Kıbrıs'taki her ev ve işletmeye verimli, temiz ve uygun fiyatlı enerjiyi ulaştırmak."
+      },
+      {
+        "title": "Neden bizi seçiyorlar",
+        "text": "Anahtar teslim güneş ve enerji çözümleri, düşük işletme maliyetiyle finansal verimlilik, sertifikalı uzmanlar ve hızlı satış sonrası destek."
+      }
+    ],
+    "howTitle": "Nasıl çalışır",
+    "steps": [
+      {
+        "title": "Talebinizi iletin",
+        "text": "Bize ulaşın veya randevu alın ve projenizi anlatın."
+      },
+      {
+        "title": "İnceleme ve analiz",
+        "text": "Sahayı ziyaret eder, ihtiyaçlarınızı analiz eder ve teklif hazırlarız."
+      },
+      {
+        "title": "Uygulama",
+        "text": "Teknisyenlerimiz sistemi kurar ve devreye alır."
+      },
+      {
+        "title": "Teslim",
+        "text": "Tamamlanan sistemi teslim eder ve desteğe devam ederiz."
+      }
+    ],
+    "founder": "Kurucunun 10 yıllık deneyimi",
+    "established": "Kuruluşumuzun 3. yılı"
+  },
+  "contact": {
+    "title": "Bize ulaşın",
+    "subtitle": "Projenizi anlatın — genellikle bir iş günü içinde yanıt veriyoruz.",
+    "address": "Adres",
+    "hours": "Çalışma saatleri",
+    "callUs": "Bizi arayın",
+    "writeUs": "E-posta gönderin"
+  },
+  "appointment": {
+    "title": "Randevu alın",
+    "subtitle": "Bir hizmet seçin, uygun bir zamanı onaylayalım.",
+    "selectService": "Hizmet seçin",
+    "submit": "Randevu talep et",
+    "items": [
+      "Danışmanlık",
+      "Güneş Paneli Kurulumu",
+      "Klima Kurulumu",
+      "Su Isıtıcı Kurulumu",
+      "Isıtma Sistemi Kurulumu",
+      "Güneş Sistemi Onarımı",
+      "Güneş Sistemi Bakımı",
+      "İnvertör ve Elektrik Kurulumu",
+      "Enerji Depolama Sistemleri",
+      "Bakım ve Arıza Tespiti",
+      "Özel Güneş Çözümleri"
+    ]
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Enerji sistemleri hakkında haberler, rehberler ve ipuçları",
+    "empty": "Henüz yazı yok.",
+    "related": "İlgili yazılar",
+    "share": "Paylaş"
+  },
+  "team": {
+    "title": "Ekibimiz",
+    "subtitle": "Matek Energy'nin arkasındaki mühendis ve teknisyenler"
+  },
+  "footer": {
+    "about": "Isıtma, soğutma, sıcak su ve yenilenebilir enerji sistemlerinde uzman.",
+    "shop": "Mağaza",
+    "company": "Şirket",
+    "contact": "İletişim",
+    "privacy": "Gizlilik politikası",
+    "terms": "Şartlar ve koşullar",
+    "rights": "Tüm hakları saklıdır.",
+    "paymentTitle": "Ödeme seçenekleri",
+    "payments": "Kapıda ödeme · Banka havalesi"
+  },
+  "legal": {
+    "privacyTitle": "Gizlilik politikası",
+    "privacyBody": "Yalnızca sipariş verirken, randevu alırken veya bize ulaşırken verdiğiniz bilgileri (ad, telefon, e-posta, adres gibi) toplarız. Bu bilgileri talebinizi işlemek, ürün ve hizmetleri teslim etmek ve sizinle iletişim kurmak için kullanırız. Kişisel verilerinizi satmayız. Bize ulaşarak verilerinize erişim, düzeltme veya silme talebinde bulunabilirsiniz.",
+    "termsTitle": "Şartlar ve koşullar",
+    "termsBody": "Bu web sitesi üzerinden verilen siparişler ekibimiz tarafından telefon veya WhatsApp ile onaylanır. Fiyatlar her ürün için belirlenen para biriminde gösterilir ve önceden haber verilmeden değişebilir. Stok, teslimat ve kurulum takvimi sipariş onayı sırasında netleştirilir. Ödeme kapıda ödeme veya banka havalesi ile yapılır. Garanti ve iade ile ilgili sorular için lütfen bize ulaşın."
+  },
+  "admin": {
+    "placeholder": "Yönetici"
+  }
+}

@@ -1,0 +1,255 @@
+@import "tailwindcss";
+
+/* ─── Matek Energy brand tokens ──────────────────────────────────────────── */
+:root {
+  --background: #f6f8f7;
+  --background-alt: #e8efeb;
+  --surface: #ffffff;
+  --surface-alt: #f0f4f2;
+  --foreground: #1c2b36;
+  --foreground-soft: #2b4a60;
+  --muted: #5d6b75;
+  --muted-soft: #8793a0;
+  --border: #dde5e1;
+  --border-strong: #c7d3cd;
+
+  /* Brand green (kept under the legacy `gold` token names so shared admin UI
+     picks up the brand automatically). */
+  --gold: #5d8b73;
+  --gold-strong: #497660;
+  --gold-soft: #cfe0d6;
+
+  --navy: #2b4a60;
+  --navy-deep: #16222c;
+  --accent: #f2a900;
+  --danger: #d6372f;
+
+  --beige: #e8efeb;
+  --ivory: #f6f8f7;
+  --ink: #ffffff;
+
+  --shadow-soft: 0 1px 2px rgba(28, 43, 54, 0.04),
+    0 8px 28px rgba(28, 43, 54, 0.07);
+  --shadow-lift: 0 18px 44px -12px rgba(28, 43, 54, 0.22);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-alt: var(--background-alt);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-foreground: var(--foreground);
+  --color-foreground-soft: var(--foreground-soft);
+  --color-muted: var(--muted);
+  --color-muted-soft: var(--muted-soft);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-gold: var(--gold);
+  --color-gold-strong: var(--gold-strong);
+  --color-gold-soft: var(--gold-soft);
+  --color-brand: var(--gold);
+  --color-brand-strong: var(--gold-strong);
+  --color-brand-soft: var(--gold-soft);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-accent: var(--accent);
+  --color-danger: var(--danger);
+
+  --color-beige: var(--beige);
+  --color-ivory: var(--ivory);
+  --color-ink: var(--ink);
+
+  --font-display: var(--font-display-face), "Helvetica Neue", Arial, sans-serif;
+  --font-body: var(--font-body-face), system-ui, -apple-system, sans-serif;
+  --font-label: var(--font-body-face), system-ui, sans-serif;
+  --font-serif: var(--font-display-face), system-ui, sans-serif;
+
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+
+  --shadow-soft: var(--shadow-soft);
+  --shadow-lift: var(--shadow-lift);
+
+  --tracking-luxe: 0.08em;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: inherit;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .container-luxe {
+    width: 100%;
+    max-width: 1320px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 1024px) {
+    .container-luxe {
+      padding-inline: 2rem;
+    }
+  }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-brand);
+  }
+
+  .hover-lift {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+  }
+
+  .scrim {
+    background: linear-gradient(
+      to top,
+      rgba(22, 34, 44, 0.78),
+      rgba(22, 34, 44, 0.05) 70%
+    );
+  }
+
+  .rich-text {
+    color: var(--color-foreground-soft);
+    line-height: 1.8;
+  }
+  .rich-text h2 {
+    font-size: 1.6rem;
+    margin: 2rem 0 0.75rem;
+  }
+  .rich-text h3 {
+    font-size: 1.25rem;
+    margin: 1.5rem 0 0.5rem;
+  }
+  .rich-text p {
+    margin: 0 0 1rem;
+  }
+  .rich-text ul,
+  .rich-text ol {
+    margin: 0 0 1rem;
+    padding-inline-start: 1.4rem;
+  }
+  .rich-text ul {
+    list-style: disc;
+  }
+  .rich-text ol {
+    list-style: decimal;
+  }
+  .rich-text li {
+    margin-bottom: 0.35rem;
+  }
+  .rich-text a {
+    color: var(--color-brand);
+    text-decoration: underline;
+  }
+  .rich-text blockquote {
+    border-inline-start: 3px solid var(--color-brand);
+    padding-inline-start: 1rem;
+    margin: 1.25rem 0;
+    font-style: italic;
+  }
+  .rich-text strong {
+    color: var(--color-foreground);
+  }
+  .rich-text :where(h2, h3):first-child {
+    margin-top: 0;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s ease;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.7s ease both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-up {
+      animation: none;
+    }
+  }
+}
