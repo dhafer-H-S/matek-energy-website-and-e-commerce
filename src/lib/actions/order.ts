@@ -106,7 +106,7 @@ export async function placeOrder(input: PlaceOrderInput): Promise<PlaceOrderResu
     return { ok: false, error: "db" };
   }
 
-  const settings = await getSettings();
+  const settings = await getSettings(data.locale);
   return {
     ok: true,
     order,

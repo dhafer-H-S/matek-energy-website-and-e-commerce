@@ -149,6 +149,8 @@ export const bannerTranslations = sqliteTable(
       .notNull()
       .references(() => banners.id, { onDelete: "cascade" }),
     locale: text("locale").notNull(),
+    image: text("image"),
+    mobileImage: text("mobile_image"),
     eyebrow: text("eyebrow"),
     title: text("title"),
     subtitle: text("subtitle"),
@@ -378,6 +380,18 @@ export const enquiries = sqliteTable(
   (t) => [index("enquiry_status_idx").on(t.status, t.createdAt)],
 );
 
+export const siteContent = sqliteTable(
+  "site_content",
+  {
+    id: id(),
+    section: text("section").notNull(),
+    locale: text("locale").notNull(),
+    content: text("content", { mode: "json" }).$type<Record<string, unknown>>().notNull(),
+    updatedAt: updatedAt(),
+  },
+  (t) => [uniqueIndex("site_content_section_locale").on(t.section, t.locale)],
+);
+
 /* ─── Global settings (singleton) ────────────────────────────────────────── */
 export const settings = sqliteTable("settings", {
   id: text("id").primaryKey().default("global"),
@@ -389,11 +403,14 @@ export const settings = sqliteTable("settings", {
   contactPhone: text("contact_phone"),
   whatsapp: text("whatsapp"),
   addressText: text("address_text"),
+  addressTextTr: text("address_text_tr"),
   openingHours: text("opening_hours"),
+  openingHoursTr: text("opening_hours_tr"),
   bankName: text("bank_name"),
   bankAccountHolder: text("bank_account_holder"),
   bankIban: text("bank_iban"),
   bankNotes: text("bank_notes"),
+  bankNotesTr: text("bank_notes_tr"),
   social: text("social", { mode: "json" }).$type<{
     facebook?: string;
     instagram?: string;

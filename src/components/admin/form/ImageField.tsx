@@ -5,6 +5,24 @@ import { ImagePlus, X, Plus } from "lucide-react";
 import { MediaPicker, type PickedItem } from "../MediaPicker";
 import { FieldShell } from "./fields";
 import { cn } from "@/lib/utils";
+import { FORM_LOCALES, useActiveLocale, type TranslatedValues } from "./LangFields";
+
+export function TranslatedImageField({
+  label,
+  name,
+  values,
+}: {
+  label: string;
+  name: string;
+  values?: TranslatedValues;
+}) {
+  const active = useActiveLocale();
+  return FORM_LOCALES.map((locale) => (
+    <div key={locale.code} className={cn(active !== locale.code && "hidden")}>
+      <ImageField label={`${label} (${locale.label})`} name={`${name}_${locale.code}`} defaultValue={values?.[locale.code]} />
+    </div>
+  ));
+}
 
 export function ImageField({
   label,
@@ -13,6 +31,7 @@ export function ImageField({
   accept = "image",
   hint,
   required,
+  onChange,
 }: {
   label: string;
   name: string;
@@ -20,9 +39,14 @@ export function ImageField({
   accept?: "image" | "video";
   hint?: string;
   required?: boolean;
+  onChange?: (url: string) => void;
 }) {
   const [url, setUrl] = useState(defaultValue ?? "");
   const [open, setOpen] = useState(false);
+  function updateUrl(value: string) {
+    setUrl(value);
+    onChange?.(value);
+  }
 
   return (
     <FieldShell label={label} hint={hint} required={required}>
@@ -46,7 +70,7 @@ export function ImageField({
             </button>
             <button
               type="button"
-              onClick={() => setUrl("")}
+              onClick={() => updateUrl("")}
               aria-label="Remove"
               className="flex h-7 w-7 items-center justify-center rounded-xs bg-ink/70 text-white hover:bg-red-500"
             >
@@ -69,7 +93,7 @@ export function ImageField({
         onClose={() => setOpen(false)}
         multiple={false}
         accept={accept}
-        onSelect={(items: PickedItem[]) => setUrl(items[0]?.url ?? "")}
+        onSelect={(items: PickedItem[]) => updateUrl(items[0]?.url ?? "")}
       />
     </FieldShell>
   );

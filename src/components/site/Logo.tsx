@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface LogoProps {
   className?: string;
@@ -18,15 +19,17 @@ export function Logo({
   variant = "dark",
   href = "/",
 }: LogoProps) {
+  const t = useTranslations("media");
+  const common = useTranslations("common");
   return (
     <Link
       href={href}
-      aria-label="Matek Energy — home"
+      aria-label={common("brand")}
       className={cn("inline-flex items-center", className)}
     >
       <Image
-        src={variant === "light" ? "/brand/logo-light.png" : "/brand/logo.png"}
-        alt="Matek Energy"
+        src={t(variant === "light" ? "logoLight" : "logo")}
+        alt={common("brand")}
         width={967}
         height={372}
         priority={priority}

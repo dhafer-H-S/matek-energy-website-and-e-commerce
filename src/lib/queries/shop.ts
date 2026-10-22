@@ -248,11 +248,12 @@ export async function listBanners(
   })) as (Banner & { translations: BannerTranslation[] })[];
   return rows.map((r) => {
     const t = pickTranslation(r.translations, locale);
+    const localizedMedia = r.translations.find((tr) => tr.locale === locale);
     return {
       id: r.id,
       placement: r.placement,
-      image: r.image,
-      mobileImage: r.mobileImage,
+      image: localizedMedia?.image ?? r.image,
+      mobileImage: localizedMedia?.mobileImage ?? (localizedMedia?.image ? null : r.mobileImage),
       linkUrl: r.linkUrl,
       eyebrow: t?.eyebrow ?? null,
       title: t?.title ?? null,

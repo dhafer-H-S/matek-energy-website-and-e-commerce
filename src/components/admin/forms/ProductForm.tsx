@@ -24,7 +24,7 @@ export function ProductForm({
   );
   return (
     <form action={action} className="flex flex-col gap-6">
-      <FormSection title="Content">
+      <FormSection title="English & Turkish product content">
         <LangTabs>
           <TranslatedField label="Product name" name="name" required values={trText(translations, "name")} />
           <TranslatedField
@@ -44,6 +44,13 @@ export function ProductForm({
           />
         </LangTabs>
         <p className="text-xs text-muted">Specifications: one per line as “Label: Value”.</p>
+      </FormSection>
+
+      <FormSection title="Search engine details">
+        <LangTabs>
+          <TranslatedField label="SEO title" name="seoTitle" values={trText(translations, "seoTitle")} />
+          <TranslatedField label="SEO description" name="seoDescription" type="textarea" rows={3} values={trText(translations, "seoDescription")} />
+        </LangTabs>
       </FormSection>
 
       <FormSection title="Category & pricing">

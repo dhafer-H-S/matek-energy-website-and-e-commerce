@@ -40,6 +40,14 @@ export async function saveService(
 
   const titleEn = str(fd, "title_en");
   if (!titleEn) return { error: "An English title is required." };
+  const priceFrom = num(fd, "priceFrom");
+  if (str(fd, "priceFrom") && (priceFrom === null || priceFrom < 0)) {
+    return { error: "Enter a valid starting price of zero or more, or leave it empty for a free quote." };
+  }
+  const currency = str(fd, "currency");
+  if (currency !== "TRY" && currency !== "EUR") {
+    return { error: "Choose EUR or TRY as the service currency." };
+  }
 
   const baseSlug = toSlug(str(fd, "slug") || titleEn);
   const slug = await uniqueSlug(baseSlug, async (s) => {
@@ -50,13 +58,13 @@ export async function saveService(
     return !!row && row.id !== id;
   });
 
-  const values = {
+  const values: typeof services.$inferInsert = {
     slug,
     icon: strOrNull(fd, "icon"),
     image: strOrNull(fd, "image"),
     gallery: jsonArray(fd, "gallery"),
-    priceFrom: num(fd, "priceFrom"),
-    currency: str(fd, "currency") === "TRY" ? ("TRY" as const) : ("EUR" as const),
+    priceFrom,
+    currency,
     categoryId: strOrNull(fd, "categoryId"),
     published: bool(fd, "published"),
     sortOrder: int(fd, "sortOrder") ?? 0,

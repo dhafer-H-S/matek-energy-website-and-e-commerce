@@ -38,7 +38,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
   const related = cat ? await listProducts(locale, { categorySlug: cat.slug, limit: 4 }) : [];
   const wa = waLink(settings.whatsapp, `${t("waMessage")} ${s.title}`);
   const tel = `tel:${(settings.contactPhone ?? "").replace(/\s+/g, "")}`;
-  const price = s.priceFrom ? `${t("from")} ${formatMoney(s.priceFrom, s.currency, locale)}` : t("quoteOnly");
+  const price = s.priceFrom !== null ? `${t("from")} ${formatMoney(s.priceFrom, s.currency, locale)}` : t("quoteOnly");
   const trust = [
     { Icon: ClipboardCheck, label: t("freeSurvey") },
     { Icon: UserCheck, label: t("certified") },
@@ -138,7 +138,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           ) : null}
         </div>
 
-        <aside id="book" className="scroll-mt-32 lg:sticky lg:top-28 lg:self-start">
+        <aside id="book" className="scroll-mt-44 lg:sticky lg:top-44 lg:self-start">
           <div className="rounded-3xl border border-border bg-white p-6 shadow-lg">
             <p className="text-sm text-muted">{price}</p>
             <h2 className="font-display text-2xl font-semibold text-navy">{t("bookTitle")}</h2>
@@ -175,7 +175,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand"><ServiceIcon name={o.icon} className="h-6 w-6" /></span>
                 <span className="min-w-0 flex-1">
                   <span className="block font-semibold text-navy">{o.title}</span>
-                  <span className="block text-xs text-muted">{o.priceFrom ? `${t("from")} ${formatMoney(o.priceFrom, o.currency, locale)}` : t("quoteOnly")}</span>
+                  <span className="block text-xs text-muted">{o.priceFrom !== null ? `${t("from")} ${formatMoney(o.priceFrom, o.currency, locale)}` : t("quoteOnly")}</span>
                 </span>
                 <ArrowRight className="h-5 w-5 text-brand transition-transform group-hover:translate-x-1" />
               </Link>
@@ -184,7 +184,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
         </div>
       </section>
 
-      <div className="fixed inset-x-0 bottom-0 z-40 flex items-center gap-3 border-t border-border bg-white/95 px-4 py-3 shadow-[0_-8px_24px_rgba(0,0,0,0.08)] backdrop-blur lg:hidden">
+      <div data-mobile-action-bar className="fixed inset-x-0 bottom-0 z-40 flex items-center gap-3 border-t border-border bg-white/95 px-4 py-3 shadow-[0_-8px_24px_rgba(0,0,0,0.08)] backdrop-blur lg:hidden">
         <div className="min-w-0 flex-1">
           <p className="truncate text-xs text-muted">{s.title}</p>
           <p className="font-display text-lg font-semibold text-navy">{price}</p>

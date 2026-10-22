@@ -29,6 +29,7 @@ export default async function ProductPage({ params }: { params: Promise<{ locale
   const p = await getProductBySlug(slug, locale);
   if (!p) notFound();
   const t = await getTranslations("shop");
+  const media = await getTranslations("media");
   const s = await getSettings();
   const related = await listProducts(locale, { categorySlug: p.categorySlug ?? undefined, excludeId: p.id, limit: 4 });
   const images = [...new Set([p.image, ...p.gallery].filter(Boolean) as string[])];
@@ -128,7 +129,7 @@ export default async function ProductPage({ params }: { params: Promise<{ locale
       <section className="container-luxe pb-12">
         <div className="relative overflow-hidden rounded-3xl bg-navy-deep text-white">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/seed/pexels/8853504.jpg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-30" />
+          <img src={media("productInstallation")} alt="" className="absolute inset-0 h-full w-full object-cover opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/85 to-transparent" />
           <div className="relative grid gap-6 p-8 sm:p-12 lg:grid-cols-[1.4fr_1fr] lg:items-center">
             <div>

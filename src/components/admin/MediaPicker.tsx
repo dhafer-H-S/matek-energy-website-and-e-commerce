@@ -89,8 +89,7 @@ export function MediaPicker({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tab]);
 
-  async function runPexels(e?: React.FormEvent) {
-    e?.preventDefault();
+  async function runPexels() {
     if (!query.trim()) return;
     setPexLoading(true);
     try {
@@ -220,7 +219,15 @@ export function MediaPicker({
         <div className="flex-1 overflow-y-auto p-6">
           {tab === "pexels" && (
             <div>
-              <form onSubmit={runPexels} className="mb-5 flex gap-2">
+              <div
+                className="mb-5 flex gap-2"
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") {
+                    event.preventDefault();
+                    if (!pexLoading) void runPexels();
+                  }
+                }}
+              >
                 <div className="relative flex-1">
                   <Search className="absolute inset-s-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
                   <input
@@ -231,13 +238,14 @@ export function MediaPicker({
                   />
                 </div>
                 <button
-                  type="submit"
+                  type="button"
+                  onClick={() => void runPexels()}
                   disabled={pexLoading}
                   className="rounded-sm bg-foreground px-5 py-2.5 text-xs font-semibold uppercase tracking-luxe text-background hover:bg-gold hover:text-ink disabled:opacity-60"
                 >
                   {pexLoading ? "Searching…" : "Search"}
                 </button>
-              </form>
+              </div>
               {pexLoading ? (
                 <Loader pexels />
               ) : pexels.length === 0 ? (

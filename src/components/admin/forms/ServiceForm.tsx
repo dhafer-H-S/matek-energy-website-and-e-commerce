@@ -82,6 +82,14 @@ export function ServiceForm({
         </LangTabs>
       </FormSection>
 
+      <FormSection title="Service pricing">
+        <p className="text-sm text-muted">Set a starting price in euros or Turkish lira, or leave the amount empty to show “Free quote” with no starting price. Changes appear on the service page, homepage and Services menu.</p>
+        <div className="grid gap-5 sm:grid-cols-2">
+          <TextField label="Starting price (optional)" name="priceFrom" type="number" step="0.01" min="0" defaultValue={service?.priceFrom ?? ""} hint="Example: 1800 displays “From €1,800” in EUR. Clear this field for no starting price." />
+          <SelectField label="Currency" name="currency" defaultValue={service?.currency ?? "EUR"} options={[{ value: "EUR", label: "Euro — EUR (€)" }, { value: "TRY", label: "Turkish lira — TRY (₺)" }]} />
+        </div>
+      </FormSection>
+
       <FormSection title="Sales page details">
         <LangTabs>
           <TranslatedField label="Typical duration (e.g. 1–2 days)" name="duration" values={trText(translations, "duration")} />
@@ -89,12 +97,17 @@ export function ServiceForm({
           <TranslatedField label="Process steps (one per line: Title | Description)" name="steps" type="textarea" rows={6} values={listText(translations, "steps")} />
           <TranslatedField label="FAQ (one per line: Question | Answer)" name="faqs" type="textarea" rows={6} values={listText(translations, "faqs")} />
         </LangTabs>
-        <div className="grid gap-5 sm:grid-cols-3">
-          <TextField label="Starting price (optional)" name="priceFrom" type="number" step="0.01" min="0" defaultValue={service?.priceFrom ?? ""} hint="Shown as “From …”. Leave empty for quote-only." />
-          <SelectField label="Currency" name="currency" defaultValue={service?.currency ?? "EUR"} options={[{ value: "EUR", label: "EUR (€)" }, { value: "TRY", label: "TRY (₺)" }]} />
+        <div className="grid gap-5">
           <SelectField label="Related shop category" name="categoryId" defaultValue={service?.categoryId ?? ""} options={[{ value: "", label: "None" }, ...categories]} />
         </div>
         <GalleryField label="Gallery" name="gallery" defaultValue={service?.gallery} />
+      </FormSection>
+
+      <FormSection title="Search engine details">
+        <LangTabs>
+          <TranslatedField label="SEO title (optional)" name="seoTitle" values={trText(translations, "seoTitle")} />
+          <TranslatedField label="SEO description (optional)" name="seoDescription" type="textarea" rows={3} values={trText(translations, "seoDescription")} />
+        </LangTabs>
       </FormSection>
 
       <FormSection title="Appearance">

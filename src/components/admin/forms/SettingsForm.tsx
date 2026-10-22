@@ -9,9 +9,9 @@ import {
 import {
   FormSection,
   TextField,
-  TextareaField,
   SubmitButton,
 } from "@/components/admin/form/fields";
+import { LangTabs, TranslatedField } from "@/components/admin/form/LangFields";
 import type { Settings } from "@/lib/db/schema";
 
 export function SettingsForm({ settings }: { settings: Settings }) {
@@ -68,19 +68,11 @@ export function SettingsForm({ settings }: { settings: Settings }) {
             placeholder="+905338697973"
             defaultValue={settings.whatsapp ?? undefined}
           />
-          <TextField
-            label="Opening hours"
-            name="openingHours"
-            placeholder="Mon–Fri, 9am–6pm"
-            defaultValue={settings.openingHours ?? undefined}
-          />
         </div>
-        <TextareaField
-          label="Address"
-          name="addressText"
-          rows={3}
-          defaultValue={settings.addressText ?? undefined}
-        />
+        <LangTabs hint="Write the address and opening hours in English and Turkish. Save once for both languages. Empty Turkish fields use the English version.">
+          <TranslatedField label="Opening hours" name="openingHours" values={{ en: settings.openingHours, tr: settings.openingHoursTr }} />
+          <TranslatedField label="Address" name="addressText" type="textarea" rows={3} values={{ en: settings.addressText, tr: settings.addressTextTr }} />
+        </LangTabs>
       </FormSection>
 
       <FormSection title="Social Media">
@@ -104,7 +96,9 @@ export function SettingsForm({ settings }: { settings: Settings }) {
           <TextField label="Account holder" name="bankAccountHolder" defaultValue={settings.bankAccountHolder ?? undefined} />
           <TextField label="IBAN" name="bankIban" defaultValue={settings.bankIban ?? undefined} />
         </div>
-        <TextareaField label="Payment notes" name="bankNotes" rows={2} defaultValue={settings.bankNotes ?? undefined} />
+        <LangTabs hint="Enter payment instructions in English and Turkish. The checkout and order confirmation use the visitor's language; empty Turkish notes use English. Bank details above are shared.">
+          <TranslatedField label="Payment notes" name="bankNotes" type="textarea" rows={2} values={{ en: settings.bankNotes, tr: settings.bankNotesTr }} />
+        </LangTabs>
       </FormSection>
 
       <div className="flex items-center gap-4">

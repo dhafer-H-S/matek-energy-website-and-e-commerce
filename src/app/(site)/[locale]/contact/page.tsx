@@ -29,7 +29,7 @@ export default async function ContactPage({
   const { subject } = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations("contact");
-  const s = await getSettings();
+  const s = await getSettings(locale);
 
   const items = [
     { icon: MapPin, label: t("address"), value: s.addressText },

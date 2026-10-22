@@ -7,13 +7,14 @@ export async function Navbar({ locale }: { locale: string }) {
   const [categories, services, settings] = await Promise.all([
     listCategories(locale),
     listServices(locale),
-    getSettings(),
+    getSettings(locale),
   ]);
   return (
     <HeaderClient
       categories={categories.map((c) => ({ slug: c.slug, name: c.name }))}
       services={services.map((s) => ({ slug: s.slug, title: s.title, icon: s.icon, description: s.description, priceFrom: s.priceFrom, currency: s.currency }))}
       phone={settings.contactPhone}
+      openingHours={settings.openingHours}
     />
   );
 }

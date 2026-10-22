@@ -57,10 +57,12 @@ export async function saveBanner(
     const subtitle = strOrNull(fd, `subtitle_${locale}`);
     const eyebrow = strOrNull(fd, `eyebrow_${locale}`);
     const ctaLabel = strOrNull(fd, `ctaLabel_${locale}`);
-    if (!title && !subtitle && !eyebrow && !ctaLabel && locale !== "en") continue;
+    const image = strOrNull(fd, `image_${locale}`);
+    const mobileImage = strOrNull(fd, `mobileImage_${locale}`);
+    if (!title && !subtitle && !eyebrow && !ctaLabel && !image && !mobileImage && locale !== "en") continue;
     await db
       .insert(bannerTranslations)
-      .values({ bannerId, locale, title, subtitle, eyebrow, ctaLabel });
+      .values({ bannerId, locale, title, subtitle, eyebrow, ctaLabel, image, mobileImage });
   }
 
   revalidatePath("/", "layout");

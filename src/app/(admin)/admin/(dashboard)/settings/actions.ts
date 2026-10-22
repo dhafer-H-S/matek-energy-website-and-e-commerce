@@ -36,11 +36,14 @@ export async function saveSettings(
     bankName: strOrNull(fd, "bankName"),
     bankAccountHolder: strOrNull(fd, "bankAccountHolder"),
     bankIban: strOrNull(fd, "bankIban"),
-    bankNotes: strOrNull(fd, "bankNotes"),
+    bankNotes: strOrNull(fd, "bankNotes_en"),
+    bankNotesTr: strOrNull(fd, "bankNotes_tr"),
     contactPhone: strOrNull(fd, "contactPhone"),
     whatsapp: strOrNull(fd, "whatsapp"),
-    addressText: strOrNull(fd, "addressText"),
-    openingHours: strOrNull(fd, "openingHours"),
+    addressText: strOrNull(fd, "addressText_en"),
+    addressTextTr: strOrNull(fd, "addressText_tr"),
+    openingHours: strOrNull(fd, "openingHours_en"),
+    openingHoursTr: strOrNull(fd, "openingHours_tr"),
     social,
   };
 

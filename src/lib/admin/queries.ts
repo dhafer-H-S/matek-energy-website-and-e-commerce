@@ -227,6 +227,8 @@ export async function listServicesForAdmin() {
       published: services.published,
       sortOrder: services.sortOrder,
       title: serviceTranslations.title,
+      priceFrom: services.priceFrom,
+      currency: services.currency,
     })
     .from(services)
     .leftJoin(
@@ -269,4 +271,3 @@ export async function listTeamForAdmin() {
     )
     .orderBy(teamMembers.sortOrder);
 }
-

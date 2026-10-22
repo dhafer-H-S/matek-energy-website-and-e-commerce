@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { BannerView } from "@/lib/queries/shop";
 
 export function HeroSlider({ banners }: { banners: BannerView[] }) {
+  const t = useTranslations("common");
   const [i, setI] = useState(0);
   const n = banners.length;
 
@@ -28,7 +30,7 @@ export function HeroSlider({ banners }: { banners: BannerView[] }) {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={b.image} alt={b.title ?? ""} className="absolute inset-0 h-full w-full object-cover" />
               </picture>
-              {b.title || b.subtitle || b.eyebrow ? (
+              {b.title || b.subtitle || b.eyebrow || b.ctaLabel ? (
                 <>
                   <div className="absolute inset-0 bg-linear-to-r from-navy-deep/80 via-navy-deep/40 to-transparent" />
                   <div className="container-luxe relative flex h-full flex-col justify-center text-white">
@@ -45,7 +47,7 @@ export function HeroSlider({ banners }: { banners: BannerView[] }) {
           );
           const cls = `absolute inset-0 transition-opacity duration-700 ${idx === i ? "opacity-100" : "pointer-events-none opacity-0"}`;
           return b.linkUrl ? (
-            <Link key={b.id} href={b.linkUrl} className={cls}>{content}</Link>
+            <Link key={b.id} href={b.linkUrl} aria-label={b.title || b.ctaLabel || t("learnMore")} className={cls}>{content}</Link>
           ) : (
             <div key={b.id} className={cls}>{content}</div>
           );

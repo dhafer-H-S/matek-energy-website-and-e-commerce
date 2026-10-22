@@ -1,4 +1,13 @@
 {
+  "media": {
+    "logo": "/brand/logo.png",
+    "logoLight": "/brand/logo-light.png",
+    "socialPreview": "/og.png",
+    "homeAbout": "/seed/pexels/30285845.jpg",
+    "aboutHero": "/seed/pexels/30285845.jpg",
+    "aboutStory": "/seed/pexels/30285845.jpg",
+    "productInstallation": "/seed/pexels/8853504.jpg"
+  },
   "common": {
     "brand": "Matek Energy",
     "tagline": "Energy systems that simply work",
@@ -53,7 +62,24 @@
     "onSale": "Special offers",
     "servicesEyebrow": "What we do",
     "servicesTitle": "Professional installation & engineering services",
-    "servicesText": "From the first consultation to commissioning, our engineers design and install systems tailored to your property.",
+    "servicesText": "More than an equipment shop: Matek Energy brings solar power, reliable cooling, efficient heating, hot water and electrical engineering together. Explore every service here, see what is included, and request the right solution for your home, villa or business without leaving the homepage.",
+    "serviceAdviceTitle": "Not sure which system you need?",
+    "serviceAdviceText": "Tell us about your property, energy bills and priorities. Request a site assessment so our team can discuss system sizing, installation requirements and a tailored quotation before you commit.",
+    "serviceProcessTitle": "One team, from your first question to a working system",
+    "serviceProcessText": "Buying equipment is only one part of the job. We help connect product selection, engineering, installation and after-sales care, so you know who to contact at every stage.",
+    "serviceSteps": [
+      { "title": "Tell us what you need", "text": "Request a service online or send us a WhatsApp message. Share your location, property type and what you want to improve." },
+      { "title": "Assess & plan", "text": "We review your requirements and discuss a site survey, suitable equipment and the scope of work. You receive a tailored quote to approve." },
+      { "title": "Supply & install", "text": "Our team coordinates the agreed equipment and installation, then tests and commissions your system before handover." },
+      { "title": "Keep it working", "text": "Ask about operating guidance, servicing and maintenance. We remain your point of contact when you need support or an upgrade." }
+    ],
+    "serviceSupportTitle": "Built around your property, not a one-size-fits-all package",
+    "serviceSupportText": "From a single air conditioner to connected energy systems, discuss the right combination of products and professional services with Matek Energy.",
+    "serviceAudiences": [
+      { "title": "Homes & apartments", "text": "Make everyday living more comfortable with correctly sized air conditioning, reliable hot water, heating and safe electrical installations. Start with one room or plan a coordinated upgrade." },
+      { "title": "Villas & new builds", "text": "Bring solar generation, heating, cooling and hydronic systems into one plan. Talk through installation needs early, whether you are building, renovating or improving an existing property." },
+      { "title": "Businesses & industrial sites", "text": "Discuss commercial HVAC, electrical panels, pumps and planned maintenance around your operational requirements. Request an assessment for a new installation, replacement or ongoing service." }
+    ],
     "benefitsEyebrow": "Why Matek",
     "benefitsTitle": "Benefits to save energy",
     "benefits": [
@@ -75,6 +101,7 @@
       }
     ],
     "aboutEyebrow": "About Matek Energy",
+    "aboutImageAlt": "Illustrative photo of a technician installing solar panels",
     "aboutTitle": "Specialists in heating, cooling, hot water and solar systems",
     "aboutText": "MATEK ENERGY combines engineering expertise with reliable brands to deliver energy systems that simply work — for homes, villas and businesses.",
     "aboutPoints": [
@@ -83,6 +110,9 @@
       "Partnerships with trusted international brands",
       "Support from first consultation to operation"
     ],
+    "statsCustomersValue": "500+",
+    "statsInstallationsValue": "300+",
+    "statsYearsValue": "3+",
     "statsCustomers": "Happy customers",
     "statsInstallations": "Completed installations",
     "statsYears": "Years of engineering experience",
@@ -116,6 +146,8 @@
     "bannerCta": "Shop now"
   },
   "shop": {
+    "illustrativeLabel": "Illustrative photo",
+    "illustrativeImage": "Illustrative stock photo. Confirm the exact model and appearance with our team before ordering.",
     "title": "Shop",
     "subtitle": "Energy and electrical equipment for your home and business",
     "results": "{count} products",
@@ -243,7 +275,7 @@
     "process": "How it works",
     "faqTitle": "Frequently asked questions",
     "relatedProducts": "Shop related products",
-    "gallery": "Our work",
+    "gallery": "Installation & equipment gallery",
     "bookTitle": "Book this service",
     "bookSubtitle": "Leave your details - we reply within a few hours.",
     "preferredDate": "Preferred date (optional)",
@@ -266,7 +298,48 @@
     "title": "Projects",
     "subtitle": "Installations delivered by Matek Energy",
     "gallery": "Project gallery",
-    "back": "All projects"
+    "back": "All projects",
+    "introEyebrow": "Matek in the field",
+    "introTitle": "From an energy idea to a working installation.",
+    "introText": "Explore solar, cooling, heating and ventilation installations from the Matek Energy portfolio. These original project photographs offer a closer look at our work and a starting point for discussing what your property needs.",
+    "types": { "Solar": "Solar energy", "HVAC": "Ventilation & HVAC", "Cooling": "Cooling", "Heating": "Heating" },
+    "filterLabel": "Filter projects by system type",
+    "allTypes": "All projects",
+    "featured": "A closer look",
+    "featuredText": "See the original installation photographs, explore the project and discuss a similar solution with our team. System design, equipment and scope are assessed individually for every property.",
+    "cardText": "Explore the installation and talk to our team about a solution for your property.",
+    "viewProject": "Explore project",
+    "empty": "Our project portfolio is being updated. Contact us to discuss your requirements.",
+    "authenticTitle": "Original project photography",
+    "authenticText": "The photographs in this portfolio come from Matek Energy's original website. We keep them as authentic records of the installations rather than replacing them with stock images.",
+    "planningTitle": "Planning your own installation?",
+    "planningText": "Use these projects as inspiration, not a fixed specification. The right approach depends on your building, energy demand, available space and the condition of existing equipment.",
+    "exploreServices": "Explore our services",
+    "overview": "About this installation",
+    "overviewFallback": "Explore the installation photographs below. Contact Matek Energy for the available technical details and advice about a similar project.",
+    "galleryHint": "Select a photograph for a larger view. These are original portfolio images; older photographs may have a lower resolution.",
+    "openImage": "Open project image {number}",
+    "enlarge": "View larger",
+    "closeGallery": "Close gallery",
+    "previousImage": "Previous image",
+    "nextImage": "Next image",
+    "similarTitle": "Have a similar project in mind?",
+    "similarText": "Tell us about your property, the system you need and your priorities. We can discuss suitable equipment, installation and the next steps.",
+    "discussProject": "Discuss a similar project",
+    "moreProjects": "More from our portfolio",
+    "planningSteps": [
+      { "title": "Share the starting point", "text": "Tell us the property type, location, current equipment and what you would like to improve." },
+      { "title": "Review the site and options", "text": "A site assessment helps establish the required capacity, practical constraints and suitable system configuration." },
+      { "title": "Agree the scope before work", "text": "Discuss equipment, installation requirements, quotation and scheduling with our team before proceeding." }
+    ]
+  },
+  "editorial": {
+    "eyebrow": "Your next step",
+    "title": "Let's find the right system for your property.",
+    "text": "From choosing equipment to planning installation or maintenance, speak with Matek Energy about your requirements. We will help you understand the options before you decide.",
+    "quote": "Request a consultation",
+    "whatsapp": "Talk on WhatsApp",
+    "waMessage": "Hello Matek Energy, I would like advice about an energy system or installation for my property."
   },
   "about": {
     "title": "About Matek Energy",
@@ -305,7 +378,46 @@
       }
     ],
     "founder": "10 years of founder's experience",
-    "established": "3 years since establishment"
+    "established": "3 years since establishment",
+    "eyebrow": "Engineering for everyday life",
+    "sectionNav": "About page sections",
+    "storyLabel": "Our company",
+    "storyTitle": "Comfort, efficiency and practical engineering. Connected.",
+    "storyText": "Based in Kyrenia and serving Northern Cyprus, Matek Energy brings together renewable energy, climate control, hot water, hydronic systems and electrical equipment. We help homeowners and businesses connect the right products with the planning and technical work needed to make them useful in real life.",
+    "talkToUs": "Tell us about your project",
+    "audienceEyebrow": "Built around your needs",
+    "audienceTitle": "Different buildings. One joined-up approach.",
+    "audienceText": "A family home, a new villa and a business do not use energy in the same way. We begin with how the space is used and work towards a system that fits its daily demands.",
+    "audiences": [
+      { "title": "Homes & apartments", "text": "Cooling for living spaces, dependable hot water, heating and advice on solar options. We consider the existing installation, available space and how your household uses energy." },
+      { "title": "Villas & new developments", "text": "Plan solar, heating, cooling and hot water together instead of treating them as disconnected purchases. Early planning helps coordinate equipment, pipework, electrical needs and access." },
+      { "title": "Commercial & industrial spaces", "text": "Discuss ventilation, climate control, electrical systems and maintenance around the way your premises operate. Equipment selection should consider demand, access, servicing and business continuity." }
+    ],
+    "servicesLabel": "What we do",
+    "servicesTitle": "More than equipment. Support for the whole system.",
+    "servicesText": "Our service range connects design, supply, installation and maintenance. Whether you are improving an existing system or planning a new one, explore each service to see what is included and request advice for your property.",
+    "serviceDetails": "Explore service & request a quote",
+    "shopTitle": "Products and technical services, in one place.",
+    "shopText": "Browse renewable energy equipment, heating and cooling components, hot water systems and electrical appliances. If you are unsure about compatibility or capacity, ask our team before placing an order. Installation scope and availability are confirmed separately.",
+    "shopCta": "Explore the shop",
+    "processText": "Good equipment is only one part of a successful system. Clear requirements, sensible planning and a careful handover matter just as much.",
+    "commitmentEyebrow": "Our working principles",
+    "commitmentTitle": "Make informed decisions. Not just quick purchases.",
+    "commitmentText": "Our mission is to help customers reduce energy costs and improve comfort through efficient, safe and sustainable heating, cooling, hot water and solar solutions. The starting point is understanding what is appropriate for your property.",
+    "commitments": [
+      { "title": "Advice grounded in the property", "text": "Capacity, layout, usage patterns and the existing installation all matter. We discuss these factors rather than assuming one product suits every customer." },
+      { "title": "A clear scope of work", "text": "Equipment supply, installation, commissioning and maintenance are different parts of a project. Ask us to clarify what is included in your quotation before approving work." },
+      { "title": "Support beyond product selection", "text": "Talk to us about operation, servicing and future maintenance. Product warranties and service terms depend on the equipment and agreed scope." }
+    ],
+    "projectsTitle": "See the work behind the company.",
+    "projectsCta": "Explore our projects",
+    "faqTitle": "Getting to know Matek Energy",
+    "faqs": [
+      { "q": "Do you supply products as well as install systems?", "a": "Yes. The shop brings together equipment and components, while our service pages cover installation and technical work. Contact us to confirm compatibility, installation availability and the scope for a particular product." },
+      { "q": "Can you help me decide which system I need?", "a": "Tell us about your property, current equipment, usage and goals. We can discuss the next steps and whether a site assessment is needed before recommending a system." },
+      { "q": "Can I discuss a renovation or a new-build project?", "a": "Yes. Early conversations help coordinate heating, cooling, hot water, solar and electrical needs. Share plans, photographs and your intended use of the space where available." },
+      { "q": "How do I request a price?", "a": "Use a service request form, book a consultation or contact us on WhatsApp. Starting prices on service pages are only an indication; the final scope, equipment and price are confirmed in your quotation." }
+    ]
   },
   "contact": {
     "title": "Contact us",
@@ -339,11 +451,52 @@
     "subtitle": "News, guides and tips on energy systems",
     "empty": "No articles yet.",
     "related": "Related articles",
-    "share": "Share"
+    "share": "Share",
+    "eyebrow": "The Matek journal",
+    "guides": "Guides",
+    "readingTime": "{minutes} min read",
+    "libraryEyebrow": "Practical knowledge",
+    "libraryTitle": "Understand your options before you invest.",
+    "search": "Search articles",
+    "categoryFilter": "Filter articles by category",
+    "allArticles": "All articles",
+    "featured": "Start here",
+    "readGuide": "Read the guide",
+    "results": "{count, plural, =0 {No articles found} one {# article found} other {# articles found}}",
+    "noResults": "No matching guides yet.",
+    "emptyHelp": "Try a different search or ask our team about the system you are considering.",
+    "reset": "Browse all articles",
+    "adviceTitle": "Good decisions begin with the right questions.",
+    "adviceText": "Our guides explain the factors behind equipment selection and energy use. Every building is different: use them as a starting point, then discuss the details with our team before committing to a purchase or installation.",
+    "topics": [
+      { "title": "Solar & energy use", "text": "Understand self-consumption, running costs and the questions behind a solar quotation.", "query": "solar" },
+      { "title": "Heating & cooling", "text": "Explore comfort, equipment sizing and efficient day-to-day operation.", "query": "air" },
+      { "title": "All practical guides", "text": "Browse the full library, from choosing equipment to planning your next project.", "query": "" }
+    ],
+    "practicalEyebrow": "Put it into practice",
+    "prepareTitle": "Before you speak with an installer",
+    "prepareText": "A few details make the conversation more useful and help establish whether a site visit is needed.",
+    "preparations": [
+      "Note your property type, location and the spaces or equipment you want to improve.",
+      "Have recent energy bills and existing equipment model details available where possible.",
+      "Share your priorities: comfort, consumption, available space, timing and budget.",
+      "Ask for the equipment specification, installation scope and service terms in writing."
+    ],
+    "disclaimer": "General guidance only, not a site-specific design or a savings guarantee. Installation, electrical work and system adjustments should be assessed and carried out by suitably qualified professionals.",
+    "expertTitle": "Make this advice work for your property.",
+    "expertText": "Ask Matek Energy about the system you are considering. We can discuss your requirements and help you plan the next step.",
+    "askExpert": "Ask our team",
+    "servicesTitle": "From advice to installation",
+    "contentPending": "This article is being prepared. Contact our team for advice.",
+    "articleNavigation": "More journal articles",
+    "newer": "Newer article",
+    "older": "Older article"
   },
   "team": {
     "title": "Our team",
-    "subtitle": "The engineers and technicians behind Matek Energy"
+    "subtitle": "The engineers and technicians behind Matek Energy",
+    "contactTitle": "Talk to our engineering team",
+    "contactText": "Discuss solar, heating, cooling, hot water or electrical work directly with Matek Energy. Book a consultation to review your requirements and plan the next steps for your property."
   },
   "footer": {
     "about": "Specialists in heating, cooling, hot water and renewable energy systems.",

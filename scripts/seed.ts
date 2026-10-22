@@ -3,6 +3,7 @@
  * Usage: npm run seed   (wipes existing catalogue content first)
  */
 import { config } from "dotenv";
+import { blogGuideExcerpts, blogGuides } from "./content/blog-guides";
 config({ path: ".env.local" });
 
 type Tr = { en: string; tr: string };
@@ -21,16 +22,16 @@ async function main() {
 
   /* Categories */
   const catDefs: { slug: string; image: string; icon: string; name: Tr; desc: Tr }[] = [
-    { slug: "renewables-energy-systems", image: "/seed/category/01.jpg", icon: "sun",
+    { slug: "renewables-energy-systems", image: "/seed/pexels/18306342.jpg", icon: "sun",
       name: { en: "Renewables Energy Systems", tr: "Yenilenebilir Enerji Sistemleri" },
       desc: { en: "Solar panels, inverters, batteries and portable power.", tr: "Güneş panelleri, inverterler, bataryalar ve taşınabilir güç çözümleri." } },
-    { slug: "heating-cooling-ventilation-systems", image: "/matek/service/04.jpg", icon: "snowflake",
+    { slug: "heating-cooling-ventilation-systems", image: "/seed/pexels/32497161.jpg", icon: "snowflake",
       name: { en: "Heating, Cooling and Ventilations Systems", tr: "Isıtma, Soğutma ve Havalandırma Sistemleri" },
       desc: { en: "Air conditioners, heat pumps and ventilation equipment.", tr: "Klimalar, ısı pompaları ve havalandırma ekipmanları." } },
-    { slug: "hydronics-domestic-hot-water-systems", image: "/matek/service/07.jpg", icon: "droplets",
+    { slug: "hydronics-domestic-hot-water-systems", image: "/seed/pexels/20046689.jpg", icon: "droplets",
       name: { en: "Hydronics and Domestic Hot Water Systems", tr: "Hidronik ve Kullanım Sıcak Suyu Sistemleri" },
       desc: { en: "Boilers, radiators, pumps and hot water systems.", tr: "Kombiler, radyatörler, pompalar ve sıcak su sistemleri." } },
-    { slug: "electrical-appliances-equipment", image: "/matek/service/16.jpg", icon: "zap",
+    { slug: "electrical-appliances-equipment", image: "/seed/pexels/27928761.jpg", icon: "zap",
       name: { en: "Electrical Appliances And Equipement", tr: "Elektrikli Cihazlar ve Ekipmanlar" },
       desc: { en: "Drives, lighting and electrical equipment for homes and industry.", tr: "Sürücüler, aydınlatma ve elektrik ekipmanları." } },
   ];
@@ -107,16 +108,16 @@ async function main() {
   const px = (id: string) => `/seed/pexels/${id}.jpg`;
   const media: Record<string, { main?: string; extra: string[]; dropOriginal?: boolean }> = {
     "solar-panel-550w-monocrystalline": { main: px("18306342"), extra: [px("8853504"), px("13963757")], dropOriginal: true },
-    "solar-panel-450w-mono-perc": { main: px("25751713"), extra: [px("18523430"), px("38194140")] },
+    "solar-panel-450w-mono-perc": { main: px("25751713"), extra: [px("18523430"), px("38194140")], dropOriginal: true },
     "on-grid-inverter-8kw": { main: px("37929911"), extra: [px("33751639"), px("4320475")], dropOriginal: true },
     "portable-power-station-1800w": { main: px("39057090"), extra: [px("38171185"), px("13963757")], dropOriginal: true },
     "portable-power-station-300w": { main: px("38354917"), extra: [px("9799713")], dropOriginal: true },
     "foldable-solar-charger-28w": { main: px("9799713"), extra: [px("25751713")], dropOriginal: true },
-    "split-air-conditioner-inverter-12000": { main: px("38788452"), extra: ["/matek/service/03.jpg", px("38353473")] },
-    "multi-split-outdoor-unit": { main: px("38353473"), extra: ["/matek/service/04.jpg"] },
-    "wall-hung-condensing-boiler": { main: px("20046689"), extra: ["/matek/service/07.jpg", px("8751240")] },
-    "towel-radiator-white": { main: px("12644994"), extra: ["/matek/service/08.jpg"] },
-    "pressure-booster-pump-set": { main: px("6929715"), extra: ["/matek/service/10.jpg", px("11899171")] },
+    "split-air-conditioner-inverter-12000": { main: px("38788452"), extra: [px("32588555"), px("38353473")], dropOriginal: true },
+    "multi-split-outdoor-unit": { main: px("38353473"), extra: [px("32497161")], dropOriginal: true },
+    "wall-hung-condensing-boiler": { main: px("20046689"), extra: ["/matek/service/07.jpg", px("8751240")], dropOriginal: true },
+    "towel-radiator-white": { main: px("12644994"), extra: [px("29226620")], dropOriginal: true },
+    "pressure-booster-pump-set": { main: px("6929715"), extra: [px("17232659"), px("11899171")], dropOriginal: true },
     "frequency-drive-vfd": { main: px("28950842"), extra: [px("27928761"), px("3306057")], dropOriginal: true },
     "solar-led-floodlight": { main: px("11529118"), extra: [px("14351460"), px("7285965")], dropOriginal: true },
   };
@@ -142,25 +143,25 @@ async function main() {
 
   /* Banners */
   const banners: { placement: "hero" | "promo"; image: string; link: string; eyebrow: Tr; title: Tr; sub: Tr; cta: Tr }[] = [
-    { placement: "hero", image: "/seed/slider/image1.jpg", link: "/categories/renewables-energy-systems",
+    { placement: "hero", image: "/seed/pexels/18306342.jpg", link: "/categories/renewables-energy-systems",
       eyebrow: { en: "Renewable energy", tr: "Yenilenebilir enerji" },
       title: { en: "Power your home with the sun", tr: "Evinizi güneşle aydınlatın" },
       sub: { en: "Solar panels, inverters and storage with professional installation.", tr: "Profesyonel kurulumla güneş panelleri, inverterler ve depolama." },
       cta: { en: "Shop solar", tr: "Güneş ürünleri" } },
-    { placement: "hero", image: "/seed/slider/image2.jpg", link: "/services",
+    { placement: "hero", image: "/seed/pexels/32497161.jpg", link: "/services",
       eyebrow: { en: "Engineering services", tr: "Mühendislik hizmetleri" },
       title: { en: "Heating, cooling & hot water experts", tr: "Isıtma, soğutma ve sıcak su uzmanları" },
       sub: { en: "Design, supply, installation and maintenance for homes and businesses.", tr: "Ev ve işyerleri için tasarım, tedarik, kurulum ve bakım." },
       cta: { en: "Our services", tr: "Hizmetlerimiz" } },
-    { placement: "hero", image: "/seed/slider/image5.jpg", link: "/shop",
+    { placement: "hero", image: "/seed/pexels/27928761.jpg", link: "/shop",
       eyebrow: { en: "Online shop", tr: "Online mağaza" },
       title: { en: "Quality energy equipment, delivered", tr: "Kaliteli enerji ekipmanları, kapınızda" },
       sub: { en: "Order online or via WhatsApp. Pay on delivery or by bank transfer.", tr: "Online veya WhatsApp ile sipariş verin. Kapıda veya havale ile ödeyin." },
       cta: { en: "Start shopping", tr: "Alışverişe başla" } },
-    { placement: "promo", image: "/seed/category/03.jpg", link: "/appointment?service=Solar%20Panel%20Installation",
+    { placement: "promo", image: "/seed/pexels/30285845.jpg", link: "/services/solar-panel-installation#book",
       eyebrow: { en: "Our service", tr: "Hizmetimiz" }, title: { en: "Free site survey & solar installation", tr: "Ücretsiz keşif ve güneş enerjisi kurulumu" },
       sub: { en: "Our engineers design, supply and install your system end to end.", tr: "Mühendislerimiz sisteminizi baştan sona tasarlar, tedarik eder ve kurar." }, cta: { en: "Book a survey", tr: "Keşif randevusu" } },
-    { placement: "promo", image: "/matek/service/04.jpg", link: "/services/air-conditioning-installation",
+    { placement: "promo", image: "/seed/pexels/32497161.jpg", link: "/services/air-conditioning-installation",
       eyebrow: { en: "Service", tr: "Hizmet" }, title: { en: "Professional AC installation", tr: "Profesyonel klima kurulumu" },
       sub: { en: "Survey, delivery and installation.", tr: "Keşif, teslimat ve kurulum." }, cta: { en: "Learn more", tr: "Detaylar" } },
   ];
@@ -173,22 +174,22 @@ async function main() {
 
   /* Services */
   const services: { slug: string; icon: string; image: string; title: Tr; desc: Tr }[] = [
-    { slug: "solar-panel-installation", icon: "sun", image: "/matek/service/15.jpg",
+    { slug: "solar-panel-installation", icon: "sun", image: "/seed/pexels/30285845.jpg",
       title: { en: "Solar Panel Installation", tr: "Güneş Paneli Kurulumu" },
       desc: { en: "Complete PV design, supply and installation for homes, villas and businesses, with monitoring and maintenance.", tr: "Ev, villa ve işyerleri için izleme ve bakım dahil komple PV tasarım, tedarik ve kurulum." } },
-    { slug: "air-conditioning-installation", icon: "snowflake", image: "/matek/service/01.jpg",
+    { slug: "air-conditioning-installation", icon: "snowflake", image: "/seed/pexels/32588555.jpg",
       title: { en: "Air Conditioning Installation", tr: "Klima Kurulumu" },
       desc: { en: "Split, multi-split and VRF air conditioning installation and servicing.", tr: "Split, multi split ve VRF klima kurulumu ve servisi." } },
-    { slug: "water-heater-installation", icon: "droplets", image: "/matek/service/07.jpg",
+    { slug: "water-heater-installation", icon: "droplets", image: "/seed/pexels/20046689.jpg",
       title: { en: "Water Heater Installation", tr: "Su Isıtıcı Kurulumu" },
       desc: { en: "Solar water heaters, boilers and heat-pump hot water systems installed and commissioned.", tr: "Güneş enerjili su ısıtıcılar, kombiler ve ısı pompalı sıcak su sistemleri kurulumu." } },
-    { slug: "heating-system-installation", icon: "flame", image: "/matek/service/08.jpg",
+    { slug: "heating-system-installation", icon: "flame", image: "/seed/pexels/29226620.jpg",
       title: { en: "Heating System Installation", tr: "Isıtma Sistemi Kurulumu" },
       desc: { en: "Radiator, underfloor and boiler heating systems designed for efficiency.", tr: "Verimlilik odaklı radyatör, yerden ısıtma ve kombi sistemleri." } },
-    { slug: "electrical-installation", icon: "zap", image: "/matek/service/16.jpg",
+    { slug: "electrical-installation", icon: "zap", image: "/seed/pexels/27928761.jpg",
       title: { en: "Electrical Installation & Maintenance", tr: "Elektrik Tesisatı ve Bakım" },
       desc: { en: "Electrical panels, wiring, drives and ongoing maintenance for homes and industry.", tr: "Elektrik panoları, kablolama, sürücüler ve konut ile sanayi için düzenli bakım." } },
-    { slug: "pumps-and-hydronics", icon: "wrench", image: "/matek/service/10.jpg",
+    { slug: "pumps-and-hydronics", icon: "wrench", image: "/seed/pexels/17232659.jpg",
       title: { en: "Pumps & Hydronic Systems", tr: "Pompa ve Hidronik Sistemler" },
       desc: { en: "Booster sets, fire pumps and hydronic systems supplied and serviced.", tr: "Hidrofor setleri, yangın pompaları ve hidronik sistemlerin tedariki ve servisi." } },
   ];
@@ -196,15 +197,15 @@ async function main() {
   const rich: Record<string, Rich> = {
     "solar-panel-installation": { price: 1800, cat: R, gallery: ["/matek/project/17.jpg", "/matek/project/38.jpg", "/matek/project/39.jpg"], dur: { en: "1–3 days on site", tr: "Sahada 1–3 gün" },
       hl: { en: ["Free site survey & yield estimate", "Tier-1 panels and hybrid inverters", "Mounting, cabling and grid connection", "Monitoring app setup", "Up to 25-year panel warranty"], tr: ["Ücretsiz keşif ve verim hesabı", "Tier-1 paneller ve hibrit inverterler", "Montaj, kablolama ve şebeke bağlantısı", "İzleme uygulaması kurulumu", "25 yıla varan panel garantisi"] } },
-    "air-conditioning-installation": { price: 120, cat: H, gallery: ["/matek/project/04.jpg", "/matek/project/05.jpg", "/matek/service/04.jpg"], dur: { en: "Half a day", tr: "Yarım gün" },
+    "air-conditioning-installation": { price: 120, cat: H, gallery: ["/matek/project/04.jpg", "/matek/project/05.jpg", "/seed/pexels/32497161.jpg"], dur: { en: "Half a day", tr: "Yarım gün" },
       hl: { en: ["Correct sizing for your room", "Copper piping and drain", "Vacuum, leak test and commissioning", "Clean finish, no mess", "Installation warranty"], tr: ["Odanıza uygun doğru seçim", "Bakır boru ve tahliye", "Vakum, kaçak testi ve devreye alma", "Temiz ve düzenli işçilik", "Montaj garantisi"] } },
-    "water-heater-installation": { price: 90, cat: "hydronics-domestic-hot-water-systems", gallery: ["/matek/service/07.jpg", "/matek/project/48.jpg"], dur: { en: "2–4 hours", tr: "2–4 saat" },
+    "water-heater-installation": { price: 90, cat: "hydronics-domestic-hot-water-systems", gallery: ["/seed/pexels/20046689.jpg", "/matek/project/48.jpg"], dur: { en: "2–4 hours", tr: "2–4 saat" },
       hl: { en: ["Solar, electric or heat-pump units", "Safety valves and expansion vessel", "Pipework and insulation", "Commissioning and user training"], tr: ["Güneş, elektrikli veya ısı pompalı üniteler", "Emniyet vanaları ve genleşme tankı", "Tesisat ve yalıtım", "Devreye alma ve kullanıcı eğitimi"] } },
-    "heating-system-installation": { price: 250, cat: H, gallery: ["/matek/service/08.jpg", "/matek/project/48.jpg"], dur: { en: "1–5 days", tr: "1–5 gün" },
+    "heating-system-installation": { price: 250, cat: H, gallery: ["/seed/pexels/29226620.jpg", "/matek/project/48.jpg"], dur: { en: "1–5 days", tr: "1–5 gün" },
       hl: { en: ["Heat-loss calculation", "Radiators or underfloor heating", "Boiler / heat pump connection", "Pressure test and balancing"], tr: ["Isı kaybı hesabı", "Radyatör veya yerden ısıtma", "Kombi / ısı pompası bağlantısı", "Basınç testi ve balans"] } },
-    "electrical-installation": { price: null, cat: "electrical-appliances-equipment", gallery: ["/matek/service/16.jpg", "/matek/service/15.jpg"], dur: { en: "Depends on scope", tr: "Kapsama göre" },
+    "electrical-installation": { price: null, cat: "electrical-appliances-equipment", gallery: ["/seed/pexels/27928761.jpg", "/seed/pexels/30285845.jpg"], dur: { en: "Depends on scope", tr: "Kapsama göre" },
       hl: { en: ["Distribution panels and wiring", "Motor drives and controls", "Safety inspection and reports", "Scheduled maintenance plans"], tr: ["Dağıtım panoları ve kablolama", "Motor sürücüleri ve kontrol", "Güvenlik kontrolü ve raporlama", "Planlı bakım programları"] } },
-    "pumps-and-hydronics": { price: null, cat: "hydronics-domestic-hot-water-systems", gallery: ["/matek/service/10.jpg", "/matek/service/07.jpg"], dur: { en: "Depends on scope", tr: "Kapsama göre" },
+    "pumps-and-hydronics": { price: null, cat: "hydronics-domestic-hot-water-systems", gallery: ["/seed/pexels/17232659.jpg", "/seed/pexels/20046689.jpg"], dur: { en: "Depends on scope", tr: "Kapsama göre" },
       hl: { en: ["Booster and fire pump sets", "Hydronic piping and balancing", "Service and spare parts", "Emergency call-outs"], tr: ["Hidrofor ve yangın pompası setleri", "Hidronik tesisat ve balans", "Servis ve yedek parça", "Acil müdahale"] } },
   };
   const steps: { en: { title: string; text: string }[]; tr: { title: string; text: string }[] } = {
@@ -244,17 +245,17 @@ async function main() {
 
   /* Blog */
   const posts: { slug: string; image: string; title: Tr; excerpt: Tr }[] = [
-    { slug: "how-much-can-solar-save", image: "/seed/blog/01.jpg",
+    { slug: "how-much-can-solar-save", image: "/seed/pexels/18306342.jpg",
       title: { en: "How much can a solar system save on your bills?", tr: "Güneş enerjisi sistemi faturalarınızda ne kadar tasarruf sağlar?" },
-      excerpt: { en: "A quick guide to estimating savings and payback time for a home PV system.", tr: "Evler için PV sistemlerinde tasarruf ve geri ödeme süresini hesaplamaya kısa rehber." } },
-    { slug: "choosing-the-right-air-conditioner", image: "/seed/blog/02.jpg",
+      excerpt: blogGuideExcerpts["how-much-can-solar-save"] },
+    { slug: "choosing-the-right-air-conditioner", image: "/seed/pexels/38788452.jpg",
       title: { en: "Choosing the right air conditioner", tr: "Doğru klimayı seçmek" },
-      excerpt: { en: "BTU, inverter technology and energy class explained in plain language.", tr: "BTU, inverter teknolojisi ve enerji sınıfı sade bir dille anlatıldı." } },
+      excerpt: blogGuideExcerpts["choosing-the-right-air-conditioner"] },
   ];
   for (const p of posts) {
     const [row] = await db.insert(s.blogPosts).values({ slug: p.slug, coverImage: p.image, category: "Guides", authorName: "Matek Energy", published: true, publishedAt: new Date() }).returning({ id: s.blogPosts.id });
     await db.insert(s.blogTranslations).values((["en", "tr"] as const).map((l) => ({
-      postId: row.id, locale: l, title: p.title[l], excerpt: p.excerpt[l], content: `<p>${p.excerpt[l]}</p>`,
+      postId: row.id, locale: l, title: p.title[l], excerpt: p.excerpt[l], content: blogGuides[p.slug]?.[l] ?? `<p>${p.excerpt[l]}</p>`,
     })));
   }
 

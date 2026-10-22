@@ -47,6 +47,7 @@ const NAV: NavItem[] = [
   { href: "/admin/team", label: "Team", icon: UsersRound },
   { href: "/admin/enquiries", label: "Enquiries", icon: Inbox },
   { href: "/admin/media", label: "Media", icon: ImageIcon },
+  { href: "/admin/content", label: "Website content", icon: LayoutDashboard },
   { href: "/admin/settings", label: "Settings", icon: Settings },
 ];
 

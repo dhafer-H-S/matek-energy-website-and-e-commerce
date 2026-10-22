@@ -88,6 +88,107 @@ Password: Aura@Admin2026
 3. Set `NEXT_PUBLIC_SITE_URL` to your production domain.
 4. Deploy. Run `npm run db:migrate` against the production Turso database if needed.
 
+## Matek storefront services and imagery
+
+### Company, projects and journal pages
+
+The About page introduces the company, property types, live published services,
+working process, principles, projects and FAQs in English and Turkish. Project
+pages include system-type filters, original installation photography, an
+accessible enlarged-photo dialog, related work and project-specific contact
+links. The project editor's rich-text story is rendered as rich text (legacy
+plain text is still supported).
+
+The blog includes title/excerpt search, category filtering, reading time,
+featured articles, article navigation and links to published services. Articles
+remain editable through Admin > Blog. To expand only the original untouched
+one-paragraph demo guides on an existing database, use
+`npx tsx scripts/enrich-blog.ts`. This idempotent update preserves edited
+articles and does not reseed or delete catalogue/order data. New seeds include
+the full guides.
+
+### Editing website pages
+
+Use **Admin > Website content** to edit fixed page text in English and Turkish:
+About/company story, homepage sections and statistics, FAQs, process steps,
+project/blog introductions, consultation panels, navigation, footer, legal
+policies and shopping/checkout labels. Lists support adding, removing and
+reordering entries. Each section saves both languages atomically to the
+`site_content` table; switching languages preserves unsaved changes. A visible
+status distinguishes unsaved changes from a successful save. Database failures
+and invalid message placeholders are reported without discarding editor text.
+
+Under **Website images & logos**, choose language-specific header/footer logos,
+social-sharing artwork, homepage company image, About hero/story images and
+the product installation image using the existing media picker. Other entity
+images remain in their corresponding product/service/project/article/banner
+editors. Contact details, opening hours, currencies and bank information remain
+in **Settings**. Layout/code and admin interface text are not page content.
+
+`messages/en.json` and `messages/tr.json` provide defaults; saved section values
+override them for both server-rendered pages and client navigation/forms.
+New default fields are merged into previously saved sections. Keep ICU
+placeholders such as `{count}` and plural formats unchanged when editing labels.
+**Restore this section's original content** stages a reset of both languages;
+click **Save both languages** to publish it. No other sections or catalogue
+entries are reset.
+
+Run `npm run test:content` to check section defaults, saved/default merging,
+repeatable-list validation, message placeholders and image URL restrictions.
+
+### English and Turkish content
+
+Product, category, service, project, blog and team forms use **English / Türkçe**
+buttons. Enter both versions before saving; switching language does not discard
+unsaved values. Visitors see the matching translation on `/en` and `/tr`.
+English is used when the translated name/title is omitted. Product and service
+SEO titles/descriptions can also be edited per language.
+Settings also offers bilingual address, opening hours and payment notes. Contact
+details, bank identifiers and social links stay shared. Empty Turkish settings
+text falls back to English.
+
+In **Admin → Banners**, supply a default image and optionally override it with
+English and Turkish desktop/mobile artwork. Text overlays (eyebrow, title,
+subtitle, button) are independent per language. Leave overlay text empty for
+artwork that already contains text. Localized images apply to both the hero
+slider and promo banners. If a localized desktop image has no localized mobile
+image, mobile uses that localized desktop image rather than a potentially
+wrong-language default mobile image. Without a localized image, the shared
+default is used. Banner links should omit locale prefixes (for example `/shop`).
+
+After updating this version on an existing database, run `npm run db:push` to
+add the optional image columns in `banner_translations`, Turkish text columns
+in `settings` and the `site_content` table. Apply these additive schema changes
+to the production database before deploying the updated app.
+No reseeding is necessary.
+
+The EN/TR homepage introduces every published service before the shopping
+sections, with inclusions, booking links, WhatsApp contact, a four-stage service
+process and residential/commercial guidance. Manage service descriptions,
+inclusions, images and starting prices in **Admin → Services**.
+Use **New Service** to create a page; publishing also adds it to the homepage,
+Services listing and navigation menu. In **Service pricing**, select EUR or TRY,
+or clear the amount for **Free quote** without a starting price. Zero is a valid
+displayed price. Titles, descriptions, body content, FAQs, steps and SEO fields
+support EN/TR editing. Draft services are not shown publicly.
+
+The floating WhatsApp shortcut stays visible on mobile and desktop. On mobile
+service and product pages it sits above the fixed quote/purchase action bar,
+with extra clearance for the device safe area.
+
+High-resolution illustrative photos live in `public/seed/pexels/`. New service
+photos are from Pexels: [solar installation](https://www.pexels.com/photo/30285845/),
+[HVAC maintenance](https://www.pexels.com/photo/32588555/),
+[outdoor HVAC](https://www.pexels.com/photo/32497161/),
+[radiator installation](https://www.pexels.com/photo/29226620/) and
+[industrial pipework](https://www.pexels.com/photo/17232659/).
+These illustrate services, not completed Matek projects. Original Matek project
+photos remain in the project portfolio. Replace illustrative product photos
+with exact model photos before accepting real orders.
+
+The seed uses these improved images for fresh demo databases. Do not rerun the
+seed to update an existing catalogue: it deletes catalogue content and orders.
+
 ## Security
 
 The Turso token and Pexels key live only in `.env.local` (gitignored) and your

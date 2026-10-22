@@ -5,6 +5,7 @@ import { DeleteButton } from "@/components/admin/DeleteButton";
 import { ServiceIcon } from "@/components/icons/ServiceIcon";
 import { listServicesForAdmin } from "@/lib/admin/queries";
 import { deleteService } from "./actions";
+import { formatMoney } from "@/lib/money";
 
 export default async function AdminServicesPage() {
   const items = await listServicesForAdmin();
@@ -12,7 +13,7 @@ export default async function AdminServicesPage() {
     <>
       <PageHeader
         title="Services"
-        description="Manage the services offered to clients."
+        description="Create and edit service pages, photos, translations and optional EUR / TRY starting prices."
         action={
           <Link
             href="/admin/services/new"
@@ -38,6 +39,8 @@ export default async function AdminServicesPage() {
               </div>
               <p className="font-display text-lg text-foreground">{s.title ?? "Untitled"}</p>
               <p className="mt-1 text-xs text-muted">/{s.slug}</p>
+              <p className="mt-3 text-sm font-semibold text-brand">{s.priceFrom !== null ? `From ${formatMoney(s.priceFrom, s.currency, "en")}` : "Free quote · No starting price"}</p>
+              {s.published ? <Link href={`/en/services/${s.slug}`} className="mt-2 text-xs text-brand underline">View service page</Link> : null}
               <div className="mt-4 flex items-center gap-2">
                 <Link
                   href={`/admin/services/${s.id}`}

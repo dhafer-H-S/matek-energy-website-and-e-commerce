@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, Wrench } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { PageHero } from "@/components/site/PageHero";
 import { listTeam } from "@/lib/queries/team";
 import { buildMetadata } from "@/lib/seo";
@@ -25,6 +26,7 @@ export default async function TeamPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("team");
+  const tc = await getTranslations("common");
   const members = await listTeam(locale);
 
   return (
@@ -32,6 +34,14 @@ export default async function TeamPage({
       <PageHero title={t("title")} subtitle={t("subtitle")} />
       <section className="py-16">
         <div className="container-luxe grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {members.length === 0 ? (
+            <div className="rounded-3xl border border-border bg-white p-8 text-center sm:col-span-2 sm:p-12 lg:col-span-3">
+              <Wrench className="mx-auto h-10 w-10 text-brand" />
+              <h2 className="mt-5 font-display text-2xl font-semibold text-navy">{t("contactTitle")}</h2>
+              <p className="mx-auto mt-3 max-w-2xl leading-relaxed text-muted">{t("contactText")}</p>
+              <Link href="/appointment" className="mt-6 inline-flex rounded-full bg-brand px-7 py-3 text-sm font-semibold text-white hover:bg-navy">{tc("bookAppointment")}</Link>
+            </div>
+          ) : null}
           {members.map((m) => (
             <div key={m.id} className="overflow-hidden rounded-2xl border border-border bg-white">
               <div className="aspect-4/3 bg-background-alt">

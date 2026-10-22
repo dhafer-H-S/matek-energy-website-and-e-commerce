@@ -16,7 +16,7 @@ export default async function CheckoutPage({ params }: { params: Promise<{ local
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("checkout");
-  const s = await getSettings();
+  const s = await getSettings(locale);
   return (
     <>
       <PageHero title={t("title")} />

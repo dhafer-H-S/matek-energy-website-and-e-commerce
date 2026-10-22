@@ -13,15 +13,23 @@ const LangContext = createContext<string>("en");
 
 export type TranslatedValues = Record<string, string | null | undefined>;
 
-export function LangTabs({ children }: { children: React.ReactNode }) {
+export function LangTabs({
+  children,
+  hint = "Enter English and Turkish content using the buttons below. Switching languages keeps your unsaved text; save once to save both. If a translated title or name is empty, the website uses English.",
+}: {
+  children: React.ReactNode;
+  hint?: string;
+}) {
   const [active, setActive] = useState("en");
   return (
     <LangContext.Provider value={active}>
-      <div className="mb-5 inline-flex rounded-sm border border-border bg-background p-1">
+      <p className="mb-3 text-sm text-muted">{hint}</p>
+      <div role="group" aria-label="Content language" className="mb-5 inline-flex rounded-sm border border-border bg-background p-1">
         {FORM_LOCALES.map((l) => (
           <button
             key={l.code}
             type="button"
+            aria-pressed={active === l.code}
             onClick={() => setActive(l.code)}
             className={cn(
               "rounded-xs px-4 py-1.5 text-sm font-medium transition-colors",
@@ -51,9 +59,9 @@ interface TranslatedFieldProps {
 }
 
 /**
- * Renders one input per locale (en/fr/ar), showing only the active tab's field
+ * Renders one input per locale (en/tr), showing only the active tab's field
  * while keeping all in the DOM so every translation submits. Field names are
- * suffixed with the locale, e.g. `title_en`, `title_fr`, `title_ar`.
+ * suffixed with the locale, e.g. `title_en`, `title_tr`.
  */
 export function TranslatedField({
   label,
@@ -67,7 +75,7 @@ export function TranslatedField({
 }: TranslatedFieldProps) {
   const active = useContext(LangContext);
   return (
-    <FieldShell label={label} hint={hint} required={required}>
+    <FieldShell label={`${label} (${active === "tr" ? "Türkçe" : "English"})`} htmlFor={`${name}_${active}`} hint={hint} required={required}>
       {FORM_LOCALES.map((l) => {
         const fieldName = `${name}_${l.code}`;
         const hidden = active !== l.code;

@@ -1,4 +1,13 @@
 {
+  "media": {
+    "logo": "/brand/logo.png",
+    "logoLight": "/brand/logo-light.png",
+    "socialPreview": "/og.png",
+    "homeAbout": "/seed/pexels/30285845.jpg",
+    "aboutHero": "/seed/pexels/30285845.jpg",
+    "aboutStory": "/seed/pexels/30285845.jpg",
+    "productInstallation": "/seed/pexels/8853504.jpg"
+  },
   "common": {
     "brand": "Matek Energy",
     "tagline": "Gerçekten çalışan enerji sistemleri",
@@ -53,7 +62,24 @@
     "onSale": "Özel fırsatlar",
     "servicesEyebrow": "Ne yapıyoruz",
     "servicesTitle": "Profesyonel kurulum ve mühendislik hizmetleri",
-    "servicesText": "İlk görüşmeden devreye almaya kadar mühendislerimiz mülkünüze uygun sistemler tasarlar ve kurar.",
+    "servicesText": "Bir ekipman mağazasından daha fazlası: Matek Energy güneş enerjisi, güvenilir soğutma, verimli ısıtma, sıcak su ve elektrik mühendisliğini bir araya getirir. Tüm hizmetlerimizi burada inceleyin, kapsama dahil işleri görün ve eviniz, villanız veya işletmeniz için uygun çözümü talep edin.",
+    "serviceAdviceTitle": "Hangi sisteme ihtiyacınız olduğundan emin değil misiniz?",
+    "serviceAdviceText": "Mülkünüzü, enerji faturalarınızı ve önceliklerinizi anlatın. Karar vermeden önce sistem kapasitesi, kurulum gereksinimleri ve size özel teklif için keşif talep edin.",
+    "serviceProcessTitle": "İlk sorunuzdan çalışan bir sisteme kadar tek ekip",
+    "serviceProcessText": "Ekipman satın almak işin yalnızca bir parçasıdır. Ürün seçimi, mühendislik, kurulum ve satış sonrası desteği birleştirerek her aşamada kiminle iletişime geçeceğinizi bilmenizi sağlıyoruz.",
+    "serviceSteps": [
+      { "title": "İhtiyacınızı anlatın", "text": "Hizmet talebinizi çevrimiçi iletin veya WhatsApp'tan yazın. Konumunuzu, mülk tipini ve iyileştirmek istediğiniz konuları paylaşın." },
+      { "title": "Keşif ve planlama", "text": "Gereksinimlerinizi değerlendirir; keşif, uygun ekipman ve iş kapsamını görüşürüz. Onayınız için size özel teklif hazırlanır." },
+      { "title": "Tedarik ve kurulum", "text": "Ekibimiz kararlaştırılan ekipmanı ve kurulumu koordine eder, teslimden önce sisteminizi test edip devreye alır." },
+      { "title": "Kesintisiz kullanım", "text": "Kullanım desteği, servis ve bakım seçeneklerini sorun. Desteğe veya yenilemeye ihtiyaç duyduğunuzda iletişim noktanız olmaya devam ederiz." }
+    ],
+    "serviceSupportTitle": "Standart bir paket değil, mülkünüze uygun çözüm",
+    "serviceSupportText": "Tek bir klimadan birbiriyle uyumlu enerji sistemlerine kadar, doğru ürün ve profesyonel hizmet birleşimini Matek Energy ile planlayın.",
+    "serviceAudiences": [
+      { "title": "Evler ve daireler", "text": "Doğru kapasitede klima, güvenilir sıcak su, ısıtma ve güvenli elektrik tesisatı ile günlük yaşamınızı konforlu hale getirin. Tek bir odadan başlayın veya kapsamlı bir yenileme planlayın." },
+      { "title": "Villalar ve yeni yapılar", "text": "Güneş enerjisi, ısıtma, soğutma ve hidronik sistemleri tek planda buluşturun. İnşaat, tadilat veya mevcut bir mülkün iyileştirilmesi için kurulum ihtiyaçlarını baştan görüşün." },
+      { "title": "İşletmeler ve endüstriyel tesisler", "text": "Ticari HVAC, elektrik panoları, pompalar ve planlı bakımı operasyonel ihtiyaçlarınıza göre görüşün. Yeni kurulum, yenileme veya düzenli servis için değerlendirme talep edin." }
+    ],
     "benefitsEyebrow": "Neden Matek",
     "benefitsTitle": "Enerji tasarrufu sağlayan avantajlar",
     "benefits": [
@@ -75,6 +101,7 @@
       }
     ],
     "aboutEyebrow": "Matek Energy hakkında",
+    "aboutImageAlt": "Güneş paneli kurulumu yapan bir teknisyenin temsili fotoğrafı",
     "aboutTitle": "Isıtma, soğutma, sıcak su ve güneş enerjisi sistemlerinde uzman",
     "aboutText": "MATEK ENERGY, mühendislik uzmanlığını güvenilir markalarla birleştirerek evler, villalar ve işletmeler için gerçekten çalışan enerji sistemleri sunar.",
     "aboutPoints": [
@@ -83,6 +110,9 @@
       "Güvenilir uluslararası markalarla iş ortaklığı",
       "İlk görüşmeden işletmeye kadar destek"
     ],
+    "statsCustomersValue": "500+",
+    "statsInstallationsValue": "300+",
+    "statsYearsValue": "3+",
     "statsCustomers": "Mutlu müşteri",
     "statsInstallations": "Tamamlanan kurulum",
     "statsYears": "Yıllık mühendislik deneyimi",
@@ -116,6 +146,8 @@
     "bannerCta": "Alışverişe başla"
   },
   "shop": {
+    "illustrativeLabel": "Temsili fotoğraf",
+    "illustrativeImage": "Temsili stok fotoğraf. Sipariş vermeden önce tam modeli ve görünümünü ekibimizle teyit edin.",
     "title": "Mağaza",
     "subtitle": "Eviniz ve işletmeniz için enerji ve elektrik ekipmanları",
     "results": "{count} ürün",
@@ -243,7 +275,7 @@
     "process": "Nasıl çalışır",
     "faqTitle": "Sık sorulan sorular",
     "relatedProducts": "İlgili ürünleri inceleyin",
-    "gallery": "Çalışmalarımız",
+    "gallery": "Kurulum ve ekipman galerisi",
     "bookTitle": "Bu hizmeti talep edin",
     "bookSubtitle": "Bilgilerinizi bırakın, birkaç saat içinde dönüş yapalım.",
     "preferredDate": "Tercih edilen tarih (opsiyonel)",
@@ -266,7 +298,48 @@
     "title": "Projeler",
     "subtitle": "Matek Energy tarafından tamamlanan kurulumlar",
     "gallery": "Proje galerisi",
-    "back": "Tüm projeler"
+    "back": "Tüm projeler",
+    "introEyebrow": "Matek sahada",
+    "introTitle": "Bir enerji fikrinden çalışan bir sisteme.",
+    "introText": "Matek Energy portföyündeki güneş enerjisi, soğutma, ısıtma ve havalandırma uygulamalarını inceleyin. Orijinal proje fotoğrafları çalışmalarımıza yakından bakmanızı ve kendi mülkünüzün ihtiyaçlarını konuşmanızı sağlar.",
+    "types": { "Solar": "Güneş enerjisi", "HVAC": "Havalandırma ve HVAC", "Cooling": "Soğutma", "Heating": "Isıtma" },
+    "filterLabel": "Projeleri sistem türüne göre filtrele",
+    "allTypes": "Tüm projeler",
+    "featured": "Yakından bakın",
+    "featuredText": "Orijinal kurulum fotoğraflarını inceleyin ve benzer bir çözümü ekibimizle görüşün. Sistem tasarımı, ekipman ve iş kapsamı her mülk için ayrı değerlendirilir.",
+    "cardText": "Kurulumu inceleyin ve mülkünüze uygun bir çözümü ekibimizle görüşün.",
+    "viewProject": "Projeyi incele",
+    "empty": "Proje portföyümüz güncelleniyor. İhtiyaçlarınızı görüşmek için bize ulaşın.",
+    "authenticTitle": "Orijinal proje fotoğrafları",
+    "authenticText": "Bu portföydeki fotoğraflar Matek Energy'nin eski web sitesinden alınmıştır. Stok görsellerle değiştirmek yerine kurulumların gerçek kayıtları olarak koruyoruz.",
+    "planningTitle": "Kendi kurulumunuzu mu planlıyorsunuz?",
+    "planningText": "Bu projeleri sabit bir teknik şartname değil, ilham kaynağı olarak değerlendirin. Doğru yaklaşım binanıza, enerji ihtiyacınıza, kullanılabilir alana ve mevcut ekipmanın durumuna bağlıdır.",
+    "exploreServices": "Hizmetlerimizi inceleyin",
+    "overview": "Bu kurulum hakkında",
+    "overviewFallback": "Aşağıdaki kurulum fotoğraflarını inceleyin. Mevcut teknik ayrıntılar ve benzer bir proje için Matek Energy ile iletişime geçin.",
+    "galleryHint": "Büyütmek için bir fotoğraf seçin. Bunlar orijinal portföy görselleridir; eski fotoğrafların çözünürlüğü daha düşük olabilir.",
+    "openImage": "{number}. proje fotoğrafını aç",
+    "enlarge": "Büyük görüntüle",
+    "closeGallery": "Galeriyi kapat",
+    "previousImage": "Önceki fotoğraf",
+    "nextImage": "Sonraki fotoğraf",
+    "similarTitle": "Aklınızda benzer bir proje mi var?",
+    "similarText": "Mülkünüzü, ihtiyaç duyduğunuz sistemi ve önceliklerinizi anlatın. Uygun ekipmanı, kurulumu ve sonraki adımları birlikte değerlendirelim.",
+    "discussProject": "Benzer bir projeyi görüşün",
+    "moreProjects": "Portföyümüzden diğer projeler",
+    "planningSteps": [
+      { "title": "Başlangıç noktasını paylaşın", "text": "Mülkün türünü, konumunu, mevcut ekipmanı ve neleri iyileştirmek istediğinizi anlatın." },
+      { "title": "Sahayı ve seçenekleri değerlendirin", "text": "Saha değerlendirmesi gerekli kapasiteyi, uygulama kısıtlarını ve uygun sistem düzenini belirlemeye yardımcı olur." },
+      { "title": "İşe başlamadan kapsamı netleştirin", "text": "Devam etmeden önce ekipmanı, kurulum gereksinimlerini, teklifi ve takvimi ekibimizle görüşün." }
+    ]
+  },
+  "editorial": {
+    "eyebrow": "Bir sonraki adım",
+    "title": "Mülkünüz için doğru sistemi birlikte bulalım.",
+    "text": "Ekipman seçiminden kurulum veya bakım planlamasına kadar ihtiyaçlarınızı Matek Energy ile görüşün. Karar vermeden önce seçenekleri anlamanıza yardımcı olalım.",
+    "quote": "Danışmanlık talep edin",
+    "whatsapp": "WhatsApp'tan görüşün",
+    "waMessage": "Merhaba Matek Energy, mülküm için bir enerji sistemi veya kurulum hakkında bilgi almak istiyorum."
   },
   "about": {
     "title": "Matek Energy hakkında",
@@ -305,7 +378,46 @@
       }
     ],
     "founder": "Kurucunun 10 yıllık deneyimi",
-    "established": "Kuruluşumuzun 3. yılı"
+    "established": "Kuruluşumuzun 3. yılı",
+    "eyebrow": "Günlük yaşam için mühendislik",
+    "sectionNav": "Hakkımızda sayfası bölümleri",
+    "storyLabel": "Şirketimiz",
+    "storyTitle": "Konfor, verimlilik ve uygulanabilir mühendislik. Bir arada.",
+    "storyText": "Girne merkezli ve Kuzey Kıbrıs'a hizmet veren Matek Energy; yenilenebilir enerji, iklimlendirme, sıcak su, hidronik sistemler ve elektrik ekipmanlarını bir araya getirir. Ev sahiplerinin ve işletmelerin doğru ürünleri, onları günlük yaşamda kullanışlı kılan planlama ve teknik uygulamayla buluşturmasına yardımcı oluruz.",
+    "talkToUs": "Projenizi bize anlatın",
+    "audienceEyebrow": "İhtiyaçlarınıza göre",
+    "audienceTitle": "Farklı yapılar. Bütüncül bir yaklaşım.",
+    "audienceText": "Bir aile evi, yeni bir villa ve bir işletme enerjiyi aynı şekilde kullanmaz. Mekânın nasıl kullanıldığını anlayarak günlük ihtiyaçlara uygun sistemi planlarız.",
+    "audiences": [
+      { "title": "Evler ve daireler", "text": "Yaşam alanları için soğutma, güvenilir sıcak su, ısıtma ve güneş enerjisi seçenekleri. Mevcut tesisatı, kullanılabilir alanı ve hanenizin enerji kullanımını dikkate alırız." },
+      { "title": "Villalar ve yeni yapılar", "text": "Güneş enerjisi, ısıtma, soğutma ve sıcak suyu birbirinden bağımsız alımlar yerine birlikte planlayın. Erken planlama ekipmanı, borulamayı, elektrik ihtiyaçlarını ve erişimi koordine etmeye yardımcı olur." },
+      { "title": "Ticari ve endüstriyel alanlar", "text": "Havalandırma, iklimlendirme, elektrik sistemleri ve bakımı işletmenizin çalışma düzenine göre görüşün. Ekipman seçimi talebi, erişimi, servis ihtiyaçlarını ve iş sürekliliğini dikkate almalıdır." }
+    ],
+    "servicesLabel": "Neler yapıyoruz?",
+    "servicesTitle": "Ekipmandan fazlası. Sistemin bütünü için destek.",
+    "servicesText": "Hizmetlerimiz tasarım, tedarik, kurulum ve bakımı birleştirir. Mevcut sisteminizi iyileştiriyor veya yeni bir sistem planlıyor olun; kapsamı görmek ve mülkünüz için bilgi almak üzere her hizmeti inceleyin.",
+    "serviceDetails": "Hizmeti incele ve teklif iste",
+    "shopTitle": "Ürünler ve teknik hizmetler aynı yerde.",
+    "shopText": "Yenilenebilir enerji ekipmanlarını, ısıtma ve soğutma bileşenlerini, sıcak su sistemlerini ve elektrikli cihazları inceleyin. Uyumluluk veya kapasiteden emin değilseniz sipariş vermeden önce ekibimize danışın. Kurulum kapsamı ve uygunluğu ayrıca onaylanır.",
+    "shopCta": "Mağazayı keşfedin",
+    "processText": "İyi ekipman başarılı bir sistemin yalnızca bir parçasıdır. Net ihtiyaçlar, doğru planlama ve dikkatli teslim de aynı derecede önemlidir.",
+    "commitmentEyebrow": "Çalışma ilkelerimiz",
+    "commitmentTitle": "Yalnızca hızlı değil, bilinçli kararlar verin.",
+    "commitmentText": "Misyonumuz; verimli, güvenli ve sürdürülebilir ısıtma, soğutma, sıcak su ve güneş enerjisi çözümleriyle müşterilerin enerji maliyetlerini azaltmasına ve konforunu artırmasına yardımcı olmaktır. Başlangıç noktası mülkünüz için neyin uygun olduğunu anlamaktır.",
+    "commitments": [
+      { "title": "Mülkü esas alan danışmanlık", "text": "Kapasite, yerleşim, kullanım alışkanlıkları ve mevcut tesisat önemlidir. Tek bir ürünün herkese uygun olduğunu varsaymak yerine bu etkenleri görüşürüz." },
+      { "title": "Net bir iş kapsamı", "text": "Ekipman tedariki, kurulum, devreye alma ve bakım projenin farklı bölümleridir. İşi onaylamadan önce teklifin neleri içerdiğini netleştirmemizi isteyin." },
+      { "title": "Ürün seçiminin ötesinde destek", "text": "Kullanım, servis ve gelecekteki bakım hakkında bizimle görüşün. Ürün garantileri ve hizmet koşulları ekipmana ve anlaşılan kapsama bağlıdır." }
+    ],
+    "projectsTitle": "Şirketimizin çalışmalarını yakından görün.",
+    "projectsCta": "Projelerimizi inceleyin",
+    "faqTitle": "Matek Energy'yi tanıyın",
+    "faqs": [
+      { "q": "Ürün tedariki ve sistem kurulumu yapıyor musunuz?", "a": "Evet. Mağazamız ekipman ve bileşenleri, hizmet sayfalarımız ise kurulum ve teknik işleri bir araya getirir. Belirli bir ürün için uyumluluğu, kurulum uygunluğunu ve kapsamı teyit etmek üzere bize ulaşın." },
+      { "q": "Hangi sisteme ihtiyacım olduğuna karar vermeme yardımcı olur musunuz?", "a": "Mülkünüzü, mevcut ekipmanı, kullanımınızı ve hedeflerinizi anlatın. Bir sistem önermeden önce sonraki adımları ve saha değerlendirmesine ihtiyaç olup olmadığını görüşebiliriz." },
+      { "q": "Tadilat veya yeni yapı projesini görüşebilir miyim?", "a": "Evet. Erken görüşmeler ısıtma, soğutma, sıcak su, güneş enerjisi ve elektrik ihtiyaçlarının koordinasyonuna yardımcı olur. Varsa planları, fotoğrafları ve alanın kullanım amacını paylaşın." },
+      { "q": "Nasıl fiyat alabilirim?", "a": "Hizmet talep formunu kullanın, danışmanlık randevusu alın veya WhatsApp'tan bize ulaşın. Hizmet sayfalarındaki başlangıç fiyatları yalnızca göstergedir; nihai kapsam, ekipman ve fiyat teklifinizde teyit edilir." }
+    ]
   },
   "contact": {
     "title": "Bize ulaşın",
@@ -339,11 +451,52 @@
     "subtitle": "Enerji sistemleri hakkında haberler, rehberler ve ipuçları",
     "empty": "Henüz yazı yok.",
     "related": "İlgili yazılar",
-    "share": "Paylaş"
+    "share": "Paylaş",
+    "eyebrow": "Matek günlüğü",
+    "guides": "Rehberler",
+    "readingTime": "{minutes} dk okuma",
+    "libraryEyebrow": "Pratik bilgiler",
+    "libraryTitle": "Yatırım yapmadan önce seçeneklerinizi anlayın.",
+    "search": "Yazılarda ara",
+    "categoryFilter": "Yazıları kategoriye göre filtrele",
+    "allArticles": "Tüm yazılar",
+    "featured": "Buradan başlayın",
+    "readGuide": "Rehberi okuyun",
+    "results": "{count, plural, =0 {Yazı bulunamadı} other {# yazı bulundu}}",
+    "noResults": "Eşleşen rehber bulunamadı.",
+    "emptyHelp": "Farklı bir arama deneyin veya düşündüğünüz sistem hakkında ekibimize danışın.",
+    "reset": "Tüm yazılara göz atın",
+    "adviceTitle": "İyi kararlar doğru sorularla başlar.",
+    "adviceText": "Rehberlerimiz ekipman seçiminin ve enerji kullanımının arkasındaki etkenleri açıklar. Her bina farklıdır: bunları başlangıç noktası olarak kullanın, satın alma veya kurulum öncesinde ayrıntıları ekibimizle görüşün.",
+    "topics": [
+      { "title": "Güneş enerjisi ve tüketim", "text": "Öz tüketimi, işletme maliyetlerini ve güneş enerjisi teklifinde sorulacak soruları anlayın.", "query": "güneş" },
+      { "title": "Isıtma ve soğutma", "text": "Konforu, ekipman boyutlandırmasını ve verimli günlük kullanımı keşfedin.", "query": "klima" },
+      { "title": "Tüm pratik rehberler", "text": "Ekipman seçiminden sonraki projenizin planlanmasına kadar tüm yazıları inceleyin.", "query": "" }
+    ],
+    "practicalEyebrow": "Uygulamaya geçin",
+    "prepareTitle": "Kurulum ekibiyle görüşmeden önce",
+    "prepareText": "Birkaç ayrıntı görüşmeyi daha yararlı kılar ve saha ziyaretine ihtiyaç olup olmadığını belirlemeye yardımcı olur.",
+    "preparations": [
+      "Mülkün türünü, konumunu ve iyileştirmek istediğiniz alanları veya ekipmanı not edin.",
+      "Mümkünse son enerji faturalarını ve mevcut ekipmanın model bilgilerini hazır bulundurun.",
+      "Önceliklerinizi paylaşın: konfor, tüketim, kullanılabilir alan, zamanlama ve bütçe.",
+      "Ekipman özelliklerini, kurulum kapsamını ve hizmet koşullarını yazılı olarak isteyin."
+    ],
+    "disclaimer": "Yalnızca genel bilgilendirme amaçlıdır; mülkünüze özel tasarım veya tasarruf garantisi değildir. Kurulum, elektrik işleri ve sistem ayarları uygun niteliklere sahip uzmanlar tarafından değerlendirilmeli ve yapılmalıdır.",
+    "expertTitle": "Bu bilgileri mülkünüze uyarlayın.",
+    "expertText": "Düşündüğünüz sistem hakkında Matek Energy'ye danışın. İhtiyaçlarınızı görüşüp sonraki adımı planlamanıza yardımcı olalım.",
+    "askExpert": "Ekibimize danışın",
+    "servicesTitle": "Bilgiden kuruluma",
+    "contentPending": "Bu yazı hazırlanıyor. Bilgi almak için ekibimize ulaşın.",
+    "articleNavigation": "Diğer günlük yazıları",
+    "newer": "Daha yeni yazı",
+    "older": "Daha eski yazı"
   },
   "team": {
     "title": "Ekibimiz",
-    "subtitle": "Matek Energy'nin arkasındaki mühendis ve teknisyenler"
+    "subtitle": "Matek Energy'nin arkasındaki mühendis ve teknisyenler",
+    "contactTitle": "Mühendislik ekibimizle görüşün",
+    "contactText": "Güneş enerjisi, ısıtma, soğutma, sıcak su veya elektrik işlerini doğrudan Matek Energy ile görüşün. Gereksinimlerinizi değerlendirmek ve mülkünüz için sonraki adımları planlamak üzere randevu alın."
   },
   "footer": {
     "about": "Isıtma, soğutma, sıcak su ve yenilenebilir enerji sistemlerinde uzman.",

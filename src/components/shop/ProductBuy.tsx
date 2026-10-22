@@ -53,7 +53,7 @@ export function ProductBuy({ product, locale, whatsappHref }: { product: Product
       </div>
 
       {/* Mobile sticky buy bar */}
-      <div className="fixed inset-x-0 bottom-0 z-40 flex items-center gap-3 border-t border-border bg-white/95 px-4 py-3 shadow-[0_-8px_24px_rgba(0,0,0,0.08)] backdrop-blur lg:hidden">
+      <div data-mobile-action-bar className="fixed inset-x-0 bottom-0 z-40 flex items-center gap-3 border-t border-border bg-white/95 px-4 py-3 shadow-[0_-8px_24px_rgba(0,0,0,0.08)] backdrop-blur lg:hidden">
         <div className="min-w-0 flex-1">
           <p className="truncate text-xs text-muted">{product.name}</p>
           <p className="font-display text-lg font-semibold text-navy">{formatMoney(effectivePrice(product), product.currency, locale)}</p>

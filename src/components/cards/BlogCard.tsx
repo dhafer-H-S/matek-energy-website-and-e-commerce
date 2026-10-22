@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { formatDate } from "@/lib/utils";
 import type { BlogPostView } from "@/lib/queries/blog";
+import { readingMinutes } from "@/lib/reading-time";
 
 export function BlogCard({
   post,
@@ -17,6 +18,7 @@ export function BlogCard({
 }) {
   const tc = useTranslations("common");
   const locale = useLocale();
+  const t = useTranslations("blog");
 
   return (
     <Link href={`/blog/${post.slug}`} className="group block">
@@ -26,13 +28,14 @@ export function BlogCard({
           <img
             src={post.coverImage}
             alt={post.title}
+            loading="lazy"
             className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
         ) : null}
       </div>
 
       {post.category ? (
-        <span className="eyebrow mt-5 block text-brand">{post.category}</span>
+        <span className="eyebrow mt-5 block text-brand">{post.category === "Guides" ? t("guides") : post.category}</span>
       ) : null}
 
       <h3 className="mt-2 font-display text-xl leading-snug text-navy transition-colors group-hover:text-brand">
@@ -45,9 +48,9 @@ export function BlogCard({
         </p>
       ) : null}
 
-      {showDate && post.publishedAt ? (
+      {showDate ? (
         <p className="mt-2 text-xs text-muted">
-          {formatDate(post.publishedAt, locale)}
+          {post.publishedAt ? `${formatDate(post.publishedAt, locale)} · ` : ""}{t("readingTime", { minutes: readingMinutes(post.content) })}
         </p>
       ) : null}
 

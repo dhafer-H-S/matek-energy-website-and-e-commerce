@@ -216,6 +216,12 @@
       opacity 0.7s ease,
       transform 0.7s ease;
   }
+
+  @media (width < 64rem) {
+    body:has([data-mobile-action-bar]) .whatsapp-fab {
+      bottom: calc(6rem + env(safe-area-inset-bottom, 0px));
+    }
+  }
   .reveal.is-visible {
     opacity: 1;
     transform: none;

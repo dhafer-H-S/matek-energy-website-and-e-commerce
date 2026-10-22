@@ -31,6 +31,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "common" });
+  const media = await getTranslations({ locale, namespace: "media" });
 
   const languages = Object.fromEntries(
     locales.map((l) => [l, `${SITE_URL}/${l}`]),
@@ -79,7 +80,7 @@ export async function generateMetadata({
       locale,
       images: [
         {
-          url: "/og.png",
+          url: media("socialPreview"),
           width: 1200,
           height: 630,
           alt: title,
@@ -90,7 +91,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: ["/og.png"],
+      images: [media("socialPreview")],
     },
   };
 }
@@ -110,7 +111,7 @@ export default async function LocaleLayout({
 
   const [messages, settings] = await Promise.all([
     getMessages(),
-    getSettings(),
+    getSettings(locale),
   ]);
 
   return (

@@ -38,7 +38,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/70 to-transparent" />
                 <span className="absolute start-4 top-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand text-white shadow-lg"><ServiceIcon name={s.icon} className="h-6 w-6" /></span>
                 <span className="absolute bottom-4 start-4 rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-navy">
-                  {s.priceFrom ? `${t("from")} ${formatMoney(s.priceFrom, s.currency, locale)}` : t("quoteOnly")}
+                  {s.priceFrom !== null ? `${t("from")} ${formatMoney(s.priceFrom, s.currency, locale)}` : t("quoteOnly")}
                 </span>
               </Link>
               <div className="flex flex-1 flex-col p-6">

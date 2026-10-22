@@ -41,6 +41,7 @@ export async function ProductCard({
             {t("outOfStock")}
           </span>
         ) : null}
+        {product.image?.startsWith("/seed/pexels/") ? <span className="absolute bottom-2 right-2 rounded-full bg-white/90 px-2 py-1 text-[10px] text-muted">{t("illustrativeLabel")}</span> : null}
       </Link>
       <div className="flex flex-1 flex-col gap-2 p-4">
         {product.categoryName ? (

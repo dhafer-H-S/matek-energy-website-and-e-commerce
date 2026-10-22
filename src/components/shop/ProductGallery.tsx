@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export function ProductGallery({
@@ -12,13 +13,14 @@ export function ProductGallery({
   alt: string;
   badges?: React.ReactNode;
 }) {
+  const t = useTranslations("shop");
   const [i, setI] = useState(0);
   const [zoom, setZoom] = useState<{ x: number; y: number } | null>(null);
   if (images.length === 0) return <div className="aspect-square rounded-3xl bg-background-alt" />;
   const go = (d: number) => setI((v) => (v + d + images.length) % images.length);
 
   return (
-    <div className="lg:sticky lg:top-28">
+    <div className="lg:sticky lg:top-44">
       <div
         className="group relative aspect-square cursor-zoom-in overflow-hidden rounded-3xl border border-border bg-white shadow-sm"
         onMouseMove={(e) => {
@@ -43,6 +45,7 @@ export function ProductGallery({
           </>
         ) : null}
       </div>
+      {images[i].startsWith("/seed/pexels/") ? <p className="mt-3 text-xs leading-relaxed text-muted">{t("illustrativeImage")}</p> : null}
       {images.length > 1 ? (
         <div className="mt-4 grid grid-cols-5 gap-3">
           {images.map((src, idx) => (

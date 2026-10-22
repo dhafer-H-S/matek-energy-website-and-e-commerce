@@ -2,7 +2,7 @@
 
 import { useState, useEffect, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
-import { Phone, Search, ShoppingCart, Menu, X, ChevronDown, Clock } from "lucide-react";
+import { Phone, Search, ShoppingCart, Menu, X, ChevronDown, Clock, Wrench } from "lucide-react";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { Logo } from "./Logo";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -30,10 +30,12 @@ export function HeaderClient({
   categories,
   services,
   phone,
+  openingHours,
 }: {
   categories: Cat[];
   services: Svc[];
   phone: string | null;
+  openingHours: string | null;
 }) {
   const t = useTranslations("nav");
   const ts = useTranslations("services");
@@ -88,9 +90,11 @@ export function HeaderClient({
                 <Phone className="h-3.5 w-3.5" /> {phone}
               </a>
             ) : null}
-            <span className="hidden items-center gap-1.5 md:inline-flex">
-              <Clock className="h-3.5 w-3.5" /> {t("hours")}
-            </span>
+            {openingHours ? (
+              <span className="hidden items-center gap-1.5 md:inline-flex">
+                <Clock className="h-3.5 w-3.5" /> {openingHours}
+              </span>
+            ) : null}
           </div>
           <div className="flex items-center gap-4 text-white">
             <span className="hidden lg:block">{t("freeShipping")}</span>
@@ -136,7 +140,7 @@ export function HeaderClient({
             >
               <Menu className="h-4 w-4" /> {t("categories")} <ChevronDown className="h-4 w-4" />
             </Link>
-            <div className="invisible absolute left-0 top-full z-50 w-80 translate-y-1 rounded-b-xl border border-border bg-white py-2 text-foreground opacity-0 shadow-lift transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+            <div className="invisible absolute left-0 top-full z-50 w-80 translate-y-1 rounded-b-xl border border-border bg-white py-2 text-foreground opacity-0 shadow-lift transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
               <Link href="/shop" className="block px-5 py-2.5 text-sm font-semibold text-brand hover:bg-background-alt">
                 {t("allProducts")}
               </Link>
@@ -159,11 +163,12 @@ export function HeaderClient({
           <div className="group relative">
             <Link
               href="/services"
-              className={cn("inline-flex items-center gap-1.5 px-4 py-3 text-sm font-medium transition-colors hover:bg-white/15", isActive("/services") && "bg-white/20")}
+              className="inline-flex items-center gap-2 bg-navy px-5 py-3 text-sm font-semibold uppercase tracking-wide transition-colors hover:bg-navy-deep focus-visible:bg-navy-deep"
+              aria-current={isActive("/services") ? "page" : undefined}
             >
-              {t("services")} <ChevronDown className="h-4 w-4" />
+              <Wrench className="h-4 w-4" /> {t("services")} <ChevronDown className="h-4 w-4" />
             </Link>
-            <div className="invisible absolute left-0 top-full z-50 w-[46rem] max-w-[90vw] translate-y-1 rounded-b-2xl border border-border bg-white p-4 text-foreground opacity-0 shadow-lift transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+            <div className="invisible absolute left-0 top-full z-50 w-[40rem] max-w-[90vw] translate-y-1 rounded-b-2xl border border-border bg-white p-4 text-foreground opacity-0 shadow-lift transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
               <div className="grid grid-cols-2 gap-2">
                 {services.map((s) => (
                   <Link key={s.slug} href={`/services/${s.slug}`} className="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-background-alt">
@@ -171,7 +176,7 @@ export function HeaderClient({
                     <span className="min-w-0">
                       <span className="block text-sm font-semibold text-navy">{s.title}</span>
                       <span className="block truncate text-xs text-muted">
-                        {s.priceFrom ? `${ts("from")} ${formatMoney(s.priceFrom, s.currency, locale)}` : ts("quoteOnly")}
+                        {s.priceFrom !== null ? `${ts("from")} ${formatMoney(s.priceFrom, s.currency, locale)}` : ts("quoteOnly")}
                       </span>
                     </span>
                   </Link>
@@ -222,7 +227,7 @@ export function HeaderClient({
               </li>
             ))}
           </ul>
-          <div className="mt-2 border-t border-border px-4 pb-2 pt-3 text-xs font-semibold uppercase tracking-wide text-muted">{t("servicesMenu")}</div>
+          <div className="mt-2 flex items-center gap-2 bg-navy px-4 py-3 text-xs font-semibold uppercase tracking-wide text-white"><Wrench className="h-4 w-4" />{t("servicesMenu")}</div>
           <ul>
             <li><Link href="/services" className="block px-4 py-2.5 text-sm font-semibold text-brand">{t("allServices")}</Link></li>
             {services.map((s) => (

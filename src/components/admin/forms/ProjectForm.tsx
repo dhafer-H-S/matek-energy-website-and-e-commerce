@@ -22,11 +22,11 @@ export function ProjectForm({
   );
   return (
     <form action={action} className="flex flex-col gap-6">
-      <FormSection title="Content">
+      <FormSection title="Project story" description="Write a useful case study in English and Turkish. Include only verified project details; avoid estimated results presented as measured performance.">
         <LangTabs>
           <TranslatedField label="Title" name="title" required values={trText(translations, "title")} />
           <TranslatedField label="Subtitle" name="subtitle" values={trText(translations, "subtitle")} />
-          <TranslatedRichText label="Description" name="description" values={trText(translations, "description")} />
+          <TranslatedRichText label="Description" name="description" hint="Use headings for the brief, system or equipment, installation approach and verified outcome. Rich-text formatting appears on the public project page." values={trText(translations, "description")} />
         </LangTabs>
       </FormSection>
       <FormSection title="Details">
@@ -36,7 +36,7 @@ export function ProjectForm({
           <TextField label="Slug" name="slug" defaultValue={project?.slug} placeholder="auto-generated" />
         </div>
         <ImageField label="Main image" name="image" defaultValue={project?.image} />
-        <GalleryField label="Gallery" name="gallery" defaultValue={project?.gallery} />
+        <GalleryField label="Gallery" name="gallery" defaultValue={project?.gallery} hint="Add original photographs from this installation. Visitors can enlarge each photo and browse the gallery." />
         <Switch label="Published" name="published" defaultChecked={project?.published ?? true} />
       </FormSection>
       <ErrorNote message={state.error} />
