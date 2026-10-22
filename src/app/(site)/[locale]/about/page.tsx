@@ -4,6 +4,8 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/site/PageHero";
 import { Link } from "@/i18n/navigation";
 import { buildMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { faqSchema, breadcrumbSchema } from "@/lib/structured-data";
 import { ArrowUpRight, Check, House, Building2, Factory } from "lucide-react";
 import { listServices } from "@/lib/queries/services";
 import { listProjects } from "@/lib/queries/shop";
@@ -34,6 +36,10 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   const [services, projects] = await Promise.all([listServices(locale), listProjects(locale, 3)]);
   return (
     <>
+      <JsonLd data={[
+        faqSchema(faqs),
+        breadcrumbSchema(locale, [{ name: t("title"), path: "/about" }]),
+      ]} />
       <PageHero eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} image={media("aboutHero")} />
       <nav aria-label={t("sectionNav")} className="border-b border-border bg-white">
         <div className="container-luxe flex flex-wrap gap-x-7 gap-y-3 py-5 text-sm font-semibold text-navy">

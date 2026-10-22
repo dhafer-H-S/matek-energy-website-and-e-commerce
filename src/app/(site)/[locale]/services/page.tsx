@@ -9,6 +9,8 @@ import { getSettings } from "@/lib/queries/settings";
 import { waLink } from "@/lib/whatsapp";
 import { formatMoney } from "@/lib/money";
 import { buildMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { itemListSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 export const dynamic = "force-dynamic";
 
@@ -28,6 +30,10 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
   const tel = `tel:${(settings.contactPhone ?? "").replace(/\s+/g, "")}`;
   return (
     <>
+      <JsonLd data={[
+        itemListSchema(locale, t("title"), items.map((s) => ({ name: s.title, path: `/services/${s.slug}` }))),
+        breadcrumbSchema(locale, [{ name: t("title"), path: "/services" }]),
+      ]} />
       <PageHero title={t("title")} subtitle={t("subtitle")} />
       <section className="py-16">
         <div className="container-luxe grid gap-7 md:grid-cols-2 xl:grid-cols-3">

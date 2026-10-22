@@ -13,6 +13,8 @@ import { waLink } from "@/lib/whatsapp";
 import { discountPercent, effectivePrice, formatMoney } from "@/lib/money";
 import { BadgeCheck, Banknote, Phone, ShieldCheck, Truck, Wrench, PackageCheck, MessageCircle, ClipboardCheck } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { productSchema, breadcrumbSchema } from "@/lib/structured-data";
 
 export const dynamic = "force-dynamic";
 
@@ -52,6 +54,14 @@ export default async function ProductPage({ params }: { params: Promise<{ locale
 
   return (
     <>
+      <JsonLd data={[
+        productSchema(locale, p),
+        breadcrumbSchema(locale, [
+          { name: t("title"), path: "/shop" },
+          ...(p.categorySlug && p.categoryName ? [{ name: p.categoryName, path: `/categories/${p.categorySlug}` }] : []),
+          { name: p.name, path: `/products/${slug}` },
+        ]),
+      ]} />
       <section className="container-luxe pb-24 pt-8 lg:pb-12">
         <nav className="mb-6 text-sm text-muted">
           <Link href="/shop" className="hover:text-brand">{t("title")}</Link>

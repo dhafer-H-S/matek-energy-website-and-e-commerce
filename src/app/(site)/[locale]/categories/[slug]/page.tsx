@@ -3,8 +3,11 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/site/PageHero";
 import { ShopListing } from "@/components/shop/ShopListing";
-import { getCategoryBySlug } from "@/lib/queries/shop";
+import { getCategoryBySlug, listProducts } from "@/lib/queries/shop";
 import { buildMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { itemListSchema, breadcrumbSchema } from "@/lib/structured-data";
+import { getTranslations } from "next-intl/server";
 
 export const dynamic = "force-dynamic";
 
@@ -27,8 +30,19 @@ export default async function CategoryPage({
   setRequestLocale(locale);
   const c = await getCategoryBySlug(slug, locale);
   if (!c) notFound();
+  const [t, products] = await Promise.all([
+    getTranslations({ locale, namespace: "shop" }),
+    listProducts(locale, { categorySlug: slug, limit: 50 }),
+  ]);
   return (
     <>
+      <JsonLd data={[
+        itemListSchema(locale, c.name, products.map((p) => ({ name: p.name, path: `/products/${p.slug}` }))),
+        breadcrumbSchema(locale, [
+          { name: t("title"), path: "/shop" },
+          { name: c.name, path: `/categories/${slug}` },
+        ]),
+      ]} />
       <PageHero title={c.name} subtitle={c.description ?? undefined} image={c.image} />
       <ShopListing locale={locale} basePath={`/categories/${slug}`} categorySlug={slug} q={q} sort={sort} />
     </>

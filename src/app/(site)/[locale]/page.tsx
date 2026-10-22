@@ -12,6 +12,8 @@ import { StatCounter } from "@/components/ui/StatCounter";
 import { listBanners, listCategories, listProducts, listProjects } from "@/lib/queries/shop";
 import { listServices } from "@/lib/queries/services";
 import { buildMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { faqSchema, itemListSchema } from "@/lib/structured-data";
 import { getSettings } from "@/lib/queries/settings";
 import { waLink } from "@/lib/whatsapp";
 import { formatMoney } from "@/lib/money";
@@ -69,6 +71,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   return (
     <>
+      <JsonLd data={[
+        faqSchema(faq),
+        itemListSchema(locale, "Product categories", cats.map((c) => ({ name: c.name, path: `/categories/${c.slug}` }))),
+      ]} />
       <HeroSlider banners={hero} />
 
       {services.length > 0 ? (

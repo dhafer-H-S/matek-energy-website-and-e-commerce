@@ -14,6 +14,8 @@ import { getSettings } from "@/lib/queries/settings";
 import { waLink } from "@/lib/whatsapp";
 import { formatMoney } from "@/lib/money";
 import { buildMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/structured-data";
 
 export const dynamic = "force-dynamic";
 
@@ -48,6 +50,14 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
 
   return (
     <>
+      <JsonLd data={[
+        serviceSchema(locale, s),
+        breadcrumbSchema(locale, [
+          { name: t("title"), path: "/services" },
+          { name: s.title, path: `/services/${s.slug}` },
+        ]),
+        faqSchema(s.faqs),
+      ]} />
       <section className="relative isolate overflow-hidden bg-navy-deep text-white">
         {s.image ? /* eslint-disable-next-line @next/next/no-img-element */ <img src={s.image} alt="" className="absolute inset-0 -z-10 h-full w-full object-cover opacity-40" /> : null}
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-deep via-navy-deep/85 to-navy-deep/30" />

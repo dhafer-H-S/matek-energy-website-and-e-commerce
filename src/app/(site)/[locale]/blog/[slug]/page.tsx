@@ -8,6 +8,8 @@ import { ShareButtons } from "@/components/blog/ShareButtons";
 import { BlogCard } from "@/components/cards/BlogCard";
 import { getBlogPostBySlug, listRelatedPosts, listBlogPosts } from "@/lib/queries/blog";
 import { buildMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { blogPostingSchema, breadcrumbSchema } from "@/lib/structured-data";
 import { formatDate } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
 import { listServices } from "@/lib/queries/services";
@@ -51,6 +53,13 @@ export default async function BlogPostPage({
 
   return (
     <>
+      <JsonLd data={[
+        blogPostingSchema(locale, post),
+        breadcrumbSchema(locale, [
+          { name: t("title"), path: "/blog" },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ]),
+      ]} />
       <PageHero
         eyebrow={post.category === "Guides" ? t("guides") : post.category ?? undefined}
         title={post.title}

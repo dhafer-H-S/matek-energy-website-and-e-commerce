@@ -11,6 +11,8 @@ import { CartProvider } from "@/components/shop/CartProvider";
 import { WhatsAppFab } from "@/components/site/WhatsAppFab";
 import { Footer } from "@/components/site/Footer";
 import { getSettings } from "@/lib/queries/settings";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { organizationSchema, websiteSchema } from "@/lib/structured-data";
 import "../../globals.css";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
@@ -122,6 +124,7 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col bg-background text-foreground antialiased">
+        <JsonLd data={[organizationSchema(settings), websiteSchema()]} />
         <NextIntlClientProvider messages={messages} locale={locale}>
           <CartProvider>
             <Navbar locale={locale} />
