@@ -86,9 +86,152 @@ Password: Aura@Admin2026
 2. Add all environment variables (above). Create a **Blob** store and set
    `BLOB_READ_WRITE_TOKEN`.
 3. Set `NEXT_PUBLIC_SITE_URL` to your production domain.
-4. Deploy. Run `npm run db:migrate` against the production Turso database if needed.
+4. Before deploying this version, apply the reviewed additive schema changes
+   with `npm run db:push` against the **production Turso database**. Do not
+   reseed an existing database. Keep the production and local URLs separate.
+5. Deploy, then test the public pages, admin login and notification delivery.
+
+### Vercel build: `URL_INVALID: The URL 'undefined'`
+
+This means `TURSO_DATABASE_URL` was not supplied to the build. It is not an
+EmailJS or `/api/media` bug: the media route imports the shared database client,
+so Next.js encounters the missing database configuration while collecting it.
+
+In **Vercel > Project > Settings > Environment Variables**, add:
+
+- `TURSO_DATABASE_URL`: your remote `libsql://...turso.io` URL (not an auth
+  token and not the local `file:./data/matek.db` URL).
+- `TURSO_AUTH_TOKEN`: the token authorized for that database.
+- Also configure `AUTH_SECRET`, `NEXT_PUBLIC_SITE_URL` and the EmailJS variables
+  listed below; configure Blob/Pexels variables for the corresponding features.
+
+Enable variables for **Production and Preview** if both deployment types need
+them, save, and **redeploy**. Existing deployments do not acquire new values.
+The local `.env.local` file is gitignored and is not uploaded to Vercel; never
+commit it to work around this. Confirm you are changing the correct Vercel
+project and that its Root Directory points to the Matek app containing
+`package.json` (the Matek subfolder if deploying this parent repository).
+The database URL is server-only and must not use a `NEXT_PUBLIC_` prefix.
+
+### Moving the existing local Matek content to its own Turso database
+
+In the **Matek app's** `.env.local`, set `TURSO_DATABASE_URL` to
+`libsql://matek-energy-website-and-e-commerce-dhaferhs.aws-us-east-1.turso.io`
+and `TURSO_AUTH_TOKEN` to a fresh **database auth token for that database**.
+An organization/account API token is not a database auth token.
+
+Run `npm run db:transfer-matek` from the Matek app directory. It reads the
+existing `data/matek.db`, checks the source is Matek, and refuses to modify
+any remote database other than the exact Matek destination. The destination
+must have no user tables. Schema, content, admin accounts and settings are
+copied together in a transaction, then every record and foreign key is checked.
+The source database is not deleted or reseeded; Aura is never accessed.
+Do not run `db:push` first for this transfer: the script creates the source
+schema itself and deliberately refuses an already initialized destination.
+
+Restart the local server after changing database configuration, set the same
+Matek URL and database token in Vercel, and redeploy. Never commit environment
+files or share the token.
 
 ## Matek storefront services and imagery
+
+### Automatic emails with EmailJS
+
+New orders, contact messages, service quotations and appointment requests are
+saved in the Matek database **together with** their notification records.
+The server then sends one Matek notification and one customer acknowledgement
+(the customer email is skipped only when checkout has no email address).
+Delivery no longer relies on a browser-side EmailJS call: it runs in the
+server action. If server execution is interrupted, the saved notification
+records remain available for manual retry. Website and WhatsApp checkout both
+notify Matek.
+
+**Set up EmailJS before expecting real emails:**
+
+1. Connect `matek.energy@gmail.com` to an EmailJS email service. Use Gmail
+   authorization or enter any required app password **in EmailJS**, never in
+   the website source, admin content, or a `NEXT_PUBLIC_` environment variable.
+2. Create **two** EmailJS templates. Each handles orders, contact messages and
+   service requests through conditional sections; six duplicated templates
+   are not needed. Paste the HTML from:
+   - [Admin notification](templates/emailjs/admin-notification.html)
+   - [Customer confirmation](templates/emailjs/customer-confirmation.html)
+3. On **both** templates configure these EmailJS fields exactly:
+
+   | EmailJS field | Value |
+   | --- | --- |
+   | Subject | `{{email_subject}}` |
+   | To Email | `{{to_email}}` |
+   | From Name | `Matek Energy` |
+   | From Email | The connected service's verified/default sender |
+   | Reply To | `{{reply_to}}` |
+   | CC / BCC | Empty (do not expose customer addresses) |
+
+   Keep double braces for customer fields; do not change them to raw-HTML
+   triple braces. The HTML uses EmailJS's supported conditional/loop syntax
+   (`{{#items}}...{{/items}}`). Disable any additional EmailJS auto-reply on
+   these templates: the website already sends the separate customer email.
+4. Add these **server-only** environment variables in `.env.local` and Vercel:
+   `EMAILJS_SERVICE_ID`, `EMAILJS_PUBLIC_KEY`, `EMAILJS_ADMIN_TEMPLATE_ID`,
+   `EMAILJS_CUSTOMER_TEMPLATE_ID`. If your EmailJS security configuration uses
+   private-key authorization, also set `EMAILJS_PRIVATE_KEY`.
+   Enable **non-browser API requests** in EmailJS Account > Security.
+   Restart locally / redeploy Vercel after changing variables. Old
+   `NEXT_PUBLIC_EMAILJS_*` values are no longer used.
+5. Set `NEXT_PUBLIC_SITE_URL` to your public HTTPS domain in production.
+   Email buttons and logo URLs use this origin; a recipient cannot load a
+   logo hosted at your computer's `localhost`.
+6. Apply the additive database change with `npm run db:push` before deployment.
+   Do **not** reseed an existing database. Configure **Order Email** and
+   **Contact Email** under Admin > Settings; set the bank account/IBAN there
+   if you want bank-transfer instructions included in customer order emails.
+   The **Order & enquiry notification email** receives all Matek notifications
+   (default `matek.energy@gmail.com`); **Contact Email** remains the public
+   contact/reply address.
+7. Submit a test order, contact message and service request with an inbox you
+   control. Check both inboxes and EmailJS history. A Gmail app password alone
+   is not enough: the service, templates and API keys must also be configured.
+
+**Email content**
+
+- Matek receives customer details, submission reference/date, source/language,
+  order products with quantities/SKUs, separate EUR/TRY totals, payment method,
+  address/notes, or the request topic/message/preferred date and an admin link.
+- Customer acknowledgements follow EN/TR, include the submitted summary and
+  next steps, and provide a contact link. Bank-transfer orders include
+  configured bank details and reference instructions. They never claim that
+  payment, delivery, an appointment or a quoted price has been confirmed.
+- Both templates use inline styles and table layouts for mail clients.
+  Edit branding/layout in the EmailJS template editor after pasting the HTML.
+  Customer-provided text is passed as escaped template variables, not HTML.
+
+**Delivery status and retries**
+
+Use **Admin > Email notifications** to see pending/sending/sent/failed/not
+configured states separately for Matek and the customer. Orders and enquiries
+link to their related notifications. Sent means **accepted by EmailJS**, not
+guaranteed inbox delivery. Missing setup, quota errors and timeouts are shown
+explicitly. Customers are told that the submission is saved if email cannot
+be confirmed, and must not submit again.
+
+After fixing setup, retry an individual unsent notification from this page.
+There are no automatic retry loops or cron jobs. Sending is serialized at
+1.1-second intervals within a server instance; concurrent Vercel instances
+can still hit the account-wide limit (1 request/second), in which case the
+failure is retained for manual retry. Respect your EmailJS plan's quota.
+Production public forms should use suitable spam/CAPTCHA protection and
+monitoring before promoting them broadly.
+
+Retries cannot resend a record already marked sent; concurrent attempts claim
+the same record atomically. An interrupted sending attempt becomes retryable
+after two minutes. A timeout can mean the provider accepted the email even
+though no response arrived: **check EmailJS history before retrying** to avoid
+duplicates. Deleting an order/enquiry cascades its notification records,
+including the stored email parameters/customer details.
+
+Run `npm run test:email` for payload, language, template-variable and mocked
+EmailJS transport checks. Live delivery still requires the real configuration
+and an inbox test; automated tests do not send to EmailJS.
 
 ### Company, projects and journal pages
 

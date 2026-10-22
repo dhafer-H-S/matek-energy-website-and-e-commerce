@@ -392,6 +392,30 @@ export const siteContent = sqliteTable(
   (t) => [uniqueIndex("site_content_section_locale").on(t.section, t.locale)],
 );
 
+export const emailNotifications = sqliteTable(
+  "email_notifications",
+  {
+    id: id(),
+    orderId: text("order_id").references(() => orders.id, { onDelete: "cascade" }),
+    enquiryId: text("enquiry_id").references(() => enquiries.id, { onDelete: "cascade" }),
+    kind: text("kind", { enum: ["order", "contact", "service"] }).notNull(),
+    audience: text("audience", { enum: ["admin", "customer"] }).notNull(),
+    recipient: text("recipient").notNull(),
+    params: text("params", { mode: "json" }).$type<Record<string, unknown>>().notNull(),
+    status: text("status", { enum: ["pending", "sending", "sent", "failed", "not_configured"] }).notNull().default("pending"),
+    attempts: integer("attempts").notNull().default(0),
+    lastError: text("last_error"),
+    sentAt: integer("sent_at", { mode: "timestamp" }),
+    createdAt: createdAt(),
+    updatedAt: updatedAt(),
+  },
+  (t) => [
+    uniqueIndex("email_order_audience").on(t.orderId, t.audience),
+    uniqueIndex("email_enquiry_audience").on(t.enquiryId, t.audience),
+    index("email_status_created").on(t.status, t.createdAt),
+  ],
+);
+
 /* ─── Global settings (singleton) ────────────────────────────────────────── */
 export const settings = sqliteTable("settings", {
   id: text("id").primaryKey().default("global"),

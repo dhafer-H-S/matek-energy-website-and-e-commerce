@@ -12,6 +12,7 @@ type Saved = Extract<PlaceOrderResult, { ok: true }>;
 export function SuccessView() {
   const t = useTranslations("checkout");
   const tc = useTranslations("cart");
+  const common = useTranslations("common");
   const locale = useLocale();
   const [data, setData] = useState<Saved | null>(null);
 
@@ -30,6 +31,7 @@ export function SuccessView() {
       {data ? (
         <div className="mt-6 space-y-2 text-sm">
           <p>{t("orderNumber")}: <strong className="text-navy">{data.order.orderNumber}</strong></p>
+          {data.emailWarning ? <p role="status" className="rounded-xl bg-amber-50 p-3 text-amber-900">{common("emailDelayed")}</p> : null}
           <p className="font-semibold text-navy">{totalsText(data.order.totals, locale)}</p>
           {data.order.paymentMethod === "bank_transfer" && data.bank.iban ? (
             <div className="mx-auto mt-4 max-w-sm rounded-xl bg-background-alt p-4 text-start">

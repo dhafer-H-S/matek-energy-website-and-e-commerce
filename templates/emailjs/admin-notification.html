@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{{email_subject}}</title></head>
+<body style="margin:0;padding:0;background:#eef3f1;color:#132e43;font-family:Arial,Helvetica,sans-serif;">
+  <div style="display:none;max-height:0;overflow:hidden;">{{heading}} · {{reference}} · {{customer_name}}</div>
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#eef3f1;"><tr><td align="center" style="padding:28px 12px;">
+    <table role="presentation" width="640" cellspacing="0" cellpadding="0" style="width:100%;max-width:640px;background:#ffffff;border-radius:16px;overflow:hidden;">
+      <tr><td style="padding:24px 28px;border-top:6px solid #5d8b73;"><img src="{{logo_url}}" alt="Matek Energy" width="155" style="display:block;width:155px;max-width:100%;height:auto;"></td></tr>
+      <tr><td style="padding:28px;background:#132e43;color:#ffffff;"><p style="margin:0 0 12px;color:#a9d9be;font-size:12px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;">MATEK ADMIN · {{kind_label}}</p><h1 style="margin:0 0 14px;font-size:28px;line-height:1.25;">{{heading}}</h1><p style="margin:0;font-size:15px;line-height:1.7;color:#e0e9ee;">{{introduction}}</p></td></tr>
+      <tr><td style="padding:26px 28px 0;"><p style="margin:0 0 6px;font-size:13px;color:#60717c;">{{reference_label}}</p><p style="margin:0 0 10px;font-size:20px;font-weight:bold;word-break:break-word;">{{reference}}</p><p style="margin:0;font-size:12px;color:#60717c;">{{submitted_at}} · {{source_type}} · {{locale}}</p></td></tr>
+      <tr><td style="padding:26px 28px;"><h2 style="margin:0 0 14px;font-size:18px;">Customer details</h2><table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="font-size:14px;line-height:1.7;">
+        <tr><td style="padding:6px 0;color:#60717c;width:100px;vertical-align:top;">Name</td><td style="padding:6px 0;word-break:break-word;">{{customer_name}}</td></tr>
+        {{#customer_email}}<tr><td style="padding:6px 0;color:#60717c;vertical-align:top;">Email</td><td style="padding:6px 0;word-break:break-word;">{{customer_email}}</td></tr>{{/customer_email}}
+        {{#customer_phone}}<tr><td style="padding:6px 0;color:#60717c;vertical-align:top;">Phone</td><td style="padding:6px 0;">{{customer_phone}}</td></tr>{{/customer_phone}}
+        {{#customer_address}}<tr><td style="padding:6px 0;color:#60717c;vertical-align:top;">Address</td><td style="padding:6px 0;white-space:pre-wrap;word-break:break-word;">{{customer_address}}</td></tr>{{/customer_address}}
+      </table></td></tr>
+      {{#is_order}}
+      <tr><td style="padding:0 28px 24px;"><h2 style="margin:0 0 14px;font-size:18px;">Order summary</h2><table width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;font-size:13px;text-align:left;">
+        <tr style="background:#eef3f1;"><th scope="col" style="padding:10px 8px;">Product</th><th scope="col" style="padding:10px 8px;">Qty</th><th scope="col" style="padding:10px 8px;text-align:right;">Total</th></tr>
+        {{#items}}<tr><td style="padding:12px 8px;border-bottom:1px solid #e3e9e6;word-break:break-word;">{{name}}<br><span style="font-size:11px;color:#60717c;">{{unit_price}}{{#sku}} · SKU: {{sku}}{{/sku}}</span></td><td style="padding:12px 8px;border-bottom:1px solid #e3e9e6;">{{quantity}}</td><td style="padding:12px 8px;border-bottom:1px solid #e3e9e6;text-align:right;">{{line_total}}</td></tr>{{/items}}
+      </table><p style="text-align:right;font-size:20px;font-weight:bold;color:#5d8b73;">Total: {{total}}</p><p style="font-size:14px;">Payment: <strong>{{payment_method}}</strong></p><p style="font-size:12px;color:#60717c;">Payment has not been verified. Confirm stock and delivery before processing.</p></td></tr>
+      {{/is_order}}
+      {{#is_request}}<tr><td style="padding:0 28px 24px;"><h2 style="margin:0 0 12px;font-size:18px;">Request details</h2><p style="margin:0;font-size:15px;line-height:1.7;">{{request_topic}}</p>{{#preferred_date}}<p style="font-size:14px;">Preferred date: <strong>{{preferred_date}}</strong> (not confirmed)</p>{{/preferred_date}}</td></tr>{{/is_request}}
+      {{#message}}<tr><td style="padding:0 28px 24px;"><div style="padding:18px;background:#f5f7f6;border-left:4px solid #5d8b73;"><h2 style="margin:0 0 10px;font-size:15px;">Message / notes</h2><p style="margin:0;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.8;">{{message}}</p></div></td></tr>{{/message}}
+      <tr><td style="padding:0 28px 28px;"><table role="presentation" cellspacing="0" cellpadding="0"><tr><td style="background:#5d8b73;border-radius:8px;"><a href="{{action_url}}" style="display:inline-block;padding:15px 22px;font-size:14px;font-weight:bold;color:#ffffff;text-decoration:none;">{{action_label}}</a></td></tr></table><p style="margin:16px 0 0;font-size:12px;color:#60717c;">Reply to this email to follow up with the customer when an email address was supplied. Treat customer-provided content as unverified.</p></td></tr>
+      <tr><td style="padding:22px 28px;background:#eef3f1;font-size:12px;line-height:1.8;color:#60717c;"><strong>Matek Energy</strong> · Internal notification<br>Manage this submission in the admin panel. Do not forward customer details unnecessarily.</td></tr>
+    </table>
+  </td></tr></table>
+</body>
+</html>

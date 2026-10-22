@@ -12,22 +12,13 @@ export function ServiceBooking({ serviceId, serviceTitle }: { serviceId: string;
   const t = useTranslations("services");
   const tc = useTranslations("common");
   const locale = useLocale();
-  const [state, action, pending] = useActionState<EnquiryState, FormData>(
-    async (prev, fd) => {
-      const date = String(fd.get("date") ?? "").trim();
-      const msg = String(fd.get("message") ?? "").trim();
-      fd.set("message", [date ? `Preferred date: ${date}` : "", msg].filter(Boolean).join("\n"));
-      fd.delete("date");
-      return submitEnquiry(prev, fd);
-    },
-    {},
-  );
+  const [state, action, pending] = useActionState<EnquiryState, FormData>(submitEnquiry, {});
 
   if (state.ok) {
     return (
       <div className="flex items-start gap-3 rounded-2xl border border-brand/30 bg-brand/10 p-5 text-navy">
         <Check className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
-        <p className="text-sm font-medium">{t("bookingSent")}</p>
+        <div><p className="text-sm font-medium">{t("bookingSent")}</p>{state.emailWarning ? <p role="status" className="mt-2 text-sm text-muted">{tc("emailDelayed")}</p> : null}</div>
       </div>
     );
   }
@@ -45,7 +36,7 @@ export function ServiceBooking({ serviceId, serviceTitle }: { serviceId: string;
       </div>
       <label className="grid gap-1 text-xs text-muted">
         {t("preferredDate")}
-        <input name="date" type="date" className={input} />
+        <input name="preferredDate" type="date" className={input} />
       </label>
       <textarea name="message" rows={3} placeholder={tc("message")} className={input} />
       {state.error ? <p className="text-sm text-danger">{tc("error")}</p> : null}

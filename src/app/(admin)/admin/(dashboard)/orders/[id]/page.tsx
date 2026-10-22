@@ -4,6 +4,7 @@ import { OrderStatusSelect, OrderNote } from "@/components/admin/OrderControls";
 import { getOrderForAdmin } from "@/lib/admin/queries";
 import { formatMoney } from "@/lib/money";
 import { formatDate } from "@/lib/utils";
+import Link from "next/link";
 
 export default async function OrderDetailPage({
   params,
@@ -16,6 +17,7 @@ export default async function OrderDetailPage({
   return (
     <div className="mx-auto max-w-4xl">
       <PageHeader title={`Order ${o.orderNumber}`} description={formatDate(o.createdAt) ?? undefined} />
+      <Link href={`/admin/emails?submission=${o.id}`} className="mb-5 inline-block text-sm font-semibold text-gold">View order email delivery</Link>
       <div className="grid gap-6 md:grid-cols-3">
         <div className="rounded-md border border-border bg-surface p-5 md:col-span-2">
           <h2 className="mb-4 font-display text-lg">Items</h2>

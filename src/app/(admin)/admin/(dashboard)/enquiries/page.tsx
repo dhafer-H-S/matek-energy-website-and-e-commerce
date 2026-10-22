@@ -7,10 +7,11 @@ import { DeleteButton } from "@/components/admin/DeleteButton";
 import { EnquiryStatusSelect } from "@/components/admin/EnquiryStatusSelect";
 import { formatDate } from "@/lib/utils";
 import { deleteEnquiry } from "./actions";
+import Link from "next/link";
 
 const SOURCE_LABELS: Record<string, string> = {
-  development: "Development",
-  property: "Property",
+  quote: "Service / quote request",
+  appointment: "Appointment request",
   contact: "Contact form",
   general: "General",
 };
@@ -84,6 +85,7 @@ export default async function AdminEnquiriesPage() {
                   {e.message}
                 </p>
               ) : null}
+              <Link href={`/admin/emails?submission=${e.id}`} className="mt-3 inline-block text-sm font-semibold text-gold">View email delivery</Link>
             </div>
           ))}
         </div>

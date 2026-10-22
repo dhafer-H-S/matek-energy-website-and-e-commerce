@@ -9,6 +9,7 @@
     "productInstallation": "/seed/pexels/8853504.jpg"
   },
   "common": {
+    "emailDelayed": "Your submission is saved. Email notification could not be confirmed; our team can still see your details in the admin panel. Please do not submit again.",
     "brand": "Matek Energy",
     "tagline": "Energy systems that simply work",
     "seoDescription": "Matek Energy — solar, heating, cooling, hot water and electrical solutions in Northern Cyprus. Shop quality energy equipment online or request a free system assessment.",

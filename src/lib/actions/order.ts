@@ -3,11 +3,13 @@
 import { inArray } from "drizzle-orm";
 import { z } from "zod";
 import { db } from "@/lib/db";
-import { orders, products, type OrderItem } from "@/lib/db/schema";
+import { orders, products, emailNotifications, type OrderItem } from "@/lib/db/schema";
 import { effectivePrice } from "@/lib/money";
 import { getSettings } from "@/lib/queries/settings";
 import { pickTranslation } from "@/lib/db/translations";
 import { buildOrderMessage, waLink } from "@/lib/whatsapp";
+import { buildEmailDrafts } from "@/lib/email-templates";
+import { deliverEmailNotifications, emailNotificationRows } from "@/lib/email-notifications";
 
 const schema = z.object({
   customerName: z.string().trim().min(2).max(120),
@@ -44,6 +46,7 @@ export type PlaceOrderResult =
       };
       whatsappUrl: string;
       orderEmail: string | null;
+      emailWarning: boolean;
       bank: { name: string | null; holder: string | null; iban: string | null; notes: string | null };
     }
   | { ok: false; error: string };
@@ -100,18 +103,31 @@ export async function placeOrder(input: PlaceOrderInput): Promise<PlaceOrderResu
     totals,
   };
 
+  const settings = await getSettings(data.locale);
+  const orderId = crypto.randomUUID();
+  const createdAt = new Date();
+  let notificationIds: string[];
   try {
-    await db.insert(orders).values({ ...order, channel: data.channel, locale: data.locale });
-  } catch {
+    const drafts = buildEmailDrafts({
+      kind: "order", id: orderId, order, channel: data.channel, locale: data.locale, createdAt,
+    }, settings, process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000");
+    notificationIds = drafts.map((draft) => draft.id);
+    await db.transaction(async (tx) => {
+      await tx.insert(orders).values({ id: orderId, ...order, channel: data.channel, locale: data.locale, createdAt });
+      await tx.insert(emailNotifications).values(emailNotificationRows(drafts));
+    });
+  } catch (error) {
+    console.error("Could not save order and email notifications:", error);
     return { ok: false, error: "db" };
   }
 
-  const settings = await getSettings(data.locale);
+  const emailSent = await deliverEmailNotifications(notificationIds);
   return {
     ok: true,
     order,
     whatsappUrl: waLink(settings.whatsapp, buildOrderMessage(order, data.locale)),
     orderEmail: settings.orderEmail,
+    emailWarning: !emailSent,
     bank: {
       name: settings.bankName,
       holder: settings.bankAccountHolder,

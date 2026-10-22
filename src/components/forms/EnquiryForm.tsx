@@ -27,7 +27,7 @@ export function EnquiryForm({
     return (
       <div className="flex items-center gap-3 rounded-2xl border border-brand/30 bg-brand/10 p-6 text-navy">
         <Check className="h-6 w-6 text-brand" />
-        <p className="font-medium">{t("sent")}</p>
+        <div><p className="font-medium">{t("sent")}</p>{state.emailWarning ? <p role="status" className="mt-2 text-sm text-muted">{t("emailDelayed")}</p> : null}</div>
       </div>
     );
   }

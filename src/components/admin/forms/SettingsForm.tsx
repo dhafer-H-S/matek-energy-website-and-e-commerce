@@ -91,7 +91,7 @@ export function SettingsForm({ settings }: { settings: Settings }) {
         description="Shown to customers at checkout. Bank details appear when they choose bank transfer."
       >
         <div className="grid gap-5 sm:grid-cols-2">
-          <TextField label="Order notification email" name="orderEmail" type="email" defaultValue={settings.orderEmail ?? undefined} />
+          <TextField label="Order & enquiry notification email" name="orderEmail" type="email" hint="Receives all Matek order, contact and service-request notifications." defaultValue={settings.orderEmail ?? undefined} />
           <TextField label="Bank name" name="bankName" defaultValue={settings.bankName ?? undefined} />
           <TextField label="Account holder" name="bankAccountHolder" defaultValue={settings.bankAccountHolder ?? undefined} />
           <TextField label="IBAN" name="bankIban" defaultValue={settings.bankIban ?? undefined} />

@@ -6,7 +6,6 @@ import { useRouter } from "@/i18n/navigation";
 import { useCart } from "./CartProvider";
 import { Link } from "@/i18n/navigation";
 import { placeOrder } from "@/lib/actions/order";
-import { sendOrderEmail } from "@/lib/emailjs";
 import { formatMoney } from "@/lib/money";
 import { totalsText } from "@/lib/whatsapp";
 
@@ -49,11 +48,10 @@ export function CheckoutForm({ bank }: { bank: Bank }) {
       setError(t("failed"));
       return;
     }
-    await sendOrderEmail(res.order, channel, res.orderEmail);
     if (channel === "whatsapp") window.open(res.whatsappUrl, "_blank", "noopener");
     sessionStorage.setItem(
       "matek_last_order",
-      JSON.stringify({ order: res.order, bank: res.bank, whatsappUrl: res.whatsappUrl }),
+      JSON.stringify({ order: res.order, bank: res.bank, whatsappUrl: res.whatsappUrl, emailWarning: res.emailWarning }),
     );
     clear();
     router.push("/order-success");

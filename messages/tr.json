@@ -9,6 +9,7 @@
     "productInstallation": "/seed/pexels/8853504.jpg"
   },
   "common": {
+    "emailDelayed": "Talebiniz kaydedildi. E-posta bildirimi teyit edilemedi; ekibimiz bilgilerinizi yönetim panelinde görebilir. Lütfen tekrar göndermeyin.",
     "brand": "Matek Energy",
     "tagline": "Gerçekten çalışan enerji sistemleri",
     "seoDescription": "Matek Energy — Kuzey Kıbrıs'ta güneş enerjisi, ısıtma, soğutma, sıcak su ve elektrik çözümleri. Kaliteli enerji ekipmanlarını online satın alın veya ücretsiz sistem analizi isteyin.",
