@@ -4,7 +4,7 @@ import { z } from "zod";
 import { db } from "@/lib/db";
 import { enquiries, emailNotifications } from "@/lib/db/schema";
 import { getSettings } from "@/lib/queries/settings";
-import { buildEmailDrafts } from "@/lib/email-templates";
+import { buildEmailMessages } from "@/lib/email-templates";
 import { deliverEmailNotifications, emailNotificationRows } from "@/lib/email-notifications";
 
 const schema = z.object({
@@ -51,7 +51,7 @@ export async function submitEnquiry(
   try {
     const settings = await getSettings(data.locale);
     const message = [data.preferredDate ? `${data.locale === "tr" ? "Tercih edilen tarih" : "Preferred date"}: ${data.preferredDate}` : "", data.message].filter(Boolean).join("\n");
-    const drafts = buildEmailDrafts({
+    const drafts = buildEmailMessages({
       id, createdAt, locale: data.locale,
       kind: data.sourceType === "quote" || data.sourceType === "appointment" ? "service" : "contact",
       name: fullName, email: data.email, phone: data.phone || null,

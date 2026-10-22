@@ -2,16 +2,15 @@ import Link from "next/link";
 import { desc, eq, getTableColumns, or, sql } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { emailNotifications } from "@/lib/db/schema";
-import { emailJSConfig } from "@/lib/email-notifications";
-import { missingEmailJSConfig } from "@/lib/emailjs-transport";
+import { mailConfig, missingMailConfig } from "@/lib/email-notifications";
 import { PageHeader, Badge, EmptyState } from "@/components/admin/ui";
 import { RetryEmailButton } from "@/components/admin/RetryEmailButton";
 import { formatDate } from "@/lib/utils";
 
 export default async function EmailsPage({ searchParams }: { searchParams: Promise<{ submission?: string }> }) {
   const { submission } = await searchParams;
-  const config = emailJSConfig();
-  const missing = [...new Set([...missingEmailJSConfig(config, "admin"), ...missingEmailJSConfig(config, "customer")])];
+  const config = mailConfig();
+  const missing = missingMailConfig(config);
   const notifications = await db.select({
     ...getTableColumns(emailNotifications),
     stale: sql<boolean>`${emailNotifications.status} = 'sending' AND ${emailNotifications.updatedAt} < unixepoch() - 120`.mapWith(Boolean),
@@ -22,10 +21,10 @@ export default async function EmailsPage({ searchParams }: { searchParams: Promi
     <>
       <PageHeader title="Email notifications" description="Automatic order, contact and service-request emails for Matek and the customer. Latest 100 notifications; customer emails follow their chosen EN/TR language." action={<form action="/admin/emails" method="get"><button type="submit" className="text-sm font-semibold text-gold">Refresh / show all</button></form>} />
       <div className={`mb-6 rounded-2xl border p-5 text-sm leading-relaxed ${missing.length ? "border-amber-300 bg-amber-50 text-amber-950" : "border-border bg-surface text-muted"}`}>
-        <h2 className="mb-2 font-semibold">{missing.length ? "EmailJS setup is required before live delivery" : "EmailJS configuration is present"}</h2>
-        {missing.length ? <p>Missing server environment variables: <strong>{missing.join(", ")}</strong>. Add them locally / on Vercel and restart or redeploy. Saved submissions remain in Orders / Enquiries and their emails can be retried here after setup.</p> : <p>API acceptance is recorded as Sent. It does not guarantee inbox delivery; check EmailJS history and your email provider for bounces or spam filtering.</p>}
-        <p className="mt-2">In EmailJS, enable non-browser API requests and configure the two templates described in the project README. Private-key authorization is {config.privateKey ? "configured" : "not configured (set EMAILJS_PRIVATE_KEY if enabled in your EmailJS account)"}.</p>
-        <p className="mt-2">All Matek notifications go to the notification email in Settings (default: matek.energy@gmail.com). Customer confirmations require an email address. Provider rate limits and quota failures are shown below, never silently ignored.</p>
+        <h2 className="mb-2 font-semibold">{missing.length ? "Gmail sending is not configured yet" : "Gmail sending is configured"}</h2>
+        {missing.length ? <p>Missing server environment variables: <strong>{missing.join(", ")}</strong>. Add them locally and on Vercel (Production + Preview), then restart or redeploy. Saved submissions remain in Orders / Enquiries and their emails can be retried here after setup.</p> : <p>Emails are sent through Gmail SMTP from <strong>{config.fromEmail}</strong>. &ldquo;Sent&rdquo; means Gmail accepted the message; check the recipient inbox (and spam) to confirm delivery.</p>}
+        <p className="mt-2">Set <strong>GMAIL_USER</strong> to the sending Gmail address and <strong>GMAIL_APP_PASSWORD</strong> to a 16-character Google App Password (2-Step Verification must be enabled). Never use the normal account password. See the project README.</p>
+        <p className="mt-2">All Matek notifications go to the notification email in Settings (default: matek.energy@gmail.com). Customer confirmations require an email address. Connection and authentication failures are shown below, never silently ignored.</p>
       </div>
       {notifications.length === 0 ? <EmptyState title="No email notifications yet" description="New saved orders, contact enquiries and service requests create notification records automatically." /> : (
         <div className="space-y-4">

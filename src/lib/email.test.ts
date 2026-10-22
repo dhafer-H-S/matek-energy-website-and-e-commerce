@@ -1,24 +1,19 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
 import test from "node:test";
-import { buildEmailDrafts, type EmailBusiness, type EmailSubmission } from "./email-templates";
-import { missingEmailJSConfig, sendEmailJS, type EmailJSConfig } from "./emailjs-transport";
+import { buildEmailMessages, type EmailBusiness, type EmailSubmission } from "./email-templates";
+import { missingMailConfig } from "./mail-config";
 
 const business: EmailBusiness = {
   orderEmail: "orders@example.com", contactEmail: "contact@example.com", contactPhone: "+90 555 000 0000",
   bankName: "Test bank", bankAccountHolder: "Matek Energy", bankIban: "TEST-IBAN", bankNotes: "Test bank instructions",
 };
-const config: EmailJSConfig = {
-  serviceId: "test_service", publicKey: "test_public", privateKey: "test_private",
-  adminTemplateId: "admin_template", customerTemplateId: "customer_template",
-};
 const order: EmailSubmission = {
   id: "order-test-id", kind: "order", locale: "tr", createdAt: new Date("2026-10-22T12:00:00Z"), channel: "website",
   order: {
     orderNumber: "MK-TEST", customerName: "Test Customer", email: "customer@example.com", phone: "+90 555 111 1111",
-    address: "Test street", city: "Kyrenia", notes: "<script>alert('test')</script>", paymentMethod: "bank_transfer",
+    address: "Test street", city: "Kyrenia", notes: "<script>alert('xss')</script>", paymentMethod: "bank_transfer",
     items: [
-      { productId: "p1", slug: "p1", name: "Test solar panel", image: null, sku: "P1", unitPrice: 100, currency: "EUR", quantity: 2 },
+      { productId: "p1", slug: "p1", name: "Test <b>solar</b> panel", image: null, sku: "P1", unitPrice: 100, currency: "EUR", quantity: 2 },
       { productId: "p2", slug: "p2", name: "Cable", image: null, sku: null, unitPrice: 0, currency: "TRY", quantity: 1 },
     ],
     totals: { EUR: 200, TRY: 0 },
@@ -26,105 +21,87 @@ const order: EmailSubmission = {
 };
 const request: EmailSubmission = {
   id: "request-test-id", kind: "service", locale: "tr", createdAt: order.createdAt,
-  name: "Test Customer", email: "customer@example.com", phone: "+90 555 111 1111", message: "<b>Do not render as HTML</b>",
+  name: "Test Customer", email: "customer@example.com", phone: "+90 555 111 1111", message: "Line one\nLine two <b>x</b>",
   sourceType: "quote", sourceLabel: "Solar installation", preferredDate: "2026-11-01",
 };
 
-test("orders create distinct admin/customer emails with correct recipients, totals and secure links", () => {
-  const [admin, customer] = buildEmailDrafts(order, business, "https://matek.example/");
+test("orders create distinct admin/customer emails with correct recipients, reply-to, subject and language", () => {
+  const [admin, customer] = buildEmailMessages(order, business, "https://matek.example/");
   assert.equal(admin.recipient, business.orderEmail);
   assert.equal(customer.recipient, order.order.email);
-  assert.equal(admin.params.reply_to, order.order.email);
-  assert.equal(customer.params.reply_to, business.contactEmail);
-  assert.equal(admin.params.language, "en");
-  assert.equal(customer.params.language, "tr");
-  assert.equal(admin.params.action_url, "https://matek.example/admin/orders/order-test-id");
-  assert.equal(customer.params.action_url, "https://matek.example/tr/contact");
+  assert.equal(admin.replyTo, order.order.email);
+  assert.equal(customer.replyTo, business.contactEmail);
+  assert.match(admin.subject, /New Order \| MK-TEST/);
+  assert.match(customer.subject, /Matek Energy \| Sipariş \| MK-TEST/);
   assert.notEqual(admin.id, customer.id);
-  assert.match(String(customer.params.total), /200/);
-  assert.match(String(customer.params.total), /0/);
-  assert.equal(customer.params.show_bank, true);
-  assert.equal(admin.params.show_bank, false);
-  assert.match(String(customer.params.next_steps), /ödemenin alındığını/);
-  assert.ok(Array.isArray(customer.params.items));
-  assert.equal(customer.params.items[0].quantity, 2);
-  assert.equal(customer.params.items[0].sku, "P1");
-  assert.equal(customer.params.message, order.order.notes);
+  // Customer order email is Turkish and includes totals + payment method
+  assert.match(customer.html, /Siparişinizi aldık/);
+  assert.match(customer.html, /200/);
+  assert.match(customer.html, /Banka havalesi/);
+  assert.match(customer.text, /MK-TEST/);
 });
 
-test("cash orders omit bank details and an absent customer email creates admin notification only", () => {
-  const drafts = buildEmailDrafts({ ...order, locale: "en", order: { ...order.order, email: null, paymentMethod: "cash_on_delivery" } }, business, "https://matek.example");
+test("user-provided content is HTML-escaped in both html and preserved in text", () => {
+  const [admin, customer] = buildEmailMessages(order, business, "https://matek.example");
+  for (const message of [admin, customer]) {
+    assert.ok(!message.html.includes("<script>"), "script tag must be escaped");
+    assert.ok(message.html.includes("&lt;script&gt;"), "escaped script expected");
+    assert.ok(!message.html.includes("Test <b>solar</b> panel"), "product name must be escaped");
+    assert.ok(message.html.includes("Test &lt;b&gt;solar&lt;/b&gt; panel"));
+  }
+});
+
+test("bank details appear only on customer bank-transfer orders", () => {
+  const [admin, customer] = buildEmailMessages(order, business, "https://matek.example");
+  assert.match(customer.html, /Banka havalesi bilgileri/);
+  assert.match(customer.html, /TEST-IBAN/);
+  assert.ok(!admin.html.includes("TEST-IBAN"), "admin email should not contain IBAN block");
+  const cash = buildEmailMessages({ ...order, locale: "en", order: { ...order.order, email: "c@e.com", paymentMethod: "cash_on_delivery" } }, business, "https://matek.example");
+  assert.ok(!cash[1].html.includes("TEST-IBAN"));
+});
+
+test("a missing customer email yields only the admin notification", () => {
+  const drafts = buildEmailMessages({ ...order, order: { ...order.order, email: null } }, business, "https://matek.example");
   assert.equal(drafts.length, 1);
   assert.equal(drafts[0].audience, "admin");
-  assert.equal(drafts[0].params.reply_to, business.contactEmail);
-  assert.equal(drafts[0].params.show_bank, false);
+  assert.equal(drafts[0].replyTo, business.contactEmail);
 });
 
-test("contact, service and appointment requests include topic, preferred date and accurate acknowledgement", () => {
+test("contact and service requests include topic, preferred date and accurate EN/TR acknowledgement", () => {
   for (const kind of ["contact", "service"] as const) {
     for (const locale of ["en", "tr"]) {
-      const [admin, customer] = buildEmailDrafts({ ...request, kind, locale }, business, "https://matek.example");
+      const [admin, customer] = buildEmailMessages({ ...request, kind, locale }, business, "https://matek.example");
       assert.equal(admin.recipient, business.orderEmail);
       assert.equal(customer.recipient, request.email);
-      assert.equal(customer.params.is_order, false);
-      assert.equal(customer.params.is_request, true);
-      assert.equal(customer.params.preferred_date, "2026-11-01");
-      assert.equal(customer.params.request_topic, "Solar installation");
-      assert.equal(customer.params.message, request.message);
-      assert.equal(customer.params.show_bank, false);
-      assert.match(String(customer.params.next_steps), locale === "tr" ? /onayı değildir/ : /does not confirm/);
-      assert.match(String(customer.params.email_subject), kind === "service" ? locale === "tr" ? /Hizmet talebi/ : /Service request/ : locale === "tr" ? /İletişim talebi/ : /Contact enquiry/);
+      assert.match(customer.html, /Solar installation/);
+      assert.match(customer.html, /2026-11-01/);
+      assert.ok(!customer.html.includes("TEST-IBAN"));
+      assert.match(customer.html, locale === "tr" ? /onayı değildir/ : /does not confirm/);
+      assert.match(customer.subject, kind === "service" ? (locale === "tr" ? /Hizmet talebi/ : /Service request/) : (locale === "tr" ? /İletişim talebi/ : /Contact enquiry/));
+      // multi-line message preserved as <br> in html
+      assert.match(customer.html, /Line one<br>Line two/);
     }
   }
 });
 
-test("template sources use escaped variables, supported sections and only provided parameters", () => {
-  const params = buildEmailDrafts(order, business, "https://matek.example")[0].params;
-  const allowed = new Set([...Object.keys(params), "name", "quantity", "unit_price", "line_total", "sku"]);
-  for (const template of ["admin-notification", "customer-confirmation"]) {
-    const html = readFileSync(new URL(`../../templates/emailjs/${template}.html`, import.meta.url), "utf8");
-    assert.ok(!html.includes("{{{"), "Never inject customer data as raw HTML");
-    assert.ok(html.includes("{{message}}"));
-    const stack: string[] = [];
-    for (const match of html.matchAll(/{{([#/^]?)([\w.]+)}}/g)) {
-      const [, operation, variable] = match;
-      assert.ok(allowed.has(variable), `Unknown template variable ${variable}`);
-      if (operation === "#") stack.push(variable);
-      if (operation === "/") assert.equal(stack.pop(), variable);
-    }
-    assert.deepEqual(stack, []);
-  }
-  assert.throws(() => buildEmailDrafts(order, business, "javascript:alert(1)"), /HTTP/);
+test("admin links point to the admin panel; customer links to public contact; invalid site URL rejected", () => {
+  const [admin, customer] = buildEmailMessages(order, business, "https://matek.example");
+  assert.match(admin.html, /https:\/\/matek\.example\/admin\/orders\/order-test-id/);
+  assert.match(customer.html, /https:\/\/matek\.example\/tr\/contact/);
+  assert.throws(() => buildEmailMessages(order, business, "javascript:alert(1)"), /HTTP/);
+  assert.throws(() => buildEmailMessages(order, business, "https://user:pass@matek.example"), /without credentials/);
 });
 
-test("EmailJS transport sends correct template and authentication without exposing response secrets", async () => {
-  const fetcher: typeof fetch = async (input, init) => {
-    assert.equal(input, "https://api.emailjs.com/api/v1.0/email/send");
-    assert.equal(init?.method, "POST");
-    const body = JSON.parse(String(init?.body));
-    assert.equal(body.service_id, config.serviceId);
-    assert.equal(body.user_id, config.publicKey);
-    assert.equal(body.accessToken, config.privateKey);
-    assert.equal(body.template_id, config.customerTemplateId);
-    assert.equal(body.template_params.to_email, "customer@example.com");
-    return new Response("OK", { status: 200 });
-  };
-  assert.deepEqual(await sendEmailJS(config, "customer", { to_email: "customer@example.com" }, fetcher), { status: "sent", error: null });
-  const rejected = await sendEmailJS(config, "admin", {}, async () => new Response("private-secret/customer-data", { status: 429 }));
-  assert.equal(rejected.status, "failed");
-  assert.match(rejected.error ?? "", /429/);
-  assert.ok(!rejected.error?.includes("private-secret"));
+test("rendered emails are valid self-contained HTML documents", () => {
+  for (const message of buildEmailMessages(order, business, "https://matek.example")) {
+    assert.match(message.html, /^<!DOCTYPE html>/);
+    assert.match(message.html, /<\/html>$/);
+    assert.ok(message.text.length > 0);
+  }
 });
 
-test("missing configuration, oversized content, provider errors and timeouts are explicit", async () => {
-  assert.deepEqual(missingEmailJSConfig({}, "admin"), ["EMAILJS_SERVICE_ID", "EMAILJS_PUBLIC_KEY", "EMAILJS_ADMIN_TEMPLATE_ID"]);
-  const noCall: typeof fetch = async () => { throw new Error("Must not call provider"); };
-  assert.equal((await sendEmailJS({}, "customer", {}, noCall)).status, "not_configured");
-  assert.match((await sendEmailJS(config, "admin", { message: "a".repeat(51000) }, noCall)).error ?? "", /50 KB/);
-  for (const status of [400, 401, 403, 429, 500]) {
-    assert.equal((await sendEmailJS(config, "admin", {}, async () => new Response("Error", { status }))).status, "failed");
-  }
-  const timeout = await sendEmailJS(config, "admin", {}, async () => { throw new DOMException("Timeout", "TimeoutError"); });
-  assert.match(timeout.error ?? "", /Delivery is uncertain/);
-  assert.equal((await sendEmailJS(config, "admin", {}, noCall)).status, "failed");
+test("mailer reports missing Gmail configuration explicitly", () => {
+  assert.deepEqual(missingMailConfig({ fromName: "Matek Energy" }), ["GMAIL_USER", "GMAIL_APP_PASSWORD"]);
+  assert.deepEqual(missingMailConfig({ fromName: "Matek Energy", user: "a@gmail.com", password: "pw" }), []);
+  assert.deepEqual(missingMailConfig({ fromName: "Matek Energy", user: "a@gmail.com" }), ["GMAIL_APP_PASSWORD"]);
 });

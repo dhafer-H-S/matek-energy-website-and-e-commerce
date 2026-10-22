@@ -8,7 +8,7 @@ import { effectivePrice } from "@/lib/money";
 import { getSettings } from "@/lib/queries/settings";
 import { pickTranslation } from "@/lib/db/translations";
 import { buildOrderMessage, waLink } from "@/lib/whatsapp";
-import { buildEmailDrafts } from "@/lib/email-templates";
+import { buildEmailMessages } from "@/lib/email-templates";
 import { deliverEmailNotifications, emailNotificationRows } from "@/lib/email-notifications";
 
 const schema = z.object({
@@ -108,7 +108,7 @@ export async function placeOrder(input: PlaceOrderInput): Promise<PlaceOrderResu
   const createdAt = new Date();
   let notificationIds: string[];
   try {
-    const drafts = buildEmailDrafts({
+    const drafts = buildEmailMessages({
       kind: "order", id: orderId, order, channel: data.channel, locale: data.locale, createdAt,
     }, settings, process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000");
     notificationIds = drafts.map((draft) => draft.id);
