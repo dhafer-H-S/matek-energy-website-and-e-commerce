@@ -511,7 +511,8 @@
     "address": "Address",
     "hours": "Opening hours",
     "callUs": "Call us",
-    "writeUs": "Email us"
+    "writeUs": "Email us",
+    "followUs": "Follow us"
   },
   "appointment": {
     "title": "Book an appointment",

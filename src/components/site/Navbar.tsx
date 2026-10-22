@@ -15,6 +15,7 @@ export async function Navbar({ locale }: { locale: string }) {
       services={services.map((s) => ({ slug: s.slug, title: s.title, icon: s.icon, description: s.description, priceFrom: s.priceFrom, currency: s.currency }))}
       phone={settings.contactPhone}
       openingHours={settings.openingHours}
+      social={settings.social ?? undefined}
     />
   );
 }

@@ -3,6 +3,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { EnquiryForm } from "@/components/forms/EnquiryForm";
+import { SocialLinks } from "@/components/site/SocialLinks";
 import { getSettings } from "@/lib/queries/settings";
 import { buildMetadata } from "@/lib/seo";
 
@@ -61,6 +62,10 @@ export default async function ContactPage({
                 </div>
               ) : null,
             )}
+            <div className="rounded-2xl border border-border bg-white p-5">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted">{t("followUs")}</p>
+              <SocialLinks variant="dark" />
+            </div>
           </div>
           <div className="rounded-2xl border border-border bg-white p-6 sm:p-8 lg:col-span-3">
             <EnquiryForm defaultMessage={subject} />

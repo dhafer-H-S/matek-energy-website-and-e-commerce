@@ -511,7 +511,8 @@
     "address": "Adres",
     "hours": "Çalışma saatleri",
     "callUs": "Bizi arayın",
-    "writeUs": "E-posta gönderin"
+    "writeUs": "E-posta gönderin",
+    "followUs": "Bizi takip edin"
   },
   "appointment": {
     "title": "Randevu alın",

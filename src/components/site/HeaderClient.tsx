@@ -6,6 +6,7 @@ import { Phone, Search, ShoppingCart, Menu, X, ChevronDown, Clock, Wrench } from
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { Logo } from "./Logo";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { BRAND_ICONS } from "./BrandIcons";
 import { useCart } from "@/components/shop/CartProvider";
 import { cn } from "@/lib/utils";
 import { ServiceIcon } from "@/components/icons/ServiceIcon";
@@ -26,16 +27,36 @@ interface Svc {
   currency: "TRY" | "EUR";
 }
 
+interface Social {
+  facebook?: string;
+  instagram?: string;
+  linkedin?: string;
+  youtube?: string;
+  twitter?: string;
+  tiktok?: string;
+}
+
+const SOCIAL_LABELS: Record<string, string> = {
+  facebook: "Facebook",
+  instagram: "Instagram",
+  linkedin: "LinkedIn",
+  youtube: "YouTube",
+  twitter: "X",
+  tiktok: "TikTok",
+};
+
 export function HeaderClient({
   categories,
   services,
   phone,
   openingHours,
+  social,
 }: {
   categories: Cat[];
   services: Svc[];
   phone: string | null;
   openingHours: string | null;
+  social?: Social;
 }) {
   const t = useTranslations("nav");
   const ts = useTranslations("services");
@@ -65,6 +86,9 @@ export function HeaderClient({
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
+  const socialEntries = (Object.entries(BRAND_ICONS) as [keyof Social, (typeof BRAND_ICONS)[keyof typeof BRAND_ICONS]][])
+    .filter(([key]) => typeof social?.[key] === "string" && social?.[key]);
+
   const cartButton = (
     <Link
       href="/cart"
@@ -93,6 +117,23 @@ export function HeaderClient({
             {openingHours ? (
               <span className="hidden items-center gap-1.5 md:inline-flex">
                 <Clock className="h-3.5 w-3.5" /> {openingHours}
+              </span>
+            ) : null}
+            {socialEntries.length > 0 ? (
+              <span className="flex items-center gap-1">
+                {socialEntries.map(([key, Icon]) => (
+                  <a
+                    key={key}
+                    href={social![key]!}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={SOCIAL_LABELS[key] ?? key}
+                    title={SOCIAL_LABELS[key] ?? key}
+                    className="flex h-6 w-6 items-center justify-center rounded-full text-white/85 transition-colors hover:bg-white/15 hover:text-white"
+                  >
+                    <Icon className="h-3.5 w-3.5" />
+                  </a>
+                ))}
               </span>
             ) : null}
           </div>
